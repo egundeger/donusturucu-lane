@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transformer: Yaşamın Derin Kimyası ve Beslenme</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #34495e;
+            --accent: #e67e22;
+            --light: #ecf0f1;
+            --success: #27ae60;
+            --danger: #c0392b;
+            --info: #2980b9;
+            --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: var(--font-main);
+            background-color: #f8f9fa;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Layout */
+        .app-container { display: flex; flex: 1; height: 100%; }
+
+        /* Sidebar */
+        .sidebar {
+            width: 280px;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            padding: 1rem;
+            overflow-y: auto;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+            z-index: 10;
+        }
+
+        .sidebar h1 {
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        .nav-group-title {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.5);
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+            padding-left: 0.5rem;
+        }
+
+        .nav-btn {
+            background: none;
+            border: none;
+            color: rgba(255,255,255,0.8);
+            padding: 0.8rem 1rem;
+            text-align: left;
+            cursor: pointer;
+            font-size: 0.95rem;
+            transition: all 0.2s;
+            border-radius: 6px;
+            margin-bottom: 0.2rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-btn:hover { background: rgba(255,255,255,0.1); color: white; }
+        .nav-btn.active { background: var(--accent); color: white; font-weight: 600; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+        .nav-icon { margin-right: 10px; width: 20px; text-align: center; }
+
+        /* Content */
+        .main-content {
+            flex: 1;
+            padding: 2rem 3rem;
+            overflow-y: auto;
+            background: #fff;
+            position: relative;
+        }
+
+        .page { display: none; max-width: 900px; margin: 0 auto 4rem auto; animation: fadeIn 0.5s ease; }
+        .page.active { display: block; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Typography */
+        h2 { color: var(--primary); font-size: 2.2rem; margin-bottom: 0.5rem; }
+        .subtitle { color: #7f8c8d; font-size: 1.2rem; margin-bottom: 2rem; font-weight: 300; border-bottom: 1px solid #eee; padding-bottom: 1rem; }
+        h3 { color: var(--secondary); margin: 2rem 0 1rem 0; font-size: 1.5rem; border-left: 4px solid var(--accent); padding-left: 10px; }
+        p { margin-bottom: 1.2rem; line-height: 1.8; text-align: justify; color: #444; font-size: 1.05rem; }
+        
+        /* Components */
+        .quote-box {
+            background: #f1f2f6;
+            border-left: 5px solid var(--primary);
+            padding: 2rem;
+            margin: 2rem 0;
+            font-style: italic;
+            font-family: 'Georgia', serif;
+            color: #555;
+            border-radius: 0 8px 8px 0;
+            position: relative;
+        }
+        .quote-box::before { content: "“"; font-size: 4rem; color: #ccc; position: absolute; top: -10px; left: 10px; }
+        
+        .concept-card {
+            background: white;
+            border: 1px solid #e1e1e1;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 1.5rem;
+            transition: transform 0.2s;
+        }
+        .concept-card:hover { transform: translateY(-2px); box-shadow: 0 6px 12px rgba(0,0,0,0.1); }
+        
+        .highlight { background: #fff3cd; padding: 0 4px; border-radius: 2px; }
+
+        /* Visual Diagrams (CSS Only) */
+        .diagram-box {
+            margin: 2rem 0;
+            padding: 1rem;
+            background: #f9f9f9;
+            border: 1px dashed #ccc;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .cycle-diagram {
+            width: 200px;
+            height: 200px;
+            border: 4px solid var(--primary);
+            border-radius: 50%;
+            margin: 0 auto;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        .cycle-arrow {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-top: 4px solid var(--accent);
+            border-right: 4px solid var(--accent);
+            transform: rotate(45deg);
+        }
+
+        /* Game Styles */
+        .game-container {
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .hud {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+            background: rgba(0,0,0,0.2);
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .hud-item { text-align: center; }
+        .hud-label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.7; margin-bottom: 5px; }
+        .hud-value { font-size: 1.4rem; font-weight: bold; font-family: monospace; }
+        
+        .cofactor-display {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            background: rgba(255,255,255,0.05);
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .control-panel {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .game-btn {
+            padding: 15px;
+            border: none;
+            border-radius: 6px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.1s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .game-btn:active { transform: scale(0.95); }
+        .game-btn:disabled { opacity: 0.5; cursor: not-allowed; filter: grayscale(100%); }
+        
+        .btn-eat { background: #e67e22; } /* Turuncu */
+        .btn-metabolism { background: #2980b9; } /* Mavi */
+        .btn-growth { background: #27ae60; } /* Yeşil */
+        
+        .btn-cost { font-size: 0.7rem; margin-top: 5px; opacity: 0.9; background: rgba(0,0,0,0.2); padding: 2px 6px; border-radius: 4px; }
+
+        .console {
+            height: 120px;
+            background: #000;
+            color: #0f0;
+            font-family: 'Consolas', monospace;
+            padding: 10px;
+            overflow-y: auto;
+            margin-top: 20px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            border: 1px solid #444;
+        }
+        
+        .restart-btn {
+            background: #c0392b;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            float: right;
+            margin-bottom: 10px;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .app-container { flex-direction: column; }
+            .sidebar { width: 100%; height: auto; flex-direction: row; overflow-x: auto; padding: 1rem; }
+            .sidebar h1 { display: none; }
+            .nav-group-title { display: none; }
+            .nav-btn { flex: 0 0 auto; margin-right: 10px; padding: 0.5rem 1rem; }
+            .main-content { padding: 1rem; }
+            .hud { grid-template-columns: repeat(2, 1fr); }
+            .control-panel { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="app-container">
+    <aside class="sidebar">
+        <h1>TRANSFORMER</h1>
+        
+        <div class="nav-group-title">Kitap İçeriği</div>
+        <button class="nav-btn active" onclick="showPage('p0')"><span class="nav-icon">📖</span> Giriş: Yaşamın Kendisi</button>
+        <button class="nav-btn" onclick="showPage('p1')"><span class="nav-icon">🔬</span> 1. Nanokozmosu Keşfetmek</button>
+        <button class="nav-btn" onclick="showPage('p2')"><span class="nav-icon">🧬</span> 2. Karbonun Yolu</button>
+        <button class="nav-btn" onclick="showPage('p3')"><span class="nav-icon">🌋</span> 3. Gazlardan Yaşama</button>
+        <button class="nav-btn" onclick="showPage('p4')"><span class="nav-icon">🌬️</span> 4. Devrimler (Oksijen)</button>
+        <button class="nav-btn" onclick="showPage('p5')"><span class="nav-icon">🌑</span> 5. Karanlık Taraf (Kanser)</button>
+        <button class="nav-btn" onclick="showPage('p6')"><span class="nav-icon">⏳</span> 6. Akış Kapasitörü (Yaşlanma)</button>
+        <button class="nav-btn" onclick="showPage('p7')"><span class="nav-icon">🧠</span> Sonsöz: Benlik</button>
+        
+        <div class="nav-group-title">Öğrenci & Uygulama</div>
+        <button class="nav-btn" onclick="showPage('dietitian')"><span class="nav-icon">🍎</span> Beslenme Uzmanları İçin</button>
+        <button class="nav-btn" style="color: #f1c40f;" onclick="showPage('game')"><span class="nav-icon">🎮</span> OYUN: Metabolizma</button>
+    </aside>
+
+    <main class="main-content">
+
+        <!-- GİRİŞ -->
+        <section id="p0" class="page active">
+            <h2>Giriş: Yaşamın Kendisi</h2>
+            <div class="subtitle">Enerji Akışı Genetik Bilgiyi Yapılandırır</div>
+            
+            <p>Hücre bir şehirdir. Uzaydan bakıldığında şehirler gri, kristalimsi ve cansız görünür. Ancak gece olduğunda ışıklar yanar; enerji akar. Bir şehri canlı kılan binaları değil, içinden geçen insan, malzeme ve enerji akışıdır.</p>
+            
+            <div class="quote-box">
+                "Genler ve bilgi, yaşamımızın en ince detaylarını belirlemez. Aksine, durmaksızın akan enerji ve madde, genleri varoluşa çağırır." — Nick Lane
+            </div>
+
+            <p>Biyokimya derslerinde gördüğünüz metabolik haritalar genellikle statiktir. Ancak yaşam, milisaniyeler içinde gerçekleşen milyarlarca dönüşümün toplamıdır. Bu bölümde, yaşamın temelinin "bilgi" (DNA) değil, "akış" (metabolizma) olduğu fikriyle tanışacaksınız.</p>
+            
+            <div class="concept-card">
+                <h3>Neden Önemli?</h3>
+                <p>Beslenme biyokimyasında gıdaları sadece "kalori" veya "vitamin" olarak görmek yetersizdir. Gıdalar, hücre içindeki bu devasa akışın (flux) yönünü değiştiren sinyallerdir. Bir nehrin yatağını değiştirmesi gibi, besinler de metabolik akışı değiştirir.</p>
+            </div>
+        </section>
+
+        <!-- BÖLÜM 1 -->
+        <section id="p1" class="page">
+            <h2>1. Nanokozmosu Keşfetmek</h2>
+            <div class="subtitle">Hans Krebs ve Döngünün Doğuşu</div>
+
+            <p>1930'larda Hans Krebs, hücrelerin besinleri nasıl yaktığını çözmeye çalışıyordu. O dönemde hücrenin bir "torba enzim" olduğu düşünülüyordu. Krebs, metabolizmanın doğrusal bir hat değil, bir <strong>döngü</strong> olduğunu keşfetti.</p>
+
+            <div class="diagram-box">
+                <div class="cycle-diagram">
+                    <span>KREBS<br>DÖNGÜSÜ</span>
+                    <div class="cycle-arrow" style="top: -10px; left: 50%; transform: translateX(-50%) rotate(-45deg);"></div>
+                    <div class="cycle-arrow" style="bottom: -10px; left: 50%; transform: translateX(-50%) rotate(135deg);"></div>
+                </div>
+                <p style="margin-top:10px; font-size:0.9rem;"><em>Şekil: Döngüsel nedensellik. Ürün, başlangıç maddesini yeniler.</em></p>
+            </div>
+
+            <p>Krebs, güvercin göğüs kaslarını kullanarak çalıştı (uçmak için çok enerji gerekir). Ancak bu seçim bir yanılgıya yol açtı: Krebs döngüsünün tek amacının enerji üretmek olduğu sanıldı. Oysa karaciğer gibi dokularda döngü, enerji değil, <strong>madde (yapı taşı)</strong> üretmek için çalışır.</p>
+            
+            <div class="concept-card">
+                <h3>Katalizör Olarak Metabolitler</h3>
+                <p>Süksinat, Fumarat, Malat... Bunlar sadece yakıt değildir. Bunlar döngüyü hızlandıran "katalitik" ara ürünlerdir. Döngüye ne kadar çok ara ürün girerse (örn: amino asitlerden), döngü o kadar hızlı döner.</p>
+            </div>
+        </section>
+
+        <!-- BÖLÜM 2 -->
+        <section id="p2" class="page">
+            <h2>2. Karbonun Yolu</h2>
+            <div class="subtitle">Fotosentez, Şeker ve Bir Yanılgı</div>
+
+            <p>Ders kitaplarında fotosentezin glikoz ürettiği, solunumun da glikozu yaktığı yazar ("Biyokimyanın Birliği"). Ancak Nick Lane bu görüşü sarsar. Fotosentez aslında <strong>Krebs Döngüsünün Tersine Çalışmasıdır</strong>.</p>
+
+            <ul>
+                <li><strong>Calvin Döngüsü (Bitkiler):</strong> Şeker üretir. Verimsizdir. Rubisco enzimi çok yavaştır.</li>
+                <li><strong>Ters Krebs Döngüsü (Bakteriler):</strong> CO<sub>2</sub> ve H<sub>2</sub> alır, doğrudan yaşamın yapı taşlarını (Asetil-CoA, Pirüvat) üretir. Çok daha eski ve temeldir.</li>
+            </ul>
+
+            <div class="quote-box">
+                "Şeker, metabolizmanın belkemiği değildir. Şekerler periferiktir. Krebs döngüsü ve karboksilik asitler merkezdedir."
+            </div>
+        </section>
+
+        <!-- BÖLÜM 3 -->
+        <section id="p3" class="page">
+            <h2>3. Gazlardan Yaşama</h2>
+            <div class="subtitle">Yaşamın Kökeni: Hidrotermal Bacalar</div>
+
+            <p>Yaşam çorba dolu bir gölette değil, derin denizlerdeki hidrotermal bacalarda başladı. Neden? Çünkü orada bedava enerji vardı.</p>
+
+            <div class="concept-card">
+                <h3>Doğal Pil</h3>
+                <p>Okyanus asidikti (H<sup>+</sup> dolu), bacalardan çıkan su ise bazikti (OH<sup>-</sup>). Bu, doğal bir <strong>proton gradyanı</strong> (voltaj farkı) yaratır. İlk hücreler, bu doğal enerjiyi kullanarak CO<sub>2</sub> ile H<sub>2</sub>'yi birleştirdi.</p>
+            </div>
+
+            <p>Bu reaksiyon (H<sub>2</sub> + CO<sub>2</sub> -> Organik Madde), termodinamik olarak kendiliğinden gerçekleşir. Buna "Krebs Çizgisi" (The Krebs Line) denir. Döngüden önce, düz bir üretim hattı vardı. </p>
+        </section>
+
+        <!-- BÖLÜM 4 -->
+        <section id="p4" class="page">
+            <h2>4. Devrimler</h2>
+            <div class="subtitle">Oksijen ve Kambriyen Patlaması</div>
+
+            <p>Milyarlarca yıl boyunca yaşam, oksijensiz ortamda sadece "büyümeye" odaklandı (Ters Krebs). Sonra siyanobakteriler suyu parçalayıp oksijeni havaya saldı. Bu büyük bir kirlilikti ama aynı zamanda bir fırsattı.</p>
+
+            <p>Oksijenin varlığı, Krebs döngüsünün yönünü değiştirdi. Artık döngü, madde üretmek yerine maddeyi parçalayıp muazzam miktarda enerji (ATP) üretebiliyordu (İleri Krebs). Bu enerji patlaması, karmaşık hayvanların, yırtıcıların ve hareketli yaşamın (Kambriyen Patlaması) ortaya çıkmasını sağladı.</p>
+            
+            <div class="concept-card" style="border-left-color: #e74c3c;">
+                <h3>Metabolik İkilem (Yin ve Yang)</h3>
+                <p>Hücre aynı anda hem maddeyi yakıp enerji üretemez, hem de enerji harcayıp madde üretemez. Bu ikisi (Enerji vs Büyüme) arasındaki denge, sağlığın temelidir.</p>
+            </div>
+        </section>
+
+        <!-- BÖLÜM 5 -->
+        <section id="p5" class="page">
+            <h2>5. Karanlık Taraf</h2>
+            <div class="subtitle">Kanser: Genetik mi Metabolik mi?</div>
+
+            <p>Kanseri "genlerdeki mutasyonlar" olarak görmeye alışkınız. Ancak Lane, kanserin <strong>metabolik bir kilitlenme</strong> olduğunu savunur. Kanser hücresi, oksijenli dünyada yaşayan ama antik, oksijensiz modda (büyüme modu) çalışan bir hücredir.</p>
+
+            <h3 style="border-left-color:#c0392b;">Warburg Etkisi'nin Sırrı</h3>
+            <p>Kanser hücreleri oksijen varken bile şekeri fermente eder (Laktat üretir). Neden bu kadar verimsiz bir yolu seçerler? Çünkü amaçları ATP üretmek değildir. Amaçları, şekerin karbon iskeletlerini kullanarak yeni hücreler inşa etmektir (Biyosentez).</p>
+            
+            <p>Kanser hücresi için ATP bir yan üründür; asıl ihtiyaç duyduğu şey <strong>NADPH</strong> (indirgeyici güç) ve yapı taşlarıdır. Beslenme uzmanları için not: Kanser hücresi glutamine (amino asit) bağımlıdır, çünkü glutamin Krebs döngüsünü tersten besler.</p>
+        </section>
+
+        <!-- BÖLÜM 6 -->
+        <section id="p6" class="page">
+            <h2>6. Akış Kapasitörü</h2>
+            <div class="subtitle">Yaşlanma ve Mitokondriyel Denge</div>
+
+            <p>Yaşlanmak, sadece yıpranmak değildir. Yaşlanmak, mitokondrilerdeki elektron akışının yavaşlamasıdır. Mitokondrilerimiz birer "Flux Capacitor" (Akış Kapasitörü) gibi çalışır.</p>
+
+            <div class="concept-card" style="border-left-color: #f39c12;">
+                <h3>ROS (Serbest Radikaller) Dost mu Düşman mı?</h3>
+                <p>Eskiden ROS'un hücreye zarar vererek yaşlandırdığı sanılırdı. Şimdi biliyoruz ki ROS bir <strong>sinyaldir</strong>. "Çok fazla yakıt var, yavaşla!" der.</p>
+                <p>Yaşlandıkça mitokondrilerimiz bu sinyali yanlış anlar. Solunumu kısarlar. Bu da hücrenin "sanki oksijen yokmuş gibi" davranmasına, yağ depolamasına ve iltihaplanmasına (inflamasyon) neden olur. Yaşlılık hastalıklarının kökeni budur.</p>
+            </div>
+        </section>
+
+        <!-- SONSÖZ -->
+        <section id="p7" class="page">
+            <h2>Sonsöz: Benlik</h2>
+            <div class="subtitle">Bilinç ve Elektrik Alanları</div>
+
+            <p>Kitabın en etkileyici bölümü burasıdır. Lane sorar: "Benlik hissi, o içsel 'Ben' duygusu nereden gelir?"</p>
+
+            <p>Cevap, mitokondrilerin zarlarındaki o muazzam elektrik alanında (milivoltlar seviyesinde ama mikroskobik mesafede olduğu için yıldırım kadar güçlü) yatıyor olabilir. Bu elektrik alanı, hücre içindeki milyarlarca molekülü bir hizaya sokar, onlara bir yön ve "amaç" verir.</p>
+
+            <div class="quote-box">
+                "Anestezi verdiğimizde bilinci kapatırız. Anestezikler ne yapar? Mitokondriyel elektron akışını bozar. Belki de hissetmek, bu akışın kendisidir."
+            </div>
+
+            <p>Bizler madde değiliz; bizler maddenin içinden geçen, milyarlarca yıldır sönmeyen bir aleviz. Metabolizma durduğunda, madde kalır ama "Ben" gider.</p>
+        </section>
+
+        <!-- BESLENME UZMANLARI İÇİN -->
+        <section id="dietitian" class="page">
+            <h2>🍎 Geleceğin Beslenme Uzmanlarına Notlar</h2>
+            <p>Bu kitaptan diyetisyenlik pratiğine ne taşıyabilirsiniz?</p>
+
+            <div class="concept-card">
+                <h3>1. Kalori Saymak Yetersizdir</h3>
+                <p>Gıdalar sadece yakıt (kalori) değildir; onlar metabolik akışı yönlendiren sinyallerdir. Yüksek şekerli bir öğün sadece enerji vermez, hücreye "Büyü ve Depola" sinyali gönderir (NADH/NAD+ oranını yükselterek).</p>
+            </div>
+
+            <div class="concept-card">
+                <h3>2. Ketojenik Diyetin Mantığı</h3>
+                <p>Beyin normalde glikoz kullanır. Alzheimer gibi hastalıklarda beyin hücreleri glikozu işleyemez (insülin direnci). Ketonlar (yağlardan gelir), glikoliz yolunu bypass ederek doğrudan mitokondriye girer. Bu, "tıkanmış bir motora farklı bir yakıt koymak" gibidir.</p>
+            </div>
+
+            <div class="concept-card">
+                <h3>3. Açlık ve Otofaji</h3>
+                <p>Sürekli yemek yemek, hücreyi sürekli "büyüme" modunda tutar. Bu mitokondrileri yorar. Aralıklı oruç, hücrenin "enerji üretimi" modundan "onarım" moduna geçmesine fırsat tanır.</p>
+            </div>
+            
+            <h3>Özet Tablo: Metabolik Durumlar</h3>
+            <table style="width:100%; border-collapse: collapse; margin-top:10px;">
+                <tr style="background:#eee;">
+                    <th style="padding:10px; border:1px solid #ddd;">Durum</th>
+                    <th style="padding:10px; border:1px solid #ddd;">Dominant Yol</th>
+                    <th style="padding:10px; border:1px solid #ddd;">Sonuç</th>
+                </tr>
+                <tr>
+                    <td style="padding:10px; border:1px solid #ddd;">Aşırı Beslenme</td>
+                    <td style="padding:10px; border:1px solid #ddd;">Glikoliz & Yağ Sentezi</td>
+                    <td style="padding:10px; border:1px solid #ddd;">Obezite, İnflamasyon</td>
+                </tr>
+                <tr>
+                    <td style="padding:10px; border:1px solid #ddd;">Egzersiz / Oruç</td>
+                    <td style="padding:10px; border:1px solid #ddd;">Oksidatif Fosforilasyon</td>
+                    <td style="padding:10px; border:1px solid #ddd;">Mitokondriyel Yenilenme</td>
+                </tr>
+                <tr>
+                    <td style="padding:10px; border:1px solid #ddd;">Kanser</td>
+                    <td style="padding:10px; border:1px solid #ddd;">Aerobik Glikoliz (Warburg)</td>
+                    <td style="padding:10px; border:1px solid #ddd;">Kontrolsüz Büyüme</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- OYUN -->
+        <section id="game" class="page">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+                <h2>🎮 Metabolik Denge Oyunu</h2>
+                <button class="restart-btn" onclick="restartGame()">🔄 Baştan Başla</button>
+            </div>
+            <p><strong>Amaç:</strong> Hücreni hayatta tut! Enerji (ATP) ve İndirgeyici Güç (NADH/NADPH) dengesini koru. ROS (Oksidatif Stres) seni öldürmeden 100 Biyokütleye ulaş.</p>
+
+            <div class="game-container">
+                <div class="cofactor-display">
+                    <span><strong>NAD+ / NADH Oranı:</strong> <span id="ratio-nad">Yüksek (Sağlıklı)</span></span>
+                    <span><strong>Mitokondri Sağlığı:</strong> <span id="mito-health">100%</span></span>
+                </div>
+
+                <div class="hud">
+                    <div class="hud-item">
+                        <div class="hud-label">GLİKOZ</div>
+                        <div class="hud-value" id="val-glc">20</div>
+                    </div>
+                    <div class="hud-item">
+                        <div class="hud-label">YAĞ ASİDİ</div>
+                        <div class="hud-value" id="val-fa">5</div>
+                    </div>
+                    <div class="hud-item">
+                        <div class="hud-label">ATP</div>
+                        <div class="hud-value" id="val-atp">100</div>
+                    </div>
+                    <div class="hud-item">
+                        <div class="hud-label">ROS HASARI</div>
+                        <div class="hud-value" id="val-ros" style="color:#e74c3c">0%</div>
+                    </div>
+                    <div class="hud-item" style="grid-column: span 2;">
+                        <div class="hud-label">NADPH (Savunma & Yapım)</div>
+                        <div class="hud-value" id="val-nadph">20</div>
+                    </div>
+                    <div class="hud-item" style="grid-column: span 2;">
+                        <div class="hud-label">BİYOKÜTLE (HEDEF: 100)</div>
+                        <div class="hud-value" id="val-bio" style="color:#2ecc71">0</div>
+                    </div>
+                </div>
+
+                <div class="control-panel">
+                    <!-- Kaynak Toplama -->
+                    <button class="game-btn btn-eat" onclick="actionEatCarb()">
+                        🍞 Karbonhidrat Ye
+                        <span class="btn-cost">+5 Glikoz</span>
+                    </button>
+                    <button class="game-btn btn-eat" onclick="actionEatFat()">
+                        🥑 Yağ Ye
+                        <span class="btn-cost">+2 Yağ Asidi</span>
+                    </button>
+                    <button class="game-btn btn-eat" onclick="actionFasting()">
+                        ⏳ Oruç Tut (Otofaji)
+                        <span class="btn-cost">-ROS / +Mitokondri</span>
+                    </button>
+
+                    <!-- Metabolizma -->
+                    <button class="game-btn btn-metabolism" onclick="actionGlycolysis()">
+                        Glikoliz (Sitoplazma)
+                        <span class="btn-cost">-1 Glikoz -> +2 ATP + 2 NADH</span>
+                    </button>
+                    <button class="game-btn btn-metabolism" onclick="actionKrebs()">
+                        Krebs Döngüsü
+                        <span class="btn-cost">-1 Pirüvat -> +NADH/FADH2</span>
+                    </button>
+                    <button class="game-btn btn-metabolism" onclick="actionOxPhos()">
+                        ⚡ Oksidatif Fosforilasyon
+                        <span class="btn-cost">NADH yak -> +30 ATP / +ROS</span>
+                    </button>
+
+                    <!-- Büyüme ve Savunma -->
+                    <button class="game-btn btn-growth" onclick="actionPentose()">
+                        Pentoz Fosfat Yolu
+                        <span class="btn-cost">-1 Glikoz -> +2 NADPH</span>
+                    </button>
+                    <button class="game-btn btn-growth" onclick="actionSynthesize()">
+                        🌱 Büyü (Biyosentez)
+                        <span class="btn-cost">-ATP / -NADPH / -Karbon</span>
+                    </button>
+                    <button class="game-btn btn-growth" style="background:#8e44ad;" onclick="actionDetox()">
+                        🛡️ Antioksidan (Glutatyon)
+                        <span class="btn-cost">-NADPH -> -ROS</span>
+                    </button>
+                </div>
+
+                <div class="console" id="console">
+                    > Simülasyon başladı. Hücreniz beklemede...
+                </div>
+            </div>
+        </section>
+
+    </main>
+</div>
+
+<script>
+    // Navigation Logic
+    function showPage(id) {
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+        
+        document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+        // Find button with onclick containing the id
+        const buttons = Array.from(document.querySelectorAll('.nav-btn'));
+        const activeBtn = buttons.find(b => b.getAttribute('onclick').includes(id));
+        if(activeBtn) activeBtn.classList.add('active');
+    }
+
+    // Game Logic
+    const initialState = {
+        glikoz: 20,
+        yag: 5,
+        atp: 100,
+        nadh: 5,    // İndirgeyici güç (Katabolik)
+        fadh2: 2,
+        nadph: 20,  // Biyosentez ve Savunma gücü
+        ros: 0,
+        biomass: 0,
+        piruvat: 0,
+        asetilcoa: 0,
+        mitoHealth: 100,
+        gameOver: false
+    };
+
+    let g = { ...initialState };
+
+    function log(msg, type="neutral") {
+        const c = document.getElementById('console');
+        const color = type === 'bad' ? '#e74c3c' : type === 'good' ? '#2ecc71' : '#ccc';
+        c.innerHTML = `<div style="color:${color}; margin-bottom:4px;">> ${msg}</div>` + c.innerHTML;
+    }
+
+    function updateDisplay() {
+        document.getElementById('val-glc').innerText = g.glikoz;
+        document.getElementById('val-fa').innerText = g.yag;
+        document.getElementById('val-atp').innerText = Math.floor(g.atp);
+        document.getElementById('val-ros').innerText = Math.floor(g.ros) + "%";
+        document.getElementById('val-nadph').innerText = g.nadph;
+        document.getElementById('val-bio').innerText = g.biomass;
+        document.getElementById('mito-health').innerText = Math.floor(g.mitoHealth) + "%";
+
+        // NAD Oranı simülasyonu (Basitçe NADH düşükse oran yüksek/iyi)
+        let ratioText = "Düşük (Kötü)";
+        let ratioColor = "#e74c3c";
+        if (g.nadh < 10) { ratioText = "Yüksek (Sağlıklı)"; ratioColor = "#2ecc71"; }
+        else if (g.nadh < 30) { ratioText = "Orta"; ratioColor = "#f1c40f"; }
+        
+        const ratioEl = document.getElementById('ratio-nad');
+        ratioEl.innerText = ratioText;
+        ratioEl.style.color = ratioColor;
+
+        // Stil güncellemeleri
+        document.getElementById('val-ros').style.color = g.ros > 70 ? '#e74c3c' : '#fff';
+    }
+
+    function checkGame() {
+        if (g.gameOver) return true;
+
+        if (g.ros >= 100) {
+            g.gameOver = true;
+            log("HÜCRE ÖLDÜ! Oksidatif stres mitokondrileri yok etti.", "bad");
+            alert("Oyun Bitti: ROS hasarı çok yüksek.");
+            return true;
+        }
+        if (g.atp <= 0) {
+            g.gameOver = true;
+            log("HÜCRE ÖLDÜ! Enerji tükendi (Nekroz).", "bad");
+            alert("Oyun Bitti: Enerji tükendi.");
+            return true;
+        }
+        if (g.biomass >= 100) {
+            g.gameOver = true;
+            log("BAŞARI! Hücre bölündü.", "good");
+            alert("Tebrikler! Hücre başarıyla bölündü.");
+            return true;
+        }
+        return false;
+    }
+
+    function restartGame() {
+        g = { ...initialState };
+        g.gameOver = false;
+        log("--- OYUN YENİDEN BAŞLATILDI ---", "neutral");
+        updateDisplay();
+    }
+
+    // ACTIONS
+    function actionEatCarb() {
+        if(checkGame()) return;
+        g.glikoz += 5;
+        // Yemek yemek insülini artırır, bu da biraz ATP harcatır (depolama maliyeti)
+        log("Ekmek yendi. Glikoz arttı.", "good");
+        updateDisplay();
+    }
+
+    function actionEatFat() {
+        if(checkGame()) return;
+        g.yag += 2;
+        log("Zeytinyağı tüketildi. Yağ asitleri arttı.", "good");
+        updateDisplay();
+    }
+
+    function actionFasting() {
+        if(checkGame()) return;
+        // Oruç: ATP harcamaz, zaman geçer. Bazal metabolizma çalışır.
+        g.atp -= 5; 
+        // Otofaji: ROS temizler, mitokondriyi onarır
+        g.ros = Math.max(0, g.ros - 10);
+        g.mitoHealth = Math.min(100, g.mitoHealth + 5);
+        // NADH oksitlenir (iyi bişey)
+        g.nadh = Math.max(0, g.nadh - 5);
+        log("Oruç tutuldu. Hücre temizlendi (Otofaji).", "good");
+        updateDisplay();
+    }
+
+    function actionGlycolysis() {
+        if(checkGame()) return;
+        if(g.glikoz >= 1) {
+            g.glikoz -= 1;
+            g.atp += 2; // Net kazanç
+            g.nadh += 2;
+            g.piruvat += 2;
+            log("Glikoliz: Hızlı ama az enerji. Pirüvat oluştu.", "neutral");
+        } else {
+            log("Yetersiz Glikoz!", "bad");
+        }
+        updateDisplay();
+    }
+
+    function actionKrebs() {
+        if(checkGame()) return;
+        // Pirüvat yoksa yağdan asetil-CoA yapıp girelim
+        if (g.piruvat >= 1) {
+            g.piruvat -= 1;
+            g.nadh += 4; // PDH + Krebs toplamı (basitleştirilmiş)
+            g.fadh2 += 1;
+            g.atp += 1; // GTP -> ATP
+            // Krebs CO2 üretir, ROS üretmez.
+            log("Krebs Döngüsü döndü. Elektron taşıyıcıları yüklendi.", "neutral");
+        } else if (g.yag >= 1) {
+            g.yag -= 0.5; // Beta oksidasyon
+            g.nadh += 5; // Daha çok enerji verir
+            g.fadh2 += 2;
+            g.atp += 1;
+            log("Yağ yakıldı ve Krebs'e girdi. Yüksek enerji potansiyeli.", "neutral");
+        } else {
+            log("Krebs için Pirüvat veya Yağ lazım!", "bad");
+        }
+        updateDisplay();
+    }
+
+    function actionOxPhos() {
+        if(checkGame()) return;
+        // Mitokondri sağlığı verimi etkiler
+        let efficiency = g.mitoHealth / 100;
+        
+        if (g.nadh >= 1 || g.fadh2 >= 1) {
+            let producedATP = 0;
+            let producedROS = 0;
+
+            // NADH yakımı (Teorik 2.5 ATP, oyun için tam sayı 3 diyelim)
+            if(g.nadh >= 1) {
+                g.nadh -= 1;
+                producedATP += 30 * efficiency; // Sayıları büyük tutalım ki tatmin etsin
+                producedROS += 2 * (1.5 - efficiency); // Sağlık kötüyse daha çok ROS
+            }
+            
+            // FADH2 yakımı (Teorik 1.5 ATP)
+            if(g.fadh2 >= 1) {
+                g.fadh2 -= 1;
+                producedATP += 20 * efficiency;
+                producedROS += 2 * (1.5 - efficiency);
+            }
+
+            g.atp += producedATP;
+            g.ros += producedROS;
+            
+            log(`Oksidatif Fosforilasyon: +${Math.floor(producedATP)} ATP. Dikkat ROS arttı!`, "neutral");
+        } else {
+            log("Elektron taşıyıcı (NADH/FADH2) yok! Önce Krebs çalıştır.", "bad");
+        }
+        updateDisplay();
+    }
+
+    function actionPentose() {
+        if(checkGame()) return;
+        if (g.glikoz >= 1) {
+            g.glikoz -= 1;
+            g.nadph += 10; // NADPH değerlidir
+            log("Pentoz Fosfat Yolu: NADPH üretildi.", "good");
+        } else {
+            log("Glikoz yok!", "bad");
+        }
+        updateDisplay();
+    }
+
+    function actionSynthesize() {
+        if(checkGame()) return;
+        // Büyümek pahalıdır
+        if (g.atp >= 50 && g.nadph >= 5) {
+            // Karbon kaynağı lazım (Glikoz veya Pirüvat veya Yağ)
+            if (g.glikoz >= 1) {
+                g.glikoz -= 1;
+                g.atp -= 50;
+                g.nadph -= 5;
+                g.biomass += 10;
+                log("Hücre büyüdü! Biyokütle arttı.", "good");
+            } else {
+                log("Büyümek için Karbon (Glikoz) lazım.", "bad");
+            }
+        } else {
+            log("Yetersiz Enerji (ATP) veya İndirgeyici Güç (NADPH)!", "bad");
+        }
+        updateDisplay();
+    }
+
+    function actionDetox() {
+        if(checkGame()) return;
+        // Glutatyon rejenerasyonu NADPH harcar
+        if (g.nadph >= 5) {
+            g.nadph -= 5;
+            g.ros = Math.max(0, g.ros - 20);
+            log("Antioksidan savunma: ROS temizlendi.", "good");
+        } else {
+            log("Yetersiz NADPH! Savunma çöktü. Pentoz yolunu kullan.", "bad");
+        }
+        updateDisplay();
+    }
+
+    // Yaşam Maliyeti (Zamanlayıcı)
+    setInterval(() => {
+        if (!g.gameOver) {
+            g.atp -= 1; // Bazal metabolizma
+            if (g.atp < 0) g.atp = 0;
+            
+            // ROS zamanla yavaşça artar (yaşlanma)
+            g.ros += 0.1;
+            
+            // Mitokondri sağlığı yavaşça düşer
+            g.mitoHealth -= 0.05;
+            
+            updateDisplay();
+            checkGame();
+        }
+    }, 1000);
+
+    // Init
+    updateDisplay();
+
+</script>
+
+</body>
+</html>
