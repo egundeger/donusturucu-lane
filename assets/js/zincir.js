@@ -137,7 +137,7 @@
 
   var OLCER = [
     { id: 'o2', ad: 'O₂ tüketimi', max: 220, birim: '%', renk: '#60a5fa' },
-    { id: 'dp', ad: 'Zar potansiyeli Δp', max: 220, birim: ' mV', renk: '#fbbf24' },
+    { id: 'dp', ad: 'Δp · zar potansiyeli', max: 220, birim: ' mV', renk: '#fbbf24' },
     { id: 'atp', ad: 'ATP sentezi', max: 130, birim: '%', renk: '#f59e42' },
     { id: 'nadh', ad: 'NADH (indirgenmiş)', max: 100, birim: '%', renk: '#a78bfa' },
     { id: 'ros', ad: 'ROS üretimi', max: 100, birim: '', renk: '#f87171' },

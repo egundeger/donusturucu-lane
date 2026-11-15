@@ -68,47 +68,107 @@
   window.Oyun = Oyun;
 
   var aktifSayfa = null;
+  var dar = window.matchMedia ? window.matchMedia('(max-width: 1199px)') : { matches: false };
+  var menuDugme = null;
 
-  function showPage(id, hashYazma) {
+  /* --- yandan açılan menü (telefon ve tablet) --- */
+  function menuAyarla(acik, odakla) {
+    if (!menuDugme) return;
+    acik = !!acik && dar.matches;
+    var onceki = document.body.classList.contains('menu-acik');
+    document.body.classList.toggle('menu-acik', acik);
+    menuDugme.setAttribute('aria-expanded', acik ? 'true' : 'false');
+    menuDugme.setAttribute('aria-label', acik ? 'Menüyü kapat' : 'Menüyü aç');
+    if (acik && !onceki) {
+      var secili = document.querySelector('.nav-btn.active');
+      if (secili) setTimeout(function () {
+        if (secili.scrollIntoView) secili.scrollIntoView({ block: 'center' });
+        try { secili.focus({ preventScroll: true }); } catch (e) { /* eski tarayıcı */ }
+      }, 80);
+    } else if (!acik && onceki && odakla) {
+      menuDugme.focus();
+    }
+  }
+
+  function sayfaAdi(dugme) {
+    var ad = '';
+    dugme.childNodes.forEach(function (n) { if (n.nodeType === 3) ad += n.textContent; });
+    return ad.replace(/\s+/g, ' ').trim();
+  }
+
+  function showPage(id) {
     id = ESKI_ADLAR[id] || id;
     var hedef = document.getElementById(id);
-    if (!hedef || !hedef.classList.contains('page')) return;
+    if (!hedef || !hedef.classList.contains('page')) return false;
 
     document.querySelectorAll('.page').forEach(function (p) { p.classList.remove('active'); });
     hedef.classList.add('active');
+    var baslik = '';
     document.querySelectorAll('.nav-btn').forEach(function (b) {
       var secili = b.getAttribute('data-page') === id;
       b.classList.toggle('active', secili);
-      if (secili && b.scrollIntoView && window.innerWidth <= 900) {
-        b.scrollIntoView({ block: 'nearest', inline: 'center' });
-      }
+      if (secili) { b.setAttribute('aria-current', 'page'); baslik = sayfaAdi(b); } else b.removeAttribute('aria-current');
     });
+    if (baslik) {
+      var ust = document.getElementById('ust-sayfa');
+      if (ust) ust.textContent = baslik;
+      document.title = baslik + ' · Transformer';
+    }
     var ana = document.querySelector('.main-content');
     if (ana) ana.scrollTop = 0;
+    menuAyarla(false);
 
     if (aktifSayfa && aktifSayfa !== id && gorunur[aktifSayfa]) gorunur[aktifSayfa](false);
     aktifSayfa = id;
     if (acilis[id]) { var k = acilis[id]; acilis[id] = null; k(); }
     if (gorunur[id]) gorunur[id](true);
     if (id === 'oyunlar') Oyun.yildizCiz();
-
-    if (!hashYazma) {
-      try { history.replaceState(null, '', '#' + id); } catch (e) { /* file:// vb. */ }
-    }
+    return true;
   }
-  window.showPage = showPage;
 
-  document.addEventListener('click', function (olay) {
-    var b = olay.target.closest ? olay.target.closest('[data-page]') : null;
-    if (b) { olay.preventDefault(); showPage(b.getAttribute('data-page')); }
-  });
+  /* Sayfa geçişi adres çubuğundaki # üzerinden yapılır: böylece telefonun/tarayıcının
+     "geri" düğmesi siteden çıkmak yerine bir önceki bölüme döner. */
+  function git(id) {
+    id = ESKI_ADLAR[id] || id;
+    if (!document.getElementById(id)) return;
+    if (location.hash === '#' + id) { showPage(id); return; }
+    try { location.hash = id; } catch (e) { showPage(id); }
+  }
+  window.showPage = git;
 
   function hashtenAc() {
     var h = (location.hash || '').replace('#', '');
-    if (h) showPage(h, true);
+    if (!showPage(h || 'p0') && h) showPage('p0');
   }
   window.addEventListener('hashchange', hashtenAc);
+
+  document.addEventListener('click', function (olay) {
+    var t = olay.target;
+    if (!t.closest) return;
+    var b = t.closest('[data-page]');
+    if (b) { olay.preventDefault(); git(b.getAttribute('data-page')); return; }
+    if (t.closest('.menu-dugme')) { menuAyarla(!document.body.classList.contains('menu-acik')); return; }
+    if (t.closest('.menu-kapat') || t.closest('.menu-perde')) menuAyarla(false, true);
+  });
+  document.addEventListener('keydown', function (olay) {
+    if (olay.key === 'Escape' && document.body.classList.contains('menu-acik')) menuAyarla(false, true);
+  });
+
   document.addEventListener('DOMContentLoaded', function () {
+    menuDugme = document.querySelector('.menu-dugme');
+    var yan = document.getElementById('yan-menu');
+    if (yan) {
+      /* menüyü sola kaydırarak kapatma */
+      var bas = null;
+      yan.addEventListener('touchstart', function (o) { var d = o.changedTouches[0]; bas = { x: d.clientX, y: d.clientY }; }, { passive: true });
+      yan.addEventListener('touchend', function (o) {
+        if (!bas) return;
+        var d = o.changedTouches[0], dx = d.clientX - bas.x, dy = d.clientY - bas.y; bas = null;
+        if (dx < -70 && Math.abs(dy) < 60) menuAyarla(false);
+      }, { passive: true });
+    }
+    var degisti = function () { if (!dar.matches) menuAyarla(false); };
+    if (dar.addEventListener) dar.addEventListener('change', degisti); else if (dar.addListener) dar.addListener(degisti);
     Oyun.yildizCiz();
     hashtenAc();
   });

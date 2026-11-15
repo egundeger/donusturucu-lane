@@ -118,7 +118,7 @@
 .ky-cipler { display: inline-flex; background: #eef2f7; border-radius: 10px; padding: 4px; gap: 4px; }
 .ky-cipler button { border: 0; background: transparent; padding: 7px 14px; border-radius: 7px; font-weight: 700; color: #475569; cursor: pointer; font-size: .92rem; font-family: inherit; }
 .ky-cipler button.aktif { background: #fff; color: var(--primary); box-shadow: 0 1px 3px rgba(0, 0, 0, .14); }
-.ky-ara { flex: 1; min-width: 220px; border: 1px solid #cbd5e1; border-radius: 10px; padding: 9px 12px; font-size: .98rem; font-family: inherit; color: var(--b-ink); }
+.ky-ara { flex: 1; min-width: 220px; border: 1px solid #cbd5e1; border-radius: 10px; padding: 9px 12px; font-size: 1rem; font-family: inherit; color: var(--b-ink); -webkit-appearance: none; appearance: none; background: #fff; }
 .ky-ara:focus { outline: none; border-color: var(--b-mavi); box-shadow: 0 0 0 3px rgba(37, 99, 235, .15); }
 .ky-grup { margin-bottom: 1.4rem; }
 .bes .ky-grup h3 { margin: 1.4rem 0 .3rem; font-size: 1.25rem; }

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#2c3e50">
     <title>Transformer: Yaşamın Derin Kimyası ve Beslenme</title>
     <style>
         :root {
@@ -161,24 +162,25 @@
 
 
         /* Responsive */
-        @media (max-width: 900px) {
-            .app-container { flex-direction: column; }
-            .sidebar { width: 100%; height: auto; flex-direction: row; overflow-x: auto; padding: 1rem; }
-            .sidebar h1 { display: none; }
-            .nav-group-title { display: none; }
-            .nav-btn { flex: 0 0 auto; margin-right: 10px; padding: 0.5rem 1rem; }
-            .main-content { padding: 1rem; }
-        }
         .nav-btn.nav-oyun { color: #f1c40f; }
         .nav-btn.nav-oyun.active { color: white; }
     </style>
     <link rel="stylesheet" href="assets/oyunlar.css">
     <link rel="stylesheet" href="assets/beslenme.css">
+    <link rel="stylesheet" href="assets/arayuz.css">
 </head>
 <body>
 
+<header class="ust-bar">
+    <button type="button" class="menu-dugme" aria-label="Menüyü aç" aria-expanded="false" aria-controls="yan-menu"><span></span><span></span><span></span></button>
+    <div class="ust-baslik"><b>TRANSFORMER</b><span id="ust-sayfa">Giriş: Yaşamın Kendisi</span></div>
+    <button type="button" class="ust-kisayol" data-page="oyunlar" aria-label="Oyun merkezi">🎮</button>
+</header>
+<div class="menu-perde" aria-hidden="true"></div>
+
 <div class="app-container">
-    <aside class="sidebar">
+    <aside class="sidebar" id="yan-menu" aria-label="Site menüsü">
+        <button type="button" class="menu-kapat" aria-label="Menüyü kapat">✕</button>
         <h1>TRANSFORMER</h1>
         
         <div class="nav-group-title">Kitap İçeriği</div>
