@@ -40,6 +40,20 @@
       ['TR Dizin', 'https://trdizin.gov.tr', 'TÜBİTAK ULAKBİM ulusal atıf dizini; Türkçe hakemli yayın araması.', 'tr'],
       ['YÖK Ulusal Tez Merkezi', 'https://tez.yok.gov.tr/UlusalTezMerkezi/', 'Türkiye\'de tamamlanan yüksek lisans ve doktora tezleri.', 'tr']
     ] },
+    { ad: 'Türkçe popüler bilim ve haber', not: 'Konuya giriş için iyi bir başlangıçtır; ancak ikincil kaynaktır. Sayısal değerleri ve iddiaları birincil kaynakla karşılaştır: popüler yazılarda glukoz başına 36–38 ATP gibi eski ders kitabı değerleri geçebilir (güncel kabul 30–32). Haberlerde ise anılan çalışmanın aslına gidip türüne ve örneklemine bak.', oge: [
+      ['Evrim Ağacı · Hücresel solunum nedir?', 'https://evrimagaci.org/hucresel-solunum-nedir-glikoliz-krebs-dongusu-ve-elektron-tasima-zinciri-nasil-isler-24103', 'Glikoliz, Krebs döngüsü ve elektron taşıma zincirinin Türkçe, kaynaklı anlatımı. Oyunlardan önce okumak için uygun.', 'tr'],
+      ['Evrim Ağacı · Sitrik asit döngüsü ve oksidatif fosforilasyon', 'https://evrimagaci.org/sitrik-asit-dongusu-nedir-oksidatif-fosforilasyon-nasil-gerceklesir-13834', '“Hücrelerin enerji kaynakları” yazı dizisinden; döngünün adımları ve kemiozmotik ATP sentezi.', 'tr'],
+      ['Evrim Ağacı · Warburg etkisi ve kanserde metabolik değişimler', 'https://evrimagaci.org/warburg-etkisi-ve-kanserde-meydana-gelen-metabolik-degisimler-7901', 'Kitabın 5. bölümü ve “Tartışmalı Konular” sayfasındaki kanser başlığıyla birlikte okunabilir.', 'tr'],
+      ['Evrim Ağacı · Oksijenli solunum nasıl evrimleşti?', 'https://evrimagaci.org/oksijenli-solunum-nasil-evrimlesti-ilkel-hucreler-nasil-oldu-da-oksijeni-kullanabilecek-bicimde-evrimlestiler-5289', 'Kitabın 4. bölümündeki oksijen devrimi konusunun Türkçe anlatımı.', 'tr'],
+      ['Evrim Ağacı · Yaşamın başlangıcının bilimsel tarihi', 'https://evrimagaci.org/yasamin-baslangicinin-bilimsel-tarihi-dunyada-yasam-nasil-basladi-457', 'Hidrotermal baca hipotezi ve Nick Lane\'in “yaşamın kökeni reaktörü” deneyleri; kitabın 3. bölümüyle örtüşür.', 'tr'],
+      ['Evrim Ağacı · Serpantinleşme nedir?', 'https://evrimagaci.org/serpantinlesme-nedir-yasamin-baslangicina-dair-neler-soyler-8628', 'Alkali hidrotermal bacalarda H₂ üreten jeokimyasal süreç; ilk metabolizmanın enerji kaynağı tartışması.', 'tr'],
+      ['Evrim Ağacı · Keto diyeti ve epilepsi', 'https://evrimagaci.org/keto-diyeti-nedir-ketojenik-diyet-epilepsi-tedavisinde-neden-kullaniliyor-14666', 'Ketojenik diyetin mekanizması ve epilepsideki kullanımı. Kanıt düzeyi için “Biyokimyadan Sofraya” 5. başlıkla karşılaştır.', 'tr'],
+      ['Evrim Ağacı · Multivitaminler işe yarıyor mu?', 'https://evrimagaci.org/saglikli-bireylerin-aldigi-multivitaminlerin-cogu-islevsiz-ancak-bazilarini-almanizda-fayda-var-4690', 'Sağlıklı bireylerde vitamin ve antioksidan takviyelerine ilişkin çalışmaların derlemesi.', 'tr'],
+      ['Evrim Ağacı · Karbonhidrat nedir?', 'https://evrimagaci.org/karbonhidrat-nedir-glikoz-gibi-sekerler-canlilar-icin-neden-onemlidir-11342', 'Şekerlerin yapısı, sınıflandırılması ve canlılardaki işlevi.', 'tr'],
+      ['Evrim Ağacı · “Yaşam Neden Var?” (Nick Lane)', 'https://evrimagaci.org/eser/yasam-neden-var-182', 'Lane\'in Türkçeye çevrilmiş kitabının tanıtım sayfası; enerji akışı ve yaşamın kökeni üzerine.', 'tr'],
+      ['Evrim Ağacı · YouTube videoları', 'https://evrimagaci.org/eserler/youtube-kanali', 'Evrim Ağacı\'nın video içeriklerinin dizini; Türkçe popüler bilim.', 'tr'],
+      ['BBC News Türkçe', 'https://www.bbc.com/turkce', 'Güncel sağlık ve beslenme araştırmalarının Türkçe haberleri (ör. ultra işlenmiş gıdalar). Haberde adı geçen çalışmayı PubMed\'de bulup yöntemine bak.', 'tr']
+    ] },
     { ad: 'Klinik beslenme rehberleri', not: '', oge: [
       ['ESPEN kılavuzları', 'https://www.espen.org/guidelines-home/espen-guidelines', 'Avrupa Klinik Beslenme ve Metabolizma Derneği; hastalığa özgü kılavuzlar (kanser, yoğun bakım, karaciğer, böbrek, geriatri).', 'av'],
       ['EFAD', 'https://www.efad.org', 'Avrupa Diyetisyen Dernekleri Federasyonu; mesleki standartlar ve görüş belgeleri.', 'av'],
@@ -92,6 +106,7 @@
     ['MIT OpenCourseWare · 7.05 General Biochemistry', 'https://ocw.mit.edu/courses/7-05-general-biochemistry-spring-2020/video_galleries/video-lectures', 'Matthew Vander Heiden\'ın metabolizma dersleri: biyoenerjetik, glikoliz, Krebs döngüsü, oksidatif fosforilasyon. Ücretsiz, İngilizce.', 'Ders'],
     ['Khan Academy · Krebs / citric acid cycle', 'https://www.youtube.com/watch?v=juM2ROSLWfw', 'Döngünün adım adım anlatımı; başlangıç düzeyi için uygun (İngilizce, altyazı seçenekli).', 'YouTube'],
     ['Khan Academy Türkçe · hücresel solunum', 'https://tr.khanacademy.org/search?page_search_query=h%C3%BCcresel%20solunum', 'Türkçe ders ve alıştırmalar (site içi arama bağlantısı).', 'Türkçe'],
+    ['Evrim Ağacı · video dizini', 'https://evrimagaci.org/eserler/youtube-kanali', 'Türkçe popüler bilim videoları; evrim, biyokimya ve beslenme başlıkları.', 'Türkçe'],
     ['iBiology', 'https://www.ibiology.org', 'Araştırmacıların kendi alanlarını anlattığı ücretsiz konuşmalar; metabolizma ve mitokondri başlıkları.', 'Ders'],
     ['HHMI BioInteractive', 'https://www.biointeractive.org', 'Sınıfta kullanılabilir animasyonlar, veri etkinlikleri ve sanal laboratuvarlar.', 'Ders'],
     ['YouTube araması · Nick Lane, Talks at Google', 'https://www.youtube.com/results?search_query=Nick+Lane+Deep+Chemistry+of+Life+and+Death+Talks+at+Google', 'Kitabın daha kısa bir sunumu (arama bağlantısı).', 'Arama'],
