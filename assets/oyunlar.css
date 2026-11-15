@@ -490,3 +490,40 @@
   .ta-dugme button { flex: 1; }
   .ta-sekme button { padding: 5px 10px 5px 5px; font-size: 12.5px; }
 }
+
+/* ==========================================================
+   OYUN 5 — İddia mı, Kanıt mı?
+   ========================================================== */
+.merkez-kart.genis { grid-column: 1 / -1; }
+.mk-iddia { background: linear-gradient(90deg, #14432f 0 33.3%, #4a3a12 33.3% 66.6%, #4a1d1d 66.6%); display: grid; grid-template-columns: repeat(3, 1fr); }
+.mk-iddia span { position: static; display: grid; place-items: center; font-size: 38px; font-weight: 800; color: #fff; opacity: .92; }
+.id-puan { font-size: 13px; color: var(--soluk); padding: 6px 12px; border: 1px solid var(--cizgi); border-radius: 999px; background: var(--panel); }
+.id-puan b { color: var(--altin); font-size: 15px; }
+.id-ilerleme { display: flex; gap: 6px; margin-bottom: 16px; }
+.id-ilerleme i { flex: 1; height: 6px; border-radius: 3px; background: #22304f; transition: background .25s; }
+.id-ilerleme i.dogru { background: var(--iyi); } .id-ilerleme i.yanlis { background: var(--acc); } .id-ilerleme i.simdi { background: #7d9be0; }
+.id-kart { max-width: 860px; margin: 0 auto; background: linear-gradient(180deg, var(--panel2), var(--panel)); border: 1px solid var(--cizgi); border-radius: 16px; padding: 22px; }
+.id-no { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--acc); font-weight: 700; }
+.id-kart blockquote { font-size: clamp(18px, 2.3vw, 24px); line-height: 1.38; font-weight: 600; margin: 8px 0 20px; color: var(--ink); font-family: Georgia, "Times New Roman", serif; }
+.id-secenek { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.id-btn { border: 1px solid #4a659e; background: #0f1a30; border-radius: 12px; padding: 14px 10px; font-weight: 700; cursor: pointer; transition: background .15s, border-color .15s, transform .08s; }
+.id-btn:hover:not([disabled]) { background: #1a2a4d; border-color: var(--altin); }
+.id-btn:active:not([disabled]) { transform: translateY(1px); }
+.id-btn[disabled] { cursor: default; opacity: .5; }
+.oyun .id-btn.asil { background: #1f4d3d; border-color: var(--iyi); color: #eafff6; opacity: 1; }
+.oyun .id-btn.kabul { border-color: var(--iyi); border-style: dashed; opacity: .9; }
+.oyun .id-btn.secilen:not(.asil):not(.kabul) { background: #4a2a12; border-color: var(--acc); opacity: 1; }
+.oyun .id-btn.secilen { box-shadow: 0 0 0 3px rgba(255, 255, 255, .14); }
+.id-geri { margin-top: 16px; border-radius: 12px; padding: 14px 16px; border-left: 4px solid var(--altin); background: rgba(251, 191, 36, .08); }
+.id-geri.dogru { border-color: var(--iyi); background: rgba(52, 211, 153, .1); }
+.id-sonuc-bas { font-weight: 700; margin-bottom: 6px; }
+.id-geri p { color: #d6dff3 !important; }
+.id-kaynak { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-top: 10px; font-size: 13px; color: var(--soluk); }
+.id-kaynak a { color: #a9cdff; background: rgba(96, 165, 250, .12); border: 1px solid #36588f; padding: 3px 10px; border-radius: 999px; text-decoration: none; }
+.id-kaynak a:hover { background: rgba(96, 165, 250, .25); }
+.id-alt { display: flex; justify-content: flex-end; margin-top: 14px; }
+.id-ipucu { color: var(--soluk) !important; font-size: 13px !important; margin-top: 14px !important; }
+@media (max-width: 760px) {
+  .id-secenek { grid-template-columns: 1fr; }
+  .id-kart { padding: 16px; }
+}

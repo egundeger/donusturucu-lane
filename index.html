@@ -173,6 +173,7 @@
         .nav-btn.nav-oyun.active { color: white; }
     </style>
     <link rel="stylesheet" href="assets/oyunlar.css">
+    <link rel="stylesheet" href="assets/beslenme.css">
 </head>
 <body>
 
@@ -190,8 +191,11 @@
         <button class="nav-btn" data-page="p6"><span class="nav-icon">⏳</span> 6. Akış Kapasitörü (Yaşlanma)</button>
         <button class="nav-btn" data-page="p7"><span class="nav-icon">🧠</span> Sonsöz: Benlik</button>
         
-        <div class="nav-group-title">Öğrenci & Uygulama</div>
-        <button class="nav-btn" data-page="dietitian"><span class="nav-icon">🍎</span> Beslenme Uzmanları İçin</button>
+        <div class="nav-group-title">Beslenme ve Diyetetik</div>
+        <button class="nav-btn" data-page="dietitian"><span class="nav-icon">🍎</span> Biyokimyadan Sofraya</button>
+        <button class="nav-btn" data-page="tartisma"><span class="nav-icon">⚖️</span> Tartışmalı Konular</button>
+        <button class="nav-btn" data-page="hesap"><span class="nav-icon">🧮</span> Hesaplayıcılar</button>
+        <button class="nav-btn" data-page="kaynak"><span class="nav-icon">📚</span> Veri Tabanları ve Kaynaklar</button>
 
         <div class="nav-group-title">Oyun Laboratuvarı</div>
         <button class="nav-btn nav-oyun" data-page="oyunlar"><span class="nav-icon">🎮</span> Oyun Merkezi</button>
@@ -199,6 +203,7 @@
         <button class="nav-btn" data-page="oyun-zincir"><span class="nav-icon">⚡</span> Solunum Zinciri 3B</button>
         <button class="nav-btn" data-page="oyun-krebs"><span class="nav-icon">🔄</span> Krebs Bulmacası</button>
         <button class="nav-btn" data-page="oyun-tokac"><span class="nav-icon">🍽️</span> Tok mu, Aç mı?</button>
+        <button class="nav-btn" data-page="oyun-iddia"><span class="nav-icon">🔎</span> İddia mı, Kanıt mı?</button>
     </aside>
 
     <main class="main-content">
@@ -336,49 +341,299 @@
             <p>Bizler madde değiliz; bizler maddenin içinden geçen, milyarlarca yıldır sönmeyen bir aleviz. Metabolizma durduğunda, madde kalır ama "Ben" gider.</p>
         </section>
 
-        <!-- BESLENME UZMANLARI İÇİN -->
-        <section id="dietitian" class="page">
-            <h2>🍎 Geleceğin Beslenme Uzmanlarına Notlar</h2>
-            <p>Bu kitaptan diyetisyenlik pratiğine ne taşıyabilirsiniz?</p>
+        <!-- BESLENME VE DİYETETİK · 1: BİYOKİMYADAN SOFRAYA -->
+        <section id="dietitian" class="page genis bes">
+            <h2>🍎 Biyokimyadan Sofraya</h2>
+            <div class="subtitle">Beslenme ve diyetetik öğrencileri için: mekanizma, uygulama ve kanıt</div>
 
-            <div class="concept-card">
-                <h3>1. Kalori Saymak Yetersizdir</h3>
-                <p>Gıdalar sadece yakıt (kalori) değildir; onlar metabolik akışı yönlendiren sinyallerdir. Yüksek şekerli bir öğün sadece enerji vermez, hücreye "Büyü ve Depola" sinyali gönderir (NADH/NAD+ oranını yükselterek).</p>
+            <p class="bes-giris">Bu bölümdeki her başlık üç soruya yanıt verir: <strong>hücrede ne oluyor</strong>, <strong>danışana ne söylenir</strong> ve <strong>bunu nereden biliyoruz</strong>. Mavi bağlantılar çalışmanın PubMed kaydına gider; başlığın yanındaki etiket kanıtın gücünü gösterir. Başlığa tıklayınca ayrıntı açılır.</p>
+
+            <div class="bes-rozet-aciklama">
+                <span><i class="rozet guclu">Kanıt: güçlü</i> birden çok iyi yürütülmüş randomize kontrollü çalışma (RKÇ), meta-analiz ya da yerleşik biyokimya</span>
+                <span><i class="rozet orta">Kanıt: orta</i> sınırlı sayıda RKÇ ya da tutarlı gözlemsel veri</span>
+                <span><i class="rozet sinirli">Kanıt: sınırlı</i> küçük, kısa ya da tek çalışma</span>
+                <span><i class="rozet mekanistik">Mekanistik</i> hücre ve hayvan verisi; insanda doğrulanmamış</span>
             </div>
 
-            <div class="concept-card">
-                <h3>2. Ketojenik Diyetin Mantığı</h3>
-                <p>Beyin normalde glikoz kullanır. Alzheimer gibi hastalıklarda beyin hücreleri glikozu işleyemez (insülin direnci). Ketonlar (yağlardan gelir), glikoliz yolunu bypass ederek doğrudan mitokondriye girer. Bu, "tıkanmış bir motora farklı bir yakıt koymak" gibidir.</p>
+            <div class="bes-kutu">
+                <h3>Bir beslenme iddiasını okurken beş soru</h3>
+                <ol>
+                    <li><strong>Çalışma türü ne?</strong> Hücre kültürü ve hayvan deneyi hipotez üretir; gözlemsel çalışma ilişki gösterir; randomize kontrollü çalışma nedensellik sınar; sistematik derleme hepsini tartar.</li>
+                    <li><strong>Ölçülen sonuç ne?</strong> Ara belirteç (LDL, açlık glukozu, bir gen ifadesi) ile klinik olay (kalp krizi, kırık, ölüm) aynı şey değildir.</li>
+                    <li><strong>Etki ne kadar büyük?</strong> “Riski %30 azaltır” göreli risktir. Mutlak fark ve tedavi edilmesi gereken kişi sayısı sorulmalıdır.</li>
+                    <li><strong>Karşılaştırma ne?</strong> Bir besin azaltıldığında yerine ne kondu? Diyet çalışmalarında sonuçların çoğunu bu belirler.</li>
+                    <li><strong>Kimde, ne kadar süre, kimin desteğiyle?</strong> Sekiz haftalık, 20 kişilik bir çalışma yaşam boyu öneriye dönüşmez.</li>
+                </ol>
+                <p class="bes-dipnot">Kanıtın kesinliğini derecelendirmek için uluslararası standart GRADE yaklaşımıdır (<a class="kay" href="https://pubmed.ncbi.nlm.nih.gov/18436948/" target="_blank" rel="noopener">Guyatt ve ark., 2008</a>). <button class="bes-git" data-page="oyun-iddia">Kendini sına: İddia mı, Kanıt mı? →</button></p>
             </div>
 
-            <div class="concept-card">
-                <h3>3. Açlık ve Otofaji</h3>
-                <p>Sürekli yemek yemek, hücreyi sürekli "büyüme" modunda tutar. Bu mitokondrileri yorar. Aralıklı oruç, hücrenin "enerji üretimi" modundan "onarım" moduna geçmesine fırsat tanır.</p>
+            <!-- 1 -->
+            <details class="bes-kart" open>
+                <summary><span class="no">1</span><span class="bas">Kalori bir ölçüm değil, bir tahmindir<small>Etiketteki enerji ortalama katsayılarla hesaplanır; vücudun gerçekte kullandığı enerji besine göre değişir.</small></span><i class="rozet guclu">Kanıt: güçlü</i></summary>
+                <div class="bes-ic">
+                    <div><h4>Hücrede ne oluyor?</h4>
+                        <p>Bomba kalorimetresi besinin toplam yanma ısısını ölçer. Vücut ise bunun yalnızca dışkı ve idrarla kaybedilmeyen bölümünü kullanabilir: <em>metabolize edilebilir enerji</em>. Etiketlerdeki değerler, Atwater'ın ölçümlerinden gelen ortalama katsayılarla hesaplanır: karbonhidrat 4, protein 4, yağ 9, alkol 7 kcal/g. AB mevzuatı (1169/2011 sayılı Tüzük, Ek XIV) life 2 kcal/g verir.</p>
+                        <p>Besin alındıktan sonra sindirim, emilim ve depolama için de enerji harcanır (besinin termik etkisi). Bu pay yağ için alınan enerjinin %0–3'ü, karbonhidrat için %5–10'u, protein için %20–30'udur (<a class="kay" href="https://pubmed.ncbi.nlm.nih.gov/15507147/" target="_blank" rel="noopener">Westerterp, 2004</a>).</p></div>
+                    <div><h4>Nereden biliyoruz?</h4>
+                        <p>Kontrollü bir beslenme çalışmasında bademin ölçülen enerjisi 4,6 kcal/g bulundu. Atwater hesabı 6,0–6,1 kcal/g veriyordu; yani etiket değeri gerçeği %32 fazla tahmin ediyordu (<a class="kay" href="https://pubmed.ncbi.nlm.nih.gov/22760558/" target="_blank" rel="noopener">Novotny ve ark., 2012</a>). Neden: bitki hücre duvarının içinde kalan yağın bir bölümü emilmeden atılır.</p></div>
+                    <div class="uygula"><h4>Danışana ne söylenir?</h4>
+                        <p>Enerji hesabı vazgeçilmez ama yaklaşık bir araçtır. İşlenme derecesi, lif ve protein içeriği aynı “kalori”nin vücuda farklı yansımasına yol açar. Tek bir sayının kesinliğine değil, eğilimin yönüne bakılır.</p>
+                        <button class="bes-git" data-page="hesap">Makro besinden enerji hesapla →</button></div>
+                </div>
+            </details>
+
+            <!-- 2 -->
+            <details class="bes-kart">
+                <summary><span class="no">2</span><span class="bas">Vitaminler koenzimdir<small>Eksiklik belirtileri, hangi enzimin durduğunu anlatır.</small></span><i class="rozet guclu">Kanıt: güçlü</i></summary>
+                <div class="bes-ic tek">
+                    <p>B vitaminlerinin çoğu, enerji metabolizmasındaki enzimlerin çalışan parçasına (koenzim) dönüşür. Mineral eksikliklerinin etkisi de çoğu kez bir enzimin etkin merkezinden okunur.</p>
+                    <div class="bes-tablo-kap"><table class="bes-tablo">
+                        <thead><tr><th>Vitamin / mineral</th><th>Etkin biçim</th><th>Bağımlı enzim ve yol</th><th>Eksiklikte</th></tr></thead>
+                        <tbody>
+                            <tr><td>Tiamin (B1)</td><td>Tiamin pirofosfat (TPP)</td><td>Pirüvat dehidrogenaz, α-ketoglutarat dehidrogenaz, transketolaz (pentoz fosfat yolu)</td><td>Beriberi, Wernicke–Korsakoff; laktat yükselir</td></tr>
+                            <tr><td>Riboflavin (B2)</td><td>FAD, FMN</td><td>Süksinat dehidrogenaz, Kompleks I (FMN), açil-CoA dehidrogenaz, glutatyon redüktaz</td><td>Açısal stomatit, glossit</td></tr>
+                            <tr><td>Niasin (B3)</td><td>NAD⁺, NADP⁺</td><td>Dehidrogenazların çoğu; NADPH ile yağ asidi sentezi ve glutatyon yenilenmesi</td><td>Pellagra: dermatit, diyare, demans</td></tr>
+                            <tr><td>Pantotenat (B5)</td><td>Koenzim A</td><td>Asetil-CoA oluşumu, β-oksidasyon, yağ asidi sentezi</td><td>İzole eksiklik çok nadir</td></tr>
+                            <tr><td>Piridoksin (B6)</td><td>Piridoksal fosfat (PLP)</td><td>Transaminazlar (ALT, AST), glikojen fosforilaz, hem sentezi (ALA sentaz)</td><td>Mikrositik anemi, nöropati</td></tr>
+                            <tr><td>Biotin (B7)</td><td>Enzime bağlı biotin</td><td>Pirüvat karboksilaz (glukoneogenez), asetil-CoA karboksilaz (yağ asidi sentezi), propiyonil-CoA karboksilaz</td><td>Dermatit, saç dökülmesi (çiğ yumurta akındaki avidin)</td></tr>
+                            <tr><td>Folat (B9)</td><td>Tetrahidrofolat</td><td>Tek karbon aktarımı: timidilat ve pürin sentezi</td><td>Megaloblastik anemi; gebelikte nöral tüp defekti</td></tr>
+                            <tr><td>Kobalamin (B12)</td><td>Metilkobalamin, adenozilkobalamin</td><td>Metiyonin sentaz, metilmalonil-CoA mutaz</td><td>Megaloblastik anemi, nörolojik hasar; metilmalonik asit ve homosistein yükselir</td></tr>
+                            <tr><td>C vitamini</td><td>Askorbat</td><td>Prolil ve lizil hidroksilaz (kolajen), dopamin β-hidroksilaz</td><td>Skorbüt</td></tr>
+                            <tr><td>Demir</td><td>Hem, Fe-S kümeleri</td><td>Sitokromlar, Kompleks I–IV, akonitaz, hemoglobin</td><td>Anemi, egzersiz kapasitesinde düşme</td></tr>
+                            <tr><td>Bakır</td><td>Cu merkezleri</td><td>Sitokrom c oksidaz (Kompleks IV), süperoksit dismutaz 1</td><td>Anemi, nötropeni</td></tr>
+                            <tr><td>Selenyum</td><td>Selenosistein</td><td>Glutatyon peroksidaz, tiyoredoksin redüktaz, deiyodinazlar</td><td>Keshan hastalığı (kardiyomiyopati)</td></tr>
+                        </tbody>
+                    </table></div>
+                    <div class="bes-ic">
+                        <div><h4>Klinik örnek</h4><p>Tiamin eksikliğinde pirüvat dehidrogenaz yavaşlar; pirüvat asetil-CoA'ya giremez ve laktata döner. Yetersiz beslenmiş bir hastada (ör. alkol bağımlılığı, uzun süreli açlık) tiamin verilmeden glukoz yüklenmesi Wernicke ensefalopatisini tetikleyebilir.</p></div>
+                        <div class="uygula"><h4>Danışana ne söylenir?</h4><p>Takviye, gösterilmiş eksiklikte ya da artmış gereksinimde anlamlıdır (gebelik öncesi folat, hayvansal besin tüketmeyenlerde B12). Eksiklik yokken fazlasının enzimleri “hızlandırdığına” dair kanıt yoktur.</p>
+                        <button class="bes-git" data-page="oyun-krebs">Koenzimleri Krebs Bulmacası'nda gör →</button></div>
+                    </div>
+                </div>
+            </details>
+
+            <!-- 3 -->
+            <details class="bes-kart">
+                <summary><span class="no">3</span><span class="bas">Yakıt seçimi: karbonhidrat mı, yağ mı?<small>Yağ gram başına iki kattan fazla enerji taşır, ama ATP başına daha çok oksijen ister.</small></span><i class="rozet guclu">Kanıt: güçlü</i></summary>
+                <div class="bes-ic tek">
+                    <div class="bes-tablo-kap"><table class="bes-tablo">
+                        <thead><tr><th>Yakıt</th><th>Tam yanma</th><th>Solunum katsayısı (RQ = CO₂/O₂)</th><th>ATP verimi</th><th>O₂ başına ATP</th></tr></thead>
+                        <tbody>
+                            <tr><td>Glukoz</td><td>C₆H₁₂O₆ + 6 O₂ → 6 CO₂ + 6 H₂O</td><td>1,00</td><td>≈ 30–32</td><td>≈ 5,0–5,3</td></tr>
+                            <tr><td>Palmitat</td><td>C₁₆H₃₂O₂ + 23 O₂ → 16 CO₂ + 16 H₂O</td><td>0,70</td><td>≈ 106</td><td>≈ 4,6</td></tr>
+                            <tr><td>Protein (ortalama)</td><td>—</td><td>≈ 0,80–0,85</td><td>amino aside göre değişir</td><td>—</td></tr>
+                        </tbody>
+                    </table></div>
+                    <p class="bes-dipnot">ATP verimleri NADH başına 2,5 ve FADH₂ başına 1,5 ATP kabulüne dayanır (<a class="kay" href="https://pubmed.ncbi.nlm.nih.gov/15620362/" target="_blank" rel="noopener">Hinkle, 2005</a>).</p>
+                    <div class="bes-ic">
+                        <div><h4>Hücrede ne oluyor?</h4><p>Yağ asitleri daha indirgenmiş moleküllerdir: gram başına daha çok elektron, dolayısıyla daha çok enerji taşırlar. Buna karşılık aynı miktar oksijenle karbonhidrat yaklaşık %10–15 daha fazla ATP verir. Egzersiz şiddeti arttıkça ve oksijen sınırlayıcı hale geldikçe kasın karbonhidrata kayması bu yüzdendir.</p></div>
+                        <div class="uygula"><h4>Uygulamada</h4><p>Dolaylı kalorimetride RQ ≈ 0,85 karışık yakıt kullanımını gösterir. 1,0'ın üzeri net yağ sentezini, yani aşırı karbonhidrat yüklemesini düşündürür; bu durum CO₂ üretimini artırdığı için yoğun bakımda solunum yükü açısından önemlidir.</p>
+                        <button class="bes-git" data-page="hesap">RQ ve enerji harcaması hesapla →</button> <button class="bes-git" data-page="oyun-zincir">Zinciri 3B izle →</button></div>
+                    </div>
+                </div>
+            </details>
+
+            <!-- 4 -->
+            <details class="bes-kart">
+                <summary><span class="no">4</span><span class="bas">Tokluk ve açlık: aynı yollar, ters yön<small>Alınan besinin kaderini o andaki metabolik durum belirler.</small></span><i class="rozet guclu">Kanıt: güçlü</i></summary>
+                <div class="bes-ic tek">
+                    <div class="bes-tablo-kap"><table class="bes-tablo">
+                        <thead><tr><th>Durum</th><th>Baskın sinyal</th><th>Öne çıkan yollar</th><th>Diyetisyen için not</th></tr></thead>
+                        <tbody>
+                            <tr><td>Öğün sonrası</td><td>İnsülin ↑</td><td>Glikojen ve yağ asidi sentezi, kasta GLUT4 ile glukoz alımı</td><td>Öğünün bileşimi insülin yanıtını ve depolama yönünü belirler.</td></tr>
+                            <tr><td>Gece açlığı (8–12 saat)</td><td>Glukagon ↑</td><td>Karaciğerde glikojen yıkımı ve glukoneogenez; kas yağ asidi yakar</td><td>Açlık kan glukozu, karaciğerin glukoz üretimini yansıtır.</td></tr>
+                            <tr><td>Uzamış açlık (günler)</td><td>İnsülin çok düşük</td><td>Lipoliz, ketogenez; beyin keton kullanmaya başlar</td><td>Ketonlar glukoz gereksinimini azaltarak kas proteinini korur (<a class="kay" href="https://pubmed.ncbi.nlm.nih.gov/16848698/" target="_blank" rel="noopener">Cahill, 2006</a>).</td></tr>
+                            <tr><td>Yüksek şiddetli egzersiz</td><td>Adrenalin, Ca²⁺, AMP</td><td>Kas glikojeni, glikoliz ve laktat</td><td>Karbonhidrat depoları performansı sınırlar.</td></tr>
+                            <tr><td>Tedavisiz tip 1 diyabet</td><td>İnsülin yok</td><td>Lipoliz, ketogenez, glukoneogenez</td><td>“Bolluk içinde açlık”: ketoasidoz riski.</td></tr>
+                            <tr><td>Alkol</td><td>NADH/NAD⁺ ↑</td><td>Glukoneogenez ve β-oksidasyon baskılanır; laktat ve trigliserit artar</td><td>Aç karnına alkol hipoglisemi yapabilir.</td></tr>
+                        </tbody>
+                    </table></div>
+                    <p><button class="bes-git" data-page="oyun-tokac">Altı senaryoyu oyunda çöz: Tok mu, Aç mı? →</button></p>
+                </div>
+            </details>
+
+            <!-- 5 -->
+            <details class="bes-kart">
+                <summary><span class="no">5</span><span class="bas">Ketojenik diyet: mekanizma sağlam, kanıt endikasyona göre değişir<small>Epilepside yerleşik bir tedavi; kilo kaybında üstün değil; Alzheimer ve kanserde yetersiz.</small></span><i class="rozet orta">Kanıt: endikasyona göre</i></summary>
+                <div class="bes-ic tek">
+                    <h4>Hücrede ne oluyor?</h4>
+                    <p>Karbonhidrat belirgin biçimde kısıtlandığında insülin düşer, lipoliz artar ve karaciğer yağ asitlerinden keton cisimleri (asetoasetat, β-hidroksibütirat) üretir. Ketonlar monokarboksilat taşıyıcılarıyla beyne girer ve glikolizi atlayarak asetil-CoA üzerinden doğrudan Krebs döngüsüne katılır.</p>
+                    <div class="bes-tablo-kap"><table class="bes-tablo">
+                        <thead><tr><th>Kullanım alanı</th><th>Kanıt</th><th>Düzey</th></tr></thead>
+                        <tbody>
+                            <tr><td>İlaca dirençli epilepsi (çocuk)</td><td>Cochrane derlemesi (13 çalışma, 932 katılımcı): nöbetsizlik (RR 3,16) ve nöbetlerde en az %50 azalma (RR 5,80) ketojenik diyet lehine; ancak çalışmalar küçük ve körlemesiz (<a class="kay" href="https://pubmed.ncbi.nlm.nih.gov/32588435/" target="_blank" rel="noopener">Martin-McGill ve ark., 2020</a>). Uluslararası uzlaşı raporu tedavi seçeneği olarak önerir (<a class="kay" href="https://pubmed.ncbi.nlm.nih.gov/29881797/" target="_blank" rel="noopener">Kossoff ve ark., 2018</a>).</td><td><i class="rozet orta">Orta</i></td></tr>
+                            <tr><td>GLUT1 eksikliği sendromu, pirüvat dehidrogenaz eksikliği</td><td>Glukozun beyne girişi ya da kullanımı bozuk olduğu için ilk seçenek tedavidir (<a class="kay" href="https://pubmed.ncbi.nlm.nih.gov/29881797/" target="_blank" rel="noopener">Kossoff ve ark., 2018</a>).</td><td><i class="rozet guclu">Güçlü</i></td></tr>
+                            <tr><td>Kilo kaybı</td><td>609 yetişkinde 12 aylık çalışmada sağlıklı düşük karbonhidratlı ve sağlıklı düşük yağlı diyet benzer kilo kaybı sağladı (−6,0 ve −5,3 kg; fark anlamsız) (<a class="kay" href="https://pubmed.ncbi.nlm.nih.gov/29466592/" target="_blank" rel="noopener">Gardner ve ark., 2018</a>).</td><td><i class="rozet guclu">Güçlü: üstünlük yok</i></td></tr>
+                            <tr><td>Alzheimer hastalığı</td><td>26 hastalı çaprazlama bir RKÇ'de 12 haftalık modifiye ketojenik diyet günlük yaşam işlevini ve yaşam kalitesini iyileştirdi; bilişsel testteki fark anlamlı değildi (<a class="kay" href="https://pubmed.ncbi.nlm.nih.gov/33622392/" target="_blank" rel="noopener">Phillips ve ark., 2021</a>).</td><td><i class="rozet sinirli">Sınırlı</i></td></tr>
+                            <tr><td>Kanser (ek tedavi)</td><td>6 RKÇ'yi kapsayan meta-analiz, yarar için yeterli kanıt bulmadı (<a class="kay" href="https://pubmed.ncbi.nlm.nih.gov/33918992/" target="_blank" rel="noopener">Yang ve ark., 2021</a>).</td><td><i class="rozet sinirli">Sınırlı</i></td></tr>
+                        </tbody>
+                    </table></div>
+                    <div class="uygula"><h4>Danışana ne söylenir?</h4><p>Ketojenik diyet tıbbi bir tedavidir; lif ve mikro besin alımı, lipid profili, böbrek taşı ve (çocukta) büyüme açısından izlem gerektirir. “Alzheimer'da beyin glukozu kullanamıyor, keton verelim” cümlesi makul bir hipotezdir, kanıtlanmış bir tedavi değil.</p></div>
+                </div>
+            </details>
+
+            <!-- 6 -->
+            <details class="bes-kart">
+                <summary><span class="no">6</span><span class="bas">Aralıklı oruç ve otofaji<small>Kilo kaybında sürekli enerji kısıtlamasına eşdeğer; “hücresel yenilenme” insanda henüz doğrudan gösterilmedi.</small></span><i class="rozet orta">Kanıt: orta</i></summary>
+                <div class="bes-ic">
+                    <div><h4>Hücrede ne oluyor?</h4><p>Açlıkta insülin ve mTORC1 baskılanır, AMPK etkinleşir; otofaji ve keton üretimi artar. Hayvan çalışmalarında aralıklı açlık yaşam ve sağlık süresini uzatır (<a class="kay" href="https://pubmed.ncbi.nlm.nih.gov/31881139/" target="_blank" rel="noopener">de Cabo ve Mattson, 2019</a>). <i class="rozet mekanistik">Mekanistik</i></p></div>
+                    <div><h4>Nereden biliyoruz?</h4><p>Cochrane derlemesi: aralıklı oruç serbest beslenmeye göre ortalama 2,9 kg daha fazla kilo kaybı sağladı; sürekli enerji kısıtlamasıyla arasında klinik olarak anlamlı fark yoktu. Ölüm ya da kalp krizi gibi sonuçları ölçen çalışma yok (<a class="kay" href="https://pubmed.ncbi.nlm.nih.gov/33512717/" target="_blank" rel="noopener">Allaf ve ark., 2021</a>).</p>
+                    <p>139 obez yetişkinde 12 ay: zaman kısıtlı beslenme ile kalori kısıtlaması −8,0 kg, yalnız kalori kısıtlaması −6,3 kg; fark anlamsız (<a class="kay" href="https://pubmed.ncbi.nlm.nih.gov/35443107/" target="_blank" rel="noopener">Liu ve ark., 2022</a>).</p></div>
+                    <div class="uygula"><h4>Danışana ne söylenir?</h4><p>Günlük düzene uyuyorsa geçerli bir yöntemdir; avantajı uyum kolaylığıdır, metabolik bir ayrıcalık değil. İnsülin ya da sülfonilüre kullananlarda hipoglisemi riski nedeniyle ilaç düzenlemesi gerekir; gebelikte ve yeme bozukluğu öyküsünde önerilmez.</p></div>
+                </div>
+            </details>
+
+            <!-- 7 -->
+            <details class="bes-kart">
+                <summary><span class="no">7</span><span class="bas">Fruktoz: aynı kalori, farklı yol<small>Sorun fruktozun kendisinden çok, fazla enerjiyle birlikte alınan serbest şekerdir.</small></span><i class="rozet orta">Kanıt: orta</i></summary>
+                <div class="bes-ic">
+                    <div><h4>Hücrede ne oluyor?</h4><p>Fruktoz karaciğerde fruktokinazla fosforillenir ve glikolize, başlıca hız kontrol noktası olan fosfofruktokinaz-1'in altından girer. Yüksek dozda bu denetimsiz akış asetil-CoA havuzunu doldurur ve yağ asidi sentezini (de novo lipogenez) besler. Hızlı fosforilasyon ATP'yi geçici olarak düşürür; oluşan AMP'nin yıkımı ürik asidi artırır.</p></div>
+                    <div><h4>Nereden biliyoruz?</h4><p>Eşit kalorili değişimde fruktoz, diğer karbonhidratlara göre vücut ağırlığını artırmaz; fazladan enerji olarak eklendiğinde artırır (<a class="kay" href="https://pubmed.ncbi.nlm.nih.gov/22351714/" target="_blank" rel="noopener">Sievenpiper ve ark., 2012</a>). Öte yandan enerjisinin %25'ini 10 hafta boyunca fruktozlu içecekten alan fazla kilolu yetişkinlerde viseral yağ arttı ve insülin duyarlılığı azaldı; glukozlu içecekte bu görülmedi (<a class="kay" href="https://pubmed.ncbi.nlm.nih.gov/19381015/" target="_blank" rel="noopener">Stanhope ve ark., 2009</a>).</p>
+                    <p>Serbest şekerin azaltılması yetişkinlerde ortalama 0,8 kg ağırlık kaybıyla ilişkilidir (<a class="kay" href="https://pubmed.ncbi.nlm.nih.gov/23321486/" target="_blank" rel="noopener">Te Morenga ve ark., 2013</a>). DSÖ serbest şekerin enerjinin %10'unun altında tutulmasını önerir.</p></div>
+                    <div class="uygula"><h4>Danışana ne söylenir?</h4><p>Bütün meyve lif ve su içerir, fruktoz yükü düşüktür: meyveyi “şeker” diye kısıtlamak kanıta dayanmaz. Hedef şekerle tatlandırılmış içecekler ve eklenmiş şekerdir.</p></div>
+                </div>
+            </details>
+
+            <!-- 8 -->
+            <details class="bes-kart">
+                <summary><span class="no">8</span><span class="bas">Diyet lifi ve kısa zincirli yağ asitleri<small>Sindirilmeyen karbonhidrat kolonda fermente olur; ürünleri kolon hücresinin yakıtıdır.</small></span><i class="rozet guclu">Kanıt: güçlü</i></summary>
+                <div class="bes-ic">
+                    <div><h4>Hücrede ne oluyor?</h4><p>Fermentasyonun başlıca ürünleri asetat, propiyonat ve bütirattır. Bütirat kolonositlerin başlıca enerji kaynağıdır ve β-oksidasyonla yakılır; propiyonat karaciğerde glukoneogeneze girer; asetat dolaşıma geçer. Lifin enerji değeri bu yüzden sıfır değil, yaklaşık 2 kcal/g'dır.</p></div>
+                    <div><h4>Nereden biliyoruz?</h4><p>185 prospektif çalışma ve 58 klinik çalışmayı kapsayan derlemede, en çok lif tüketenlerde tüm nedenlere bağlı ölüm, koroner kalp hastalığı, inme, tip 2 diyabet ve kolorektal kanser %15–30 daha azdı. En belirgin yarar günde 25–29 g alımda görüldü (<a class="kay" href="https://pubmed.ncbi.nlm.nih.gov/30638909/" target="_blank" rel="noopener">Reynolds ve ark., 2019</a>).</p></div>
+                    <div class="uygula"><h4>Danışana ne söylenir?</h4><p>Yetişkin için hedef günde en az 25 g'dır (DSÖ, EFSA). Lif takviyesinden önce tam tahıl, kurubaklagil, sebze ve meyve gelir.</p></div>
+                </div>
+            </details>
+
+            <!-- 9 -->
+            <details class="bes-kart">
+                <summary><span class="no">9</span><span class="bas">Protein: miktar, azot dengesi ve böbrek<small>Gereksinim yaşa ve aktiviteye göre değişir; vücudun protein deposu yoktur.</small></span><i class="rozet guclu">Kanıt: güçlü</i></summary>
+                <div class="bes-ic">
+                    <div><h4>Hücrede ne oluyor?</h4><p>Amino asitlerin amino grubu transaminazlarla (koenzim: piridoksal fosfat, B6) α-ketoglutarata aktarılır ve üre döngüsünde üreye çevrilir. Karbon iskeleti Krebs döngüsü ara ürünlerine dönüşür: yakılır, glukoza ya da yağa çevrilir. Alınan fazla protein depolanmaz.</p></div>
+                    <div><h4>Nereden biliyoruz?</h4>
+                        <ul class="bes-liste">
+                            <li>Sağlıklı yetişkin: 0,83 g/kg/gün (<a class="kay" href="https://doi.org/10.2903/j.efsa.2012.2557" target="_blank" rel="noopener">EFSA, 2012</a>).</li>
+                            <li>65 yaş üstü: 1,0–1,2 g/kg/gün (<a class="kay" href="https://pubmed.ncbi.nlm.nih.gov/23867520/" target="_blank" rel="noopener">Bauer ve ark., 2013</a>).</li>
+                            <li>Sporcu: 1,2–2,0 g/kg/gün (<a class="kay" href="https://pubmed.ncbi.nlm.nih.gov/26920240/" target="_blank" rel="noopener">Thomas ve ark., 2016</a>).</li>
+                            <li>Sağlıklı yetişkinlerde yüksek protein alımının glomerüler filtrasyon hızını bozduğu gösterilmemiştir (<a class="kay" href="https://pubmed.ncbi.nlm.nih.gov/30383278/" target="_blank" rel="noopener">Devries ve ark., 2018</a>). Kronik böbrek hastalığında durum farklıdır.</li>
+                        </ul></div>
+                    <div class="uygula"><h4>Danışana ne söylenir?</h4><p>Gereksinim vücut ağırlığına göre hesaplanır ve öğünlere yayılır. Bitkisel kaynaklarda amino asit örüntüsü çeşitlilikle tamamlanır.</p>
+                    <button class="bes-git" data-page="hesap">Protein ve azot dengesi hesapla →</button></div>
+                </div>
+            </details>
+
+            <!-- 10 -->
+            <details class="bes-kart">
+                <summary><span class="no">10</span><span class="bas">Alkol: 7 kcal/g ve bir redoks sorunu<small>Metabolik etkisi enerji içeriğinden bağımsızdır.</small></span><i class="rozet guclu">Kanıt: güçlü</i></summary>
+                <div class="bes-ic">
+                    <div><h4>Hücrede ne oluyor?</h4><p>Etanol, alkol dehidrogenaz ve aldehit dehidrogenazla asetata yükseltgenir; iki adım da NAD⁺'yı NADH'ye çevirir. Yükselen NADH/NAD⁺ oranı glukoneogenezi ve yağ asidi oksidasyonunu baskılar, laktat ve trigliserit sentezini artırır.</p></div>
+                    <div class="uygula"><h4>Danışana ne söylenir?</h4><p>Alkol “boş kalori”den fazlasıdır: aç karnına hipoglisemi, düzenli kullanımda yağlı karaciğer riski taşır. Diyabetli danışanda insülin ve sülfonilüre ile birlikte özellikle önemlidir.</p>
+                    <button class="bes-git" data-page="oyun-tokac">Alkol senaryosunu oyunda çöz →</button></div>
+                </div>
+            </details>
+
+            <!-- 11 -->
+            <details class="bes-kart">
+                <summary><span class="no">11</span><span class="bas">Tip 2 diyabette remisyon: kilo kaybı, karaciğer ve pankreas yağı<small>Erken dönemde belirgin kilo kaybı, ilaçsız normal kan şekerine dönüşü sağlayabilir; kilo geri alınırsa diyabet de döner.</small></span><i class="rozet guclu">Kanıt: güçlü</i></summary>
+                <div class="bes-ic">
+                    <div><h4>Hücrede ne oluyor?</h4><p>“İkiz döngü” hipotezine göre uzun süreli enerji fazlası önce karaciğerde yağ birikimine ve insülin direncine yol açar; karaciğerden çıkan fazla trigliserit pankreasta birikir ve β hücresinin glukoza ilk insülin yanıtı kaybolur. Belirgin kilo kaybıyla önce karaciğer yağı ve açlık glukozu, ardından pankreas yağı azalır. β hücresi yeterince korunmuşsa insülin yanıtı geri gelir (<a class="kay" href="https://pubmed.ncbi.nlm.nih.gov/30078554/" target="_blank" rel="noopener">Taylor ve ark., 2018</a>).</p></div>
+                    <div><h4>Nereden biliyoruz?</h4><p>DiRECT çalışması: tanısı en çok 6 yıllık, insülin kullanmayan 306 yetişkin. Müdahale grubunda 3–5 ay süreyle günde 825–853 kcal'lik formül diyet, ardından kademeli besin geçişi ve destek uygulandı. 12 ayda remisyon %46'ya karşı %4; en az 15 kg verenlerde %86 (<a class="kay" href="https://pubmed.ncbi.nlm.nih.gov/29221645/" target="_blank" rel="noopener">Lean ve ark., 2018</a>). İki yılın sonunda remisyon %36 idi (<a class="kay" href="https://pubmed.ncbi.nlm.nih.gov/30852132/" target="_blank" rel="noopener">Lean ve ark., 2019</a>).</p>
+                    <p>İngiltere'de aynı yaklaşımın sağlık sistemine yayıldığı programda, başlayanların %55'i programı tamamladı; tamamlayıp iki HbA1c ölçümü bulunanlarda remisyon %32, ortalama kilo kaybı 15,9 kg idi (<a class="kay" href="https://pubmed.ncbi.nlm.nih.gov/39116897/" target="_blank" rel="noopener">Valabhji ve ark., 2024</a>).</p></div>
+                    <div class="uygula"><h4>Danışana ne söylenir?</h4><p>Remisyon “iyileşme” değil “gerileme”dir. Belirleyici olan diyetin türü değil, ulaşılan ve korunan kilo kaybıdır; tanı süresi uzadıkça olasılık azalır. Çok düşük enerjili diyet tıbbi izlem ister: sülfonilüre, insülin ve antihipertansif ilaçların başlangıçta hekimle birlikte düzenlenmesi gerekir.</p>
+                    <button class="bes-git" data-page="hesap">HOMA-IR hesapla →</button></div>
+                </div>
+            </details>
+
+            <div class="bes-sonraki">
+                <button class="bes-git buyuk" data-page="tartisma">⚖️ Tartışmalı konular: iki tarafın kanıtı</button>
+                <button class="bes-git buyuk" data-page="hesap">🧮 Hesaplayıcılar</button>
+                <button class="bes-git buyuk" data-page="kaynak">📚 Veri tabanları ve kaynaklar</button>
             </div>
-            
-            <h3>Özet Tablo: Metabolik Durumlar</h3>
-            <table style="width:100%; border-collapse: collapse; margin-top:10px;">
-                <tr style="background:#eee;">
-                    <th style="padding:10px; border:1px solid #ddd;">Durum</th>
-                    <th style="padding:10px; border:1px solid #ddd;">Dominant Yol</th>
-                    <th style="padding:10px; border:1px solid #ddd;">Sonuç</th>
-                </tr>
-                <tr>
-                    <td style="padding:10px; border:1px solid #ddd;">Aşırı Beslenme</td>
-                    <td style="padding:10px; border:1px solid #ddd;">Glikoliz & Yağ Sentezi</td>
-                    <td style="padding:10px; border:1px solid #ddd;">Obezite, İnflamasyon</td>
-                </tr>
-                <tr>
-                    <td style="padding:10px; border:1px solid #ddd;">Egzersiz / Oruç</td>
-                    <td style="padding:10px; border:1px solid #ddd;">Oksidatif Fosforilasyon</td>
-                    <td style="padding:10px; border:1px solid #ddd;">Mitokondriyel Yenilenme</td>
-                </tr>
-                <tr>
-                    <td style="padding:10px; border:1px solid #ddd;">Kanser</td>
-                    <td style="padding:10px; border:1px solid #ddd;">Aerobik Glikoliz (Warburg)</td>
-                    <td style="padding:10px; border:1px solid #ddd;">Kontrolsüz Büyüme</td>
-                </tr>
-            </table>
+        </section>
+
+        <!-- BESLENME VE DİYETETİK · 2: TARTIŞMALI KONULAR -->
+        <section id="tartisma" class="page genis bes">
+            <h2>⚖️ Tartışmalı Konular</h2>
+            <div class="subtitle">Aynı veriye iki farklı yorum: her görüşün dayandığı kanıt</div>
+
+            <p class="bes-giris">Beslenme biliminde bazı sorular gerçekten açıktır. Aşağıda dört tartışma var; her birinde iki görüş, bugünkü kanıtın gösterdiği yön ve uygulamaya yansıması ayrı ayrı verildi. Amaç bir tarafı savunmak değil, tartışmanın nerede düğümlendiğini göstermek.</p>
+
+            <!-- T1 -->
+            <article class="tar-kart">
+                <h3>1 · Obezite: enerji dengesi mi, karbonhidrat–insülin mi?</h3>
+                <div class="tar-iki">
+                    <div class="gorus a"><h4>Karbonhidrat–insülin modeli</h4><p>Hızlı sindirilen karbonhidratlar insülini yükseltir; insülin yakıtı yağ dokusuna yönlendirir. Dolaşımda kullanılabilir yakıt azalınca açlık artar, enerji harcaması düşer. Bu görüşe göre fazla yemek şişmanlığın nedeni değil, sonucudur (<a class="kay" href="https://pubmed.ncbi.nlm.nih.gov/34515299/" target="_blank" rel="noopener">Ludwig ve ark., 2021</a>).</p></div>
+                    <div class="gorus b"><h4>Enerji dengesi modeli</h4><p>Beyin, besin ortamından gelen sinyallerle enerji alımını düzenler. Enerji yoğun, lezzetli ve ultra işlenmiş gıdalar bu düzeni bozarak alımı artırır. İnsülin önemlidir ama tek başına belirleyici değildir (<a class="kay" href="https://pubmed.ncbi.nlm.nih.gov/35134825/" target="_blank" rel="noopener">Hall ve ark., 2022</a>; <a class="kay" href="https://pubmed.ncbi.nlm.nih.gov/33958466/" target="_blank" rel="noopener">Speakman ve Hall, 2021</a>).</p></div>
+                </div>
+                <div class="tar-kanit"><h4>Kanıt ne diyor?</h4>
+                    <ul class="bes-liste">
+                        <li>Metabolik koğuşta 20 yetişkin, ikişer hafta: makro besinleri eşleştirilmiş ultra işlenmiş diyette günde ortalama 508 kcal fazla yendi ve 0,9 kg alındı; işlenmemiş diyette 0,9 kg verildi (<a class="kay" href="https://pubmed.ncbi.nlm.nih.gov/31105044/" target="_blank" rel="noopener">Hall ve ark., 2019</a>).</li>
+                        <li>Aynı merkezde 20 yetişkin: düşük yağlı bitkisel diyette, düşük karbonhidratlı hayvansal diyete göre günde yaklaşık 550–700 kcal daha az yendi; oysa düşük yağlı diyette öğün sonrası glukoz ve insülin daha yüksekti (<a class="kay" href="https://pubmed.ncbi.nlm.nih.gov/33479499/" target="_blank" rel="noopener">Hall ve ark., 2021</a>).</li>
+                        <li>609 yetişkin, 12 ay: düşük yağlı ve düşük karbonhidratlı diyet benzer kilo kaybı sağladı; başlangıçtaki insülin salgısı sonucu öngörmedi (<a class="kay" href="https://pubmed.ncbi.nlm.nih.gov/29466592/" target="_blank" rel="noopener">Gardner ve ark., 2018</a>).</li>
+                    </ul>
+                    <p>Kısa süreli kontrollü çalışmalar insülinin tek başına belirleyici olmadığını gösteriyor; uzun vadeli ve serbest yaşam koşullarındaki etki ise tartışılmaya devam ediyor.</p></div>
+                <div class="uygula"><h4>Diyetisyen için</h4><p>İki model de rafine karbonhidrat ve ultra işlenmiş gıdanın azaltılmasında birleşir. “Karbonhidrat şişmanlatır” ya da “yalnızca kalori önemlidir” gibi tek cümlelik açıklamalar yerine besinin kalitesi ve doyuruculuğu konuşulur.</p></div>
+            </article>
+
+            <!-- T2 -->
+            <article class="tar-kart">
+                <h3>2 · Doymuş yağ kalp-damar hastalığına yol açar mı?</h3>
+                <div class="tar-iki">
+                    <div class="gorus a"><h4>“Evet, azaltılmalı”</h4><p>Cochrane derlemesi (15 RKÇ, yaklaşık 59 000 katılımcı): doymuş yağın en az iki yıl azaltılması birleşik kardiyovasküler olayları %21 azalttı (RR 0,79; orta kesinlik). Toplam ölümde belirgin etki görülmedi (RR 0,96) (<a class="kay" href="https://pubmed.ncbi.nlm.nih.gov/32428300/" target="_blank" rel="noopener">Hooper ve ark., 2020</a>).</p></div>
+                    <div class="gorus b"><h4>“İlişki sanıldığı kadar net değil”</h4><p>18 ülkede yaklaşık 135 000 kişinin izlendiği gözlemsel PURE çalışmasında yüksek doymuş yağ alımı kardiyovasküler hastalıkla ilişkili bulunmadı; inmeyle ters ilişkiliydi. Yüksek karbonhidrat alımı ise daha yüksek ölümle ilişkiliydi (<a class="kay" href="https://pubmed.ncbi.nlm.nih.gov/28864332/" target="_blank" rel="noopener">Dehghan ve ark., 2017</a>).</p></div>
+                </div>
+                <div class="tar-kanit"><h4>Kanıt ne diyor?</h4>
+                    <p>Tartışmanın düğümü “yerine ne kondu” sorusudur. Amerikan Kalp Derneği değerlendirmesine göre yarar, doymuş yağ çoklu doymamış yağla değiştirildiğinde belirgindir; rafine karbonhidratla değiştirildiğinde görülmez (<a class="kay" href="https://pubmed.ncbi.nlm.nih.gov/28620111/" target="_blank" rel="noopener">Sacks ve ark., 2017</a>). Cochrane derlemesi ise yerine konan besine göre yaptığı alt grup analizinde anlamlı fark saptamamıştır (<a class="kay" href="https://pubmed.ncbi.nlm.nih.gov/32428300/" target="_blank" rel="noopener">Hooper ve ark., 2020</a>). Gözlemsel veriler ayrıca düşük gelirli bölgelerdeki çok yüksek karbonhidratlı, tekdüze diyetleri de yansıtır.</p></div>
+                <div class="uygula"><h4>Diyetisyen için</h4><p>Tek bir besin öğesi yerine beslenme örüntüsü değerlendirilir. DSÖ (2023) doymuş yağın enerjinin %10'unun, trans yağın %1'inin altında tutulmasını önerir.</p></div>
+            </article>
+
+            <!-- T3 -->
+            <article class="tar-kart">
+                <h3>3 · Kanser genetik bir hastalık mı, metabolik bir hastalık mı? <small>Kitabın 5. bölümü</small></h3>
+                <div class="tar-iki">
+                    <div class="gorus a"><h4>Somatik mutasyon görüşü</h4><p>Kanser, onkogenlerde ve tümör baskılayıcı genlerde biriken mutasyonlarla başlar. Metabolizmadaki değişiklik bu mutasyonların sonucudur: büyüme sinyalleri glukoz alımını ve glikolizi artırır.</p></div>
+                    <div class="gorus b"><h4>Metabolik görüş</h4><p>Lane'in de savunduğu görüşe göre mitokondrideki akışın bozulması hücreyi eski “büyüme” programına kilitler; mutasyonlar bu zemin üzerinde seçilir. Warburg'un gözlemi nedenin kendisine işaret eder.</p></div>
+                </div>
+                <div class="tar-kanit"><h4>Kanıt ne diyor?</h4>
+                    <p>Çoğalan hücreler oksijen varken de glukozu laktata çevirir; bunun amacı ATP değil, biyosentez için karbon ve indirgeyici güç sağlamaktır (<a class="kay" href="https://pubmed.ncbi.nlm.nih.gov/19460998/" target="_blank" rel="noopener">Vander Heiden ve ark., 2009</a>; <a class="kay" href="https://pubmed.ncbi.nlm.nih.gov/26778478/" target="_blank" rel="noopener">Liberti ve Locasale, 2016</a>). İki görüş birbirini dışlamaz: Krebs döngüsü enzimlerindeki mutasyonlar (izositrat dehidrogenaz, süksinat dehidrogenaz, fumaraz) biriken metabolitler üzerinden gen ifadesini değiştirir (<a class="kay" href="https://pubmed.ncbi.nlm.nih.gov/23999438/" target="_blank" rel="noopener">Yang ve ark., 2013</a>). Yani gen metabolizmayı, metabolizma da geni etkiler.</p>
+                    <p>Klinikte: ketojenik diyetin kanser tedavisine eklenmesini inceleyen 6 RKÇ'lik meta-analiz, yarar için yeterli kanıt bulmadı (<a class="kay" href="https://pubmed.ncbi.nlm.nih.gov/33918992/" target="_blank" rel="noopener">Yang ve ark., 2021</a>).</p></div>
+                <div class="uygula"><h4>Diyetisyen için</h4><p>Kanser hastasında öncelik malnütrisyonun önlenmesi ve kas kütlesinin korunmasıdır (<a class="kay" href="https://pubmed.ncbi.nlm.nih.gov/27637832/" target="_blank" rel="noopener">Arends ve ark., 2017</a>). “Şeker kanseri besler, karbonhidratı kes” önerisi kanıta dayanmaz ve istenmeyen kilo kaybını hızlandırabilir.</p></div>
+            </article>
+
+            <!-- T4 -->
+            <article class="tar-kart">
+                <h3>4 · Antioksidan takviyesi: oksijen radikalleri düşman mı, sinyal mi? <small>Kitabın 6. bölümü</small></h3>
+                <div class="tar-iki">
+                    <div class="gorus a"><h4>Serbest radikal kuramı</h4><p>Reaktif oksijen türleri (ROS) DNA, protein ve lipitlere zarar verir; hasar birikimi yaşlanmanın ve kronik hastalığın nedenidir. Antioksidan almak bu hasarı azaltmalıdır.</p></div>
+                    <div class="gorus b"><h4>Redoks sinyali</h4><p>Düşük düzeyde ROS, özellikle hidrojen peroksit, hücrenin uyum yanıtlarını başlatan bir sinyaldir. Bu sinyali baskılamak yararlı uyumu da engelleyebilir (<a class="kay" href="https://pubmed.ncbi.nlm.nih.gov/32231263/" target="_blank" rel="noopener">Sies ve Jones, 2020</a>).</p></div>
+                </div>
+                <div class="tar-kanit"><h4>Kanıt ne diyor?</h4>
+                    <ul class="bes-liste">
+                        <li>Cochrane derlemesi (78 RKÇ, 296 707 katılımcı): antioksidan takviyeleri ölümü azaltmadı. Yanlılık riski düşük çalışmalarda β-karoten (RR 1,05) ve E vitamini (RR 1,03) ölümü hafifçe artırdı (<a class="kay" href="https://pubmed.ncbi.nlm.nih.gov/22419320/" target="_blank" rel="noopener">Bjelakovic ve ark., 2012</a>).</li>
+                        <li>Dört haftalık egzersiz programında günde 1000 mg C ve 400 IU E vitamini alanlarda, egzersizin insülin duyarlılığını artırıcı etkisi görülmedi (<a class="kay" href="https://pubmed.ncbi.nlm.nih.gov/19433800/" target="_blank" rel="noopener">Ristow ve ark., 2009</a>).</li>
+                    </ul></div>
+                <div class="uygula"><h4>Diyetisyen için</h4><p>Antioksidandan zengin besin (sebze, meyve) ile yüksek doz takviye aynı şey değildir. Takviye, eksiklik gösterildiğinde verilir; “koruyucu” amaçla yüksek doz önerilmez.</p>
+                <button class="bes-git" data-page="oyun-hucre">ROS ve NADPH dengesini oyunda dene →</button></div>
+            </article>
+        </section>
+
+        <!-- BESLENME VE DİYETETİK · 3: HESAPLAYICILAR -->
+        <section id="hesap" class="page genis bes">
+            <h2>🧮 Hesaplayıcılar</h2>
+            <div class="subtitle">Formülü ve kaynağı açık hesaplar: sonucu değil, nasıl bulunduğunu gör</div>
+
+            <p class="bes-giris">Her hesaplayıcı kullandığı denklemi ve o denklemin yayımlandığı çalışmayı gösterir. Sonuçlar eğitim amaçlıdır: kestirim denklemleri bir toplum ortalamasını yansıtır, bireyde ±%10 sapma olağandır. Klinik karar için ölçüm ve değerlendirme gerekir.</p>
+
+            <div id="hesap-kok"></div>
+        </section>
+
+        <!-- BESLENME VE DİYETETİK · 4: KAYNAKLAR -->
+        <section id="kaynak" class="page genis bes">
+            <h2>📚 Veri Tabanları ve Kaynaklar</h2>
+            <div class="subtitle">Türkiye, Avrupa ve dünyadan: besin bileşimi, rehberler, kanıt araçları, biyokimya veri tabanları ve videolar</div>
+
+            <p class="bes-giris">Beslenme önerisi kaynağı kadar güvenilirdir. Aşağıdaki liste birincil ve kurumsal kaynaklardan oluşur: bir besinin içeriğini, bir gereksinim değerini ya da bir iddianın kanıtını doğrudan yerinden kontrol edebilirsin. Bölgeye göre süz ya da anahtar sözcükle ara.</p>
+
+            <div id="kaynak-kok"></div>
         </section>
 
         <!-- OYUN MERKEZİ -->
@@ -387,7 +642,7 @@
             <div class="subtitle">Kitaptaki fikirleri elinle dene: akışı yönet, zinciri kur, zehri bul</div>
 
             <div class="oyun merkez">
-                <p class="merkez-giris">Dört oyunun hepsi ders kitabı stokiyometrisiyle çalışır (glikoliz net 2 ATP, NADH başına ≈2,5 ATP, FADH₂ başına ≈1,5 ATP…). Hata yapmak serbest: oyunlar seni elemez, neyin eksik olduğunu söyler ve tekrar denemene izin verir.</p>
+                <p class="merkez-giris">İlk dört oyun ders kitabı stokiyometrisiyle çalışır (glikoliz net 2 ATP, NADH başına ≈2,5 ATP, FADH₂ başına ≈1,5 ATP…); beşincisi yaygın beslenme iddialarını yayımlanmış kanıtla sınar. Hata yapmak serbest: oyunlar seni elemez, neyin eksik olduğunu söyler ve tekrar denemene izin verir.</p>
                 <div class="merkez-izgara">
                     <article class="merkez-kart" data-oyun="hucre">
                         <div class="mk-gorsel mk-hucre" aria-hidden="true"><span></span><span></span><span></span></div>
@@ -421,6 +676,14 @@
                         <ul><li>İnsülin / glukagon / adrenalin sinyali</li><li>Dokular arası yakıt paylaşımı</li><li>Ketogenez ve NADH yükünün sonuçları</li></ul>
                         <div class="mk-alt"><span class="mk-yildiz" data-yildiz="tokac"></span><button class="o-btn ana" data-page="oyun-tokac">Oyna</button></div>
                     </article>
+                    <article class="merkez-kart genis" data-oyun="iddia">
+                        <div class="mk-gorsel mk-iddia" aria-hidden="true"><span>✓</span><span>?</span><span>✗</span></div>
+                        <div class="mk-ust">OYUN 5 · KANIT OKURYAZARLIĞI · 5 dk</div>
+                        <h3>İddia mı, Kanıt mı?</h3>
+                        <p>“Kahvaltı kilo verdirir”, “detoks toksin atar”, “antioksidan ömrü uzatır”… Her turda on yaygın beslenme iddiası: kanıt destekliyor mu, kısmen mi, desteklemiyor mu? Her yanıtın ardından gerekçe ve çalışmaların PubMed bağlantıları.</p>
+                        <ul><li>Sistematik derleme ve randomize çalışma okuma</li><li>Göreli risk, kanıt kesinliği, “yerine ne kondu” sorusu</li><li>Kulaktan dolma bilgiyi kaynağından denetleme</li></ul>
+                        <div class="mk-alt"><span class="mk-yildiz" data-yildiz="iddia"></span><button class="o-btn ana" data-page="oyun-iddia">Oyna</button></div>
+                    </article>
                 </div>
                 <p class="merkez-not">Sayısal değerler ders kitabı düzeyindeki kabul görmüş değerlerdir (ör. P/O oranları Hinkle 2005'e göre 2,5 ve 1,5). Oyun birimleri (ROS puanı, biyokütle yüzdesi gibi) öğretim amaçlı ölçeklendirilmiştir; her oyunun içindeki “Model notu” bölümü neyin sadeleştirildiğini açıkça belirtir.</p>
             </div>
@@ -430,6 +693,7 @@
         <section id="oyun-zincir" class="page genis"><div class="oyun" id="zincir-kok"></div></section>
         <section id="oyun-krebs" class="page genis"><div class="oyun" id="krebs-kok"></div></section>
         <section id="oyun-tokac" class="page genis"><div class="oyun" id="tokac-kok"></div></section>
+        <section id="oyun-iddia" class="page genis"><div class="oyun" id="iddia-kok"></div></section>
 
     </main>
 </div>
@@ -439,6 +703,9 @@
 <script src="assets/js/zincir.js"></script>
 <script src="assets/js/krebs.js"></script>
 <script src="assets/js/tokac.js"></script>
+<script src="assets/js/iddia.js"></script>
+<script src="assets/js/hesap.js"></script>
+<script src="assets/js/kaynak.js"></script>
 
 </body>
 </html>
