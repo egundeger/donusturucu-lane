@@ -137,6 +137,10 @@
 .ky-yapilar span { font-weight: 600; font-size: .92rem; }
 .ky-yapilar small { color: #94a3b8; font-size: .75rem; }
 .ky-bos { color: var(--b-soluk); padding: 1.5rem 0; }
+.ky-kitap { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 14px; }
+.ky-kitap li { border: 1px solid var(--b-cizgi); border-left: 4px solid var(--b-acc); border-radius: 8px; padding: 9px 12px; background: #fff; font-size: .93rem; line-height: 1.5; color: #4b5868; }
+.ky-kitap li b { color: var(--b-ink); }
+.ky-kitap li i { color: var(--b-mavi); font-style: italic; }
 
 @media (max-width: 900px) {
   .bes-ic, .bes-ic.tek > .bes-ic { grid-template-columns: 1fr; gap: 12px; }
@@ -146,6 +150,7 @@
   .bes-kart summary { grid-template-columns: 34px minmax(0, 1fr); }
   .bes-kart summary .rozet { grid-column: 2; justify-self: start; }
   .ky-yapilar { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ky-kitap { grid-template-columns: 1fr; }
   .tar-kart { padding: 14px; }
 }
 @media (max-width: 480px) {

@@ -54,6 +54,9 @@
     { m: 'Glisemik indeksi düşük olan her besin sağlıklı bir seçimdir.', kabul: ['red'],
       a: 'Glisemik indeks yalnızca kan glukozu yanıtını ölçer. Yağ ve fruktoz indeksi düşürdüğü için bazı tatlıların indeksi birçok meyveninkinden düşüktür. Porsiyondaki karbonhidratı da hesaba katan glisemik yük ve besinin genel bileşimi birlikte değerlendirilir.',
       k: [['34258626', 'Atkinson ve ark., 2021']] },
+    { m: 'Tip 2 diyabet bir kez başladıktan sonra geri döndürülemez; yalnızca ilerlemesi yavaşlatılabilir.', kabul: ['red', 'kismen'],
+      a: 'DiRECT çalışmasında, tanısı en çok 6 yıllık olan ve yoğun kilo yönetimi programına alınan yetişkinlerin %46\'sında 12 ayda ilaçsız remisyon sağlandı; en az 15 kg verenlerde bu oran %86 idi. İki yılın sonunda remisyon %36\'ya indi: kilo geri alındıkça diyabet de döner. Uzun süreli diyabette ve β hücresi rezervi tükenmiş kişilerde olasılık düşüktür; bu yüzden “kısmen” yanıtı da kabul edilir.',
+      k: [['29221645', 'Lean ve ark., 2018'], ['30852132', 'Lean ve ark., 2019'], ['30078554', 'Taylor ve ark., 2018']] },
     { m: 'Bademin etiketinde yazan enerji, vücudun ondan gerçekten elde ettiği enerjiye eşittir.', kabul: ['red'],
       a: 'Kontrollü beslenme çalışmasında bademin ölçülen metabolize edilebilir enerjisi 4,6 kcal/g bulundu; Atwater katsayılarıyla hesaplanan etiket değeri 6,0–6,1 kcal/g idi. Hücre duvarı içinde kalan yağın bir bölümü emilmeden atılır: etiket değeri %32 fazla tahmin eder.',
       k: [['22760558', 'Novotny ve ark., 2012']] }

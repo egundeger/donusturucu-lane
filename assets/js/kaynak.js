@@ -5,6 +5,8 @@
 
   var BOLGE = { tr: 'Türkiye', av: 'Avrupa', dn: 'Dünya' };
 
+  var E = 'https://evrimagaci.org/';
+
   var GRUP = [
     { ad: 'Besin bileşimi veri tabanları', not: 'Bir besinin enerji ve besin öğesi içeriği için birincil kaynak. Ülkeler arasında çeşit, toprak ve analiz yöntemi farkı olduğundan mümkünse yerel veri kullanılır.', oge: [
       ['TürKomp · Ulusal Gıda Kompozisyon Veri Tabanı', 'https://www.turkomp.gov.tr', 'Tarım ve Orman Bakanlığı. Türkiye\'de tüketilen gıdaların analizle belirlenmiş enerji ve besin öğesi değerleri; besine ve bileşene göre arama. Türkçe ve İngilizce.', 'tr'],
@@ -36,23 +38,49 @@
       ['Türkiye Diyetisyenler Derneği', 'https://www.tdd.org.tr', 'Meslek örgütü; Beslenme ve Diyet Dergisi, kitaplar ve görüş yazıları.', 'tr'],
       ['KEPAN', 'https://www.kepan.org.tr', 'Klinik Enteral Parenteral Nütrisyon Derneği; klinik beslenme eğitimleri ve yayınları.', 'tr'],
       ['TEMD kılavuzları', 'https://temd.org.tr', 'Türkiye Endokrinoloji ve Metabolizma Derneği; diyabet, obezite ve lipid kılavuzları.', 'tr'],
+      ['TEMD · Obezite Tanı ve Tedavi Kılavuzu 2024', 'https://file.temd.org.tr/Uploads/publications/guides/documents/obezitetanitedavikilavizu-2024.pdf', 'Tıbbi beslenme tedavisi, egzersiz, ilaç ve cerrahi bölümleriyle güncel ulusal kılavuz (PDF).', 'tr'],
+      ['Ankara Üniversitesi Açık Ders · BES203 Beslenme Biyokimyası I', 'https://acikders.ankara.edu.tr/course/view.php?id=831', 'Prof. Dr. Alev Keser. Karbonhidrat, lipit ve protein metabolizması, enzimler ve nükleik asitler; ders izlencesi ve notlar açık erişimli.', 'tr'],
+      ['Ankara Üniversitesi Açık Ders · Beslenme ve Diyetetik dersleri', 'https://acikders.ankara.edu.tr/course/index.php?categoryid=76', 'Bölümün açık ders malzemeleri: Beslenme Biyokimyası II (vitaminler, mineraller), Beslenme İlkeleri, Besin Kimyası ve diğerleri.', 'tr'],
+      ['Beslenme ve Diyet Dergisi', 'https://beslenmevediyetdergisi.org', 'Türkiye Diyetisyenler Derneği\'nin 1972\'den beri yayımlanan hakemli dergisi; makaleler açık erişimli.', 'tr'],
       ['DergiPark', 'https://dergipark.org.tr', 'Türkiye\'de yayımlanan akademik dergilerin açık erişim platformu.', 'tr'],
       ['TR Dizin', 'https://trdizin.gov.tr', 'TÜBİTAK ULAKBİM ulusal atıf dizini; Türkçe hakemli yayın araması.', 'tr'],
       ['YÖK Ulusal Tez Merkezi', 'https://tez.yok.gov.tr/UlusalTezMerkezi/', 'Türkiye\'de tamamlanan yüksek lisans ve doktora tezleri.', 'tr']
     ] },
-    { ad: 'Türkçe popüler bilim ve haber', not: 'Konuya giriş için iyi bir başlangıçtır; ancak ikincil kaynaktır. Sayısal değerleri ve iddiaları birincil kaynakla karşılaştır: popüler yazılarda glukoz başına 36–38 ATP gibi eski ders kitabı değerleri geçebilir (güncel kabul 30–32). Haberlerde ise anılan çalışmanın aslına gidip türüne ve örneklemine bak.', oge: [
-      ['Evrim Ağacı · Hücresel solunum nedir?', 'https://evrimagaci.org/hucresel-solunum-nedir-glikoliz-krebs-dongusu-ve-elektron-tasima-zinciri-nasil-isler-24103', 'Glikoliz, Krebs döngüsü ve elektron taşıma zincirinin Türkçe, kaynaklı anlatımı. Oyunlardan önce okumak için uygun.', 'tr'],
-      ['Evrim Ağacı · Sitrik asit döngüsü ve oksidatif fosforilasyon', 'https://evrimagaci.org/sitrik-asit-dongusu-nedir-oksidatif-fosforilasyon-nasil-gerceklesir-13834', '“Hücrelerin enerji kaynakları” yazı dizisinden; döngünün adımları ve kemiozmotik ATP sentezi.', 'tr'],
-      ['Evrim Ağacı · Warburg etkisi ve kanserde metabolik değişimler', 'https://evrimagaci.org/warburg-etkisi-ve-kanserde-meydana-gelen-metabolik-degisimler-7901', 'Kitabın 5. bölümü ve “Tartışmalı Konular” sayfasındaki kanser başlığıyla birlikte okunabilir.', 'tr'],
-      ['Evrim Ağacı · Oksijenli solunum nasıl evrimleşti?', 'https://evrimagaci.org/oksijenli-solunum-nasil-evrimlesti-ilkel-hucreler-nasil-oldu-da-oksijeni-kullanabilecek-bicimde-evrimlestiler-5289', 'Kitabın 4. bölümündeki oksijen devrimi konusunun Türkçe anlatımı.', 'tr'],
-      ['Evrim Ağacı · Yaşamın başlangıcının bilimsel tarihi', 'https://evrimagaci.org/yasamin-baslangicinin-bilimsel-tarihi-dunyada-yasam-nasil-basladi-457', 'Hidrotermal baca hipotezi ve Nick Lane\'in “yaşamın kökeni reaktörü” deneyleri; kitabın 3. bölümüyle örtüşür.', 'tr'],
-      ['Evrim Ağacı · Serpantinleşme nedir?', 'https://evrimagaci.org/serpantinlesme-nedir-yasamin-baslangicina-dair-neler-soyler-8628', 'Alkali hidrotermal bacalarda H₂ üreten jeokimyasal süreç; ilk metabolizmanın enerji kaynağı tartışması.', 'tr'],
-      ['Evrim Ağacı · Keto diyeti ve epilepsi', 'https://evrimagaci.org/keto-diyeti-nedir-ketojenik-diyet-epilepsi-tedavisinde-neden-kullaniliyor-14666', 'Ketojenik diyetin mekanizması ve epilepsideki kullanımı. Kanıt düzeyi için “Biyokimyadan Sofraya” 5. başlıkla karşılaştır.', 'tr'],
-      ['Evrim Ağacı · Multivitaminler işe yarıyor mu?', 'https://evrimagaci.org/saglikli-bireylerin-aldigi-multivitaminlerin-cogu-islevsiz-ancak-bazilarini-almanizda-fayda-var-4690', 'Sağlıklı bireylerde vitamin ve antioksidan takviyelerine ilişkin çalışmaların derlemesi.', 'tr'],
-      ['Evrim Ağacı · Karbonhidrat nedir?', 'https://evrimagaci.org/karbonhidrat-nedir-glikoz-gibi-sekerler-canlilar-icin-neden-onemlidir-11342', 'Şekerlerin yapısı, sınıflandırılması ve canlılardaki işlevi.', 'tr'],
-      ['Evrim Ağacı · “Yaşam Neden Var?” (Nick Lane)', 'https://evrimagaci.org/eser/yasam-neden-var-182', 'Lane\'in Türkçeye çevrilmiş kitabının tanıtım sayfası; enerji akışı ve yaşamın kökeni üzerine.', 'tr'],
-      ['Evrim Ağacı · YouTube videoları', 'https://evrimagaci.org/eserler/youtube-kanali', 'Evrim Ağacı\'nın video içeriklerinin dizini; Türkçe popüler bilim.', 'tr'],
-      ['BBC News Türkçe', 'https://www.bbc.com/turkce', 'Güncel sağlık ve beslenme araştırmalarının Türkçe haberleri (ör. ultra işlenmiş gıdalar). Haberde adı geçen çalışmayı PubMed\'de bulup yöntemine bak.', 'tr']
+    { ad: 'Türkçe popüler bilim · Evrim Ağacı', not: 'Konuya giriş için iyi bir başlangıçtır; ancak ikincil kaynaktır. Sayısal değerleri birincil kaynakla karşılaştır: popüler yazılarda glukoz başına 36–38 ATP gibi eski ders kitabı değerleri geçebilir (güncel kabul 30–32).', oge: [
+      ['Hücresel solunum nedir?', E + 'hucresel-solunum-nedir-glikoliz-krebs-dongusu-ve-elektron-tasima-zinciri-nasil-isler-24103', 'Glikoliz, Krebs döngüsü ve elektron taşıma zincirinin kaynaklı anlatımı. Oyunlardan önce okumak için uygun.', 'tr'],
+      ['Metabolizma nedir? Anabolizma, katabolizma ve enerji dengesi', E + 'metabolizma-nedir-anabolizma-katabolizma-ve-enerji-dengesi-nasil-isler-24174', 'Yapım ve yıkım yollarının ATP döngüsü üzerinden eşleşmesi.', 'tr'],
+      ['ATP nedir? Canlılar için neden önemlidir?', E + 'atp-nedir-canlilar-icin-neden-onemlidir-11826', 'Hücrenin enerji birimi ve ATP–ADP döngüsü. “Günde kaç kilogram ATP?” hesaplayıcısıyla birlikte okunabilir.', 'tr'],
+      ['Krebs döngüsü nedir?', E + 'krebs-dongusu-nedir-4231', 'Döngünün yeri, girdileri ve ürünleri; Krebs Bulmacası için ön okuma.', 'tr'],
+      ['Sitrik asit döngüsü ve oksidatif fosforilasyon', E + 'sitrik-asit-dongusu-nedir-oksidatif-fosforilasyon-nasil-gerceklesir-13834', '“Hücrelerin enerji kaynakları” yazı dizisinden; döngünün adımları ve kemiozmotik ATP sentezi.', 'tr'],
+      ['Metaller ve enzimler olmadan Krebs döngüsü', E + 'abiyogenez-teorisinde-onemli-kesif-metaller-ve-enzimler-olmadan-da-krebs-dongusunun-calisabildigi-gosterildi-9456', 'Döngü tepkimelerinin enzimsiz de yürüyebildiğini gösteren deneyler; kitabın 3. bölümündeki “önce metabolizma” fikrinin deneysel dayanağı.', 'tr'],
+      ['Fermantasyon nedir?', E + 'fermantasyon-nedir-fermante-olmus-yiyecekler-insansi-evrimine-nasil-yon-verdi-9197', 'Oksijensiz enerji üretimi ve fermente besinlerin insan evrimindeki yeri.', 'tr'],
+      ['Oksijenli solunum nasıl evrimleşti?', E + 'oksijenli-solunum-nasil-evrimlesti-ilkel-hucreler-nasil-oldu-da-oksijeni-kullanabilecek-bicimde-evrimlestiler-5289', 'Kitabın 4. bölümündeki oksijen devrimi konusunun Türkçe anlatımı.', 'tr'],
+      ['Warburg etkisi ve kanserde metabolik değişimler', E + 'warburg-etkisi-ve-kanserde-meydana-gelen-metabolik-degisimler-7901', 'Kitabın 5. bölümü ve “Tartışmalı Konular” sayfasındaki kanser başlığıyla birlikte okunabilir.', 'tr'],
+      ['Yaşamın başlangıcının bilimsel tarihi', E + 'yasamin-baslangicinin-bilimsel-tarihi-dunyada-yasam-nasil-basladi-457', 'Hidrotermal baca hipotezi ve Nick Lane\'in “yaşamın kökeni reaktörü” deneyleri.', 'tr'],
+      ['Serpantinleşme nedir?', E + 'serpantinlesme-nedir-yasamin-baslangicina-dair-neler-soyler-8628', 'Alkali hidrotermal bacalarda H₂ üreten jeokimyasal süreç; ilk metabolizmanın enerji kaynağı tartışması.', 'tr'],
+      ['Enzim nedir?', E + 'enzim-nedir-enzimlerin-calismasina-etki-eden-faktorler-ve-kullanim-alanlari-nelerdir-11254', 'Aktivasyon enerjisi, etkin bölge, sıcaklık ve pH etkisi, inhibisyon türleri.', 'tr'],
+      ['Vitamin nedir? Sınıflandırma ve eksiklikler', E + 'vitamin-nedir-vitaminler-nasil-siniflandirilir-eksikliklerinde-neler-olur-11320', 'Suda ve yağda çözünen vitaminler; “Biyokimyadan Sofraya” sayfasındaki koenzim tablosunu tamamlar.', 'tr'],
+      ['Karbonhidrat nedir?', E + 'karbonhidrat-nedir-glikoz-gibi-sekerler-canlilar-icin-neden-onemlidir-11342', 'Şekerlerin yapısı, sınıflandırılması ve canlılardaki işlevi.', 'tr'],
+      ['Sindirim nedir? Sindirim sistemi nasıl çalışır?', E + 'sindirim-nedir-sindirim-sistemi-nasil-calisir-17361', 'Makro besinlerin sindirimi ve emilimi; enzimler ve salgılar.', 'tr'],
+      ['Hiperkolesterolemi nedir?', E + 'hiperkolesterolemi-nedir-yuksek-kolesterol-hastaliginin-riskleri-ve-tedavi-secenekleri-nelerdir-12404', 'Lipoproteinler, LDL reseptörü ve tedavi seçenekleri; Friedewald hesaplayıcısıyla birlikte okunabilir.', 'tr'],
+      ['Keto diyeti ve epilepsi', E + 'keto-diyeti-nedir-ketojenik-diyet-epilepsi-tedavisinde-neden-kullaniliyor-14666', 'Ketojenik diyetin mekanizması ve epilepsideki kullanımı. Kanıt düzeyi için “Biyokimyadan Sofraya” 5. başlıkla karşılaştır.', 'tr'],
+      ['Multivitaminler işe yarıyor mu?', E + 'saglikli-bireylerin-aldigi-multivitaminlerin-cogu-islevsiz-ancak-bazilarini-almanizda-fayda-var-4690', 'Sağlıklı bireylerde vitamin ve antioksidan takviyelerine ilişkin çalışmaların derlemesi.', 'tr'],
+      ['“Yaşam Neden Var?” (Nick Lane)', E + 'eser/yasam-neden-var-182', 'Lane\'in Türkçeye çevrilmiş kitabının tanıtım sayfası; enerji akışı ve yaşamın kökeni üzerine.', 'tr'],
+      ['Evrim Ağacı YouTube videoları', E + 'eserler/youtube-kanali', 'Video içeriklerinin dizini; Türkçe popüler bilim.', 'tr']
+    ] },
+    { ad: 'Türkçe popüler bilim · TÜBİTAK Bilim Genç ve Sarkaç', not: 'TÜBİTAK\'ın gençlere yönelik yayını ile Bilim Akademisi\'nin popüler bilim sitesi; yazılar alanında çalışan araştırmacılarca ya da editör denetiminde hazırlanır.', oge: [
+      ['Bilim Genç · İnsülin direnci ve insülin duyarlılığı', 'https://bilimgenc.tubitak.gov.tr/makale/insulin-direnci-ve-insulin-duyarliligi-hakkinda-bilinmesi-gerekenler', 'İnsülinin etkisi, direnç ve duyarlılık kavramları. HOMA-IR hesaplayıcısı ve “Tok mu, Aç mı?” oyunuyla birlikte okunabilir.', 'tr'],
+      ['Bilim Genç · Metabolomik nedir?', 'https://bilimgenc.tubitak.gov.tr/makale/metabolomik-nedir-vucudun-kimyasal-gunlugu-okunabilir-mi', 'Vücuttaki küçük moleküllerin toplu ölçümü; beslenme araştırmalarında ve doğuştan metabolizma hastalıklarında kullanımı.', 'tr'],
+      ['Sarkaç · Zeytinyağı neden sağlıklı?', 'https://sarkac.org/2017/07/zeytinyagi-neden-saglikli-zeynep-delen-nircan/', 'Oleik, linoleik ve palmitik asidin çift bağ kimyası; oksidasyona dayanıklılık.', 'tr'],
+      ['Sarkaç · Nar gibi kızarmış patates', 'https://sarkac.org/2022/09/nar-gibi-kizarmis-patates/', 'Kızartma kimyası: yağın oksidasyonu, tekrar kullanılan yağ ve akrilamid.', 'tr'],
+      ['Sarkaç · Polifenol nedir?', 'https://sarkac.org/2020/09/bitkilerde-bulunan-saglikli-maddeler-polifenol-nedir/', 'Bitkisel besinlerdeki polifenoller; Phenol-Explorer veri tabanıyla birlikte kullanılabilir.', 'tr'],
+      ['Sarkaç · Protein nedir, nasıl katlanır? (2024 Nobel Kimya Ödülü)', 'https://sarkac.org/2024/12/bilim-sohbetleri-2024-nobel-kimya-odulu-protein-nedir-nasil-katlanir/', 'Bilim Sohbetleri kaydı: protein katlanması problemi, AlphaFold ve protein tasarımı.', 'tr']
+    ] },
+    { ad: 'Türkçe haber · BBC Türkçe', not: 'Haber, bir çalışmanın özetidir; kanıtın kendisi değildir. Haberde anılan çalışmayı PubMed\'de bul, türüne (gözlemsel mi, randomize mi) ve örneklemine bak. Aşağıdaki üç yazı BBC Türkçe\'nin haberleridir; BBC sitesindeki asıl adresleri doğrulanamadığı için Cumhuriyet\'te yayımlanan kopyalarına bağlanmıştır.', oge: [
+      ['BBC News Türkçe', 'https://www.bbc.com/turkce', 'Güncel sağlık ve beslenme araştırmalarının Türkçe haberleri.', 'tr'],
+      ['BBC Türkçe · Aşırı işlenmiş gıdalar küresel bir sağlık tehdidi mi?', 'https://www.cumhuriyet.com.tr/saglik/uzmanlar-uyardi-asiri-islenmis-gidalar-kuresel-bir-saglik-tehdidi-2454265', 'The Lancet\'te yayımlanan uzman raporu ve ona yöneltilen eleştiriler: gözlemsel veri nedensellik gösterir mi? “Tartışmalı Konular” 1. başlıkla birlikte okunabilir. (Cumhuriyet\'teki yayını)', 'tr'],
+      ['BBC Türkçe · Hangi ultra işlenmiş gıdalar faydalı olabilir?', 'https://www.cumhuriyet.com.tr/yasam/hangi-ultra-islenmis-gidalar-faydali-olabilir-2447416', 'İşlenme derecesi ile besin bileşiminin ayrı ayrı değerlendirilmesi üzerine. (Cumhuriyet\'teki yayını)', 'tr'],
+      ['BBC Türkçe · Aralıklı oruç diyeti nedir?', 'https://www.cumhuriyet.com.tr/haber/aralikli-oruc-diyeti-nedir-neden-bu-kadar-populer-oldu-1833623', '5:2 ve 16:8 gibi uygulamalar ve kimler için uygun olmadığı. Kanıt için “Biyokimyadan Sofraya” 6. başlığa bak. (Cumhuriyet\'teki yayını)', 'tr']
     ] },
     { ad: 'Klinik beslenme rehberleri', not: '', oge: [
       ['ESPEN kılavuzları', 'https://www.espen.org/guidelines-home/espen-guidelines', 'Avrupa Klinik Beslenme ve Metabolizma Derneği; hastalığa özgü kılavuzlar (kanser, yoğun bakım, karaciğer, böbrek, geriatri).', 'av'],
@@ -99,6 +127,15 @@
     ['1BE3', 'Kompleks III', 'sığır kalbi, X-ışını'], ['1OCC', 'Kompleks IV', 'sığır kalbi, X-ışını'], ['5ARA', 'ATP sentaz', 'sığır kalbi, kriyo-EM']
   ];
 
+  var KITAP = [
+    ['Aksoy M.', 'Beslenme Biyokimyası', '6. baskı, Nobel Tıp Kitabevleri (önceki baskılar Hatiboğlu Yayınevi). Bölümlerde en yaygın kullanılan klasik.'],
+    ['Tetik Ş.', 'Beslenme Biyokimyası', 'Nobel Tıp Kitabevleri, 2020.'],
+    ['Savaş H. B. (ed.)', 'Beslenme Biyokimyası', 'Nobel Akademik Yayıncılık, 2022. Çok yazarlı.'],
+    ['Günşen U. (ed.)', 'Beslenme Biyokimyası', 'Akademisyen Kitabevi, 2025.'],
+    ['Nelson D. L., Cox M. M.', 'Lehninger Biyokimyanın İlkeleri', 'Türkçe çeviri, Palme Yayıncılık. Biyoenerjetik ve metabolik düzenleme için başvuru kitabı.'],
+    ['Ferrier D. R.', 'Lippincott Biyokimya', 'Türkçe çeviri, Nobel Tıp Kitabevleri. Şemalarla özet anlatım.']
+  ];
+
   var VIDEO = [
     ['Nick Lane · How the Krebs cycle powers life and death', 'https://www.youtube.com/watch?v=vBiIDwBOqQA', 'Royal Institution konuşması (2022, yaklaşık 56 dakika, İngilizce). Kitabın yazarı; döngünün iki yönü, kanser ve hidrotermal bacalar.', 'YouTube'],
     ['WEHI.TV · Elektron taşıma zinciri', 'https://www.wehi.edu.au/wehi-tv/electron-transport-chain-respiration-series/', 'Drew Berry\'nin yapısal veriye dayalı moleküler animasyonu. 3B oyundaki sahnenin gerçeğe en yakın görseli.', 'Animasyon'],
@@ -122,6 +159,8 @@
       '<button class="aktif" data-b="hepsi">Tümü</button><button data-b="tr">Türkiye</button><button data-b="av">Avrupa</button><button data-b="dn">Dünya</button></div>' +
       '<input type="search" class="ky-ara" placeholder="Kaynaklarda ara (ör. protein, etiket, kılavuz)" aria-label="Kaynaklarda ara"></div>' +
       '<div class="ky-liste"></div>' +
+      '<section class="ky-grup"><h3>Türkçe ders kitapları</h3><p class="ky-not">Baskı ve yıl bilgileri kitabevi kayıtlarına dayanır; güncel baskıyı yayınevinden kontrol et.</p><ul class="ky-kitap">' +
+      KITAP.map(function (k) { return '<li><b>' + k[0] + '</b> <i>' + k[1] + '.</i> ' + k[2] + '</li>'; }).join('') + '</ul></section>' +
       '<section class="ky-grup"><h3>3B oyundaki komplekslerin gerçek yapıları</h3><p class="ky-not">RCSB Protein Data Bank kayıtları; sayfadaki “3D View” sekmesinden yapıyı döndürerek inceleyebilirsin.</p><div class="ky-yapilar">' +
       YAPI.map(function (y) { return '<a href="https://www.rcsb.org/structure/' + y[0] + '" target="_blank" rel="noopener"><b>' + y[0] + '</b><span>' + y[1] + '</span><small>' + y[2] + '</small></a>'; }).join('') + '</div></section>' +
       '<section class="ky-grup"><h3>Videolar ve açık dersler</h3><p class="ky-not">Kitabın konularını görsel olarak pekiştirmek için. Tümü ücretsiz.</p><div class="ky-kartlar">' +
