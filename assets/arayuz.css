@@ -69,7 +69,6 @@ button, a, summary, select { touch-action: manipulation; -webkit-tap-highlight-c
   .subtitle { font-size: 1.02rem; margin-bottom: 1.2rem; }
   h3 { font-size: 1.25rem; }
   p { text-align: left; font-size: 1rem; line-height: 1.7; }
-  .quote-box { padding: 1.4rem 1.1rem 1.1rem; margin: 1.4rem 0; }
   .concept-card { padding: 1.1rem; }
 }
 

@@ -103,19 +103,6 @@
         p { margin-bottom: 1.2rem; line-height: 1.8; text-align: justify; color: #444; font-size: 1.05rem; }
         
         /* Components */
-        .quote-box {
-            background: #f1f2f6;
-            border-left: 5px solid var(--primary);
-            padding: 2rem;
-            margin: 2rem 0;
-            font-style: italic;
-            font-family: 'Georgia', serif;
-            color: #555;
-            border-radius: 0 8px 8px 0;
-            position: relative;
-        }
-        .quote-box::before { content: "“"; font-size: 4rem; color: #ccc; position: absolute; top: -10px; left: 10px; }
-        
         .concept-card {
             background: white;
             border: 1px solid #e1e1e1;
@@ -186,8 +173,9 @@
             
             <p>Hücre bir şehirdir. Uzaydan bakıldığında şehirler gri, kristalimsi ve cansız görünür. Ancak gece olduğunda ışıklar yanar; enerji akar. Bir şehri canlı kılan binaları değil, içinden geçen insan, malzeme ve enerji akışıdır.</p>
             
-            <div class="quote-box">
-                "Genler ve bilgi, yaşamımızın en ince detaylarını belirlemez. Aksine, durmaksızın akan enerji ve madde, genleri varoluşa çağırır." — Nick Lane
+            <div class="kt-fikir">
+                <b>Kitabın tezi (özet)</b>
+                <p>Önce enerji ve madde akışı vardı; genler bu akışa anlam ve bağlam kazandıran sonraki katmandır. Lane'e göre genler yaşamın derin kimyasının yerini almadı; onu korudu ve üzerine inşa etti.</p>
             </div>
 
             <p>Biyokimya derslerinde gördüğünüz metabolik haritalar genellikle statiktir. Ancak yaşam, milisaniyeler içinde gerçekleşen milyarlarca dönüşümün toplamıdır. Bu bölümde, yaşamın temelinin "bilgi" (DNA) değil, "akış" (metabolizma) olduğu fikriyle tanışacaksınız.</p>
@@ -195,6 +183,16 @@
             <div class="concept-card">
                 <h3>Neden Önemli?</h3>
                 <p>Beslenme biyokimyasında gıdaları sadece "kalori" veya "vitamin" olarak görmek yetersizdir. Gıdalar, hücre içindeki bu devasa akışın (flux) yönünü değiştiren sinyallerdir. Bir nehrin yatağını değiştirmesi gibi, besinler de metabolik akışı değiştirir.</p>
+            </div>
+            <h3>Kitabın yolu</h3>
+            <div class="kt-harita">
+                <button type="button" data-page="p1"><span class="n">1</span><b>Nanokozmosu Keşfetmek</b><span>Krebs döngüsü nasıl bulundu? 2H'nin enerjisi zarın elektriğine nasıl çevrilir?</span></button>
+                <button type="button" data-page="p2"><span class="n">2</span><b>Karbonun Yolu</b><span>CO₂ organik maddeye nasıl bağlanır? Calvin–Benson döngüsü ve ters dönen Krebs döngüsü.</span></button>
+                <button type="button" data-page="p3"><span class="n">3</span><b>Gazlardan Yaşama</b><span>Yaşamın kökeni üzerine bir hipotez: alkali bacalar, proton gradyanı, Krebs çizgisi.</span></button>
+                <button type="button" data-page="p4"><span class="n">4</span><b>Devrimler</b><span>Oksijen, Kambriyen patlaması ve dokular arasında paylaşılan metabolizma.</span></button>
+                <button type="button" data-page="p5"><span class="n">5</span><b>Karanlık Taraf</b><span>Kanser: Warburg etkisi, süksinat sinyali, glutamin ve büyümenin muhasebesi.</span></button>
+                <button type="button" data-page="p6"><span class="n">6</span><b>Akış Kapasitörü</b><span>Yaşlanma: ROS, kompleks I, mitokondri genleri ve bireysel farklar.</span></button>
+                <button type="button" data-page="p7"><span class="n">S</span><b>Sonsöz: Benlik</b><span>Bilinç üzerine bir spekülasyon: zarların elektrik alanı.</span></button>
             </div>
         </section>
 
@@ -626,44 +624,393 @@
         <!-- BÖLÜM 5 -->
         <section id="p5" class="page kt">
             <h2>5. Karanlık Taraf</h2>
-            <div class="subtitle">Kanser: Genetik mi Metabolik mi?</div>
+            <div class="subtitle">Kanser: mutasyon mu, metabolizma mı?</div>
 
-            <p>Kanseri "genlerdeki mutasyonlar" olarak görmeye alışkınız. Ancak Lane, kanserin <strong>metabolik bir kilitlenme</strong> olduğunu savunur. Kanser hücresi, oksijenli dünyada yaşayan ama antik, oksijensiz modda (büyüme modu) çalışan bir hücredir.</p>
+            <p>1980'lerden beri baskın görüş şudur: kanser bir genom hastalığıdır; onkogenlerde ve tümör baskılayıcı genlerde biriken mutasyonlar hücreyi durmadan bölünmeye iter. Lane bu görüşü yanlış bulmaz, ama eksik bulur. Ona göre mutasyonlar çoğu zaman var olan bir akış düzenini <strong>kilitler</strong>; asıl sorun, hücreye sürekli ve yanlış yerde "büyü!" diyen metabolik ortamdır.</p>
 
-            <h3 style="border-left-color:#c0392b;">Warburg Etkisi'nin Sırrı</h3>
-            <p>Kanser hücreleri oksijen varken bile şekeri fermente eder (Laktat üretir). Neden bu kadar verimsiz bir yolu seçerler? Çünkü amaçları ATP üretmek değildir. Amaçları, şekerin karbon iskeletlerini kullanarak yeni hücreler inşa etmektir (Biyosentez).</p>
-            
-            <p>Kanser hücresi için ATP bir yan üründür; asıl ihtiyaç duyduğu şey <strong>NADPH</strong> (indirgeyici güç) ve yapı taşlarıdır. Beslenme uzmanları için not: Kanser hücresi glutamine (amino asit) bağımlıdır, çünkü glutamin Krebs döngüsünü tersten besler.</p>
+            <figure class="kt-sekil">
+                <div class="kt-tablo-sar">
+                    <table class="kt-tablo">
+                        <thead><tr><th>Gözlem</th><th>Yalnızca mutasyonla açıklamak neden zor?</th></tr></thead>
+                        <tbody>
+                            <tr><th>Tümör içi çeşitlilik</th><td>Aynı tümörün farklı bölgelerinde çoğu kez farklı mutasyonlar bulunur. Tetikleyici mutasyon bütün hücrelerde olmalıydı; bunlar büyüme sırasında birikmiş görünüyor.</td></tr>
+                            <tr><th>Normal dokudaki mutasyonlar</th><td>Aynı onkogen mutasyonları tümörün çevresindeki ve uzak normal dokularda da saptanır; tek başlarına kanser oluşturmaya yetmiyorlar.</td></tr>
+                            <tr><th>Ortamın etkisi</th><td>Tümör ortamından alınıp normal doku ortamına yerleştirilen kanser hücrelerinin büyümesi çoğu kez durur. Hücrenin kaderini sitoplazmadan ve çevreden gelen sinyaller de belirler.</td></tr>
+                            <tr><th>Yaş</th><td>Lane'in aktardığına göre 50 yaş üstünde risk, 24 yaş altına göre yaklaşık 90 kattır. Mutasyon birikimi bu kadar dik bir artış için fazla yavaştır.</td></tr>
+                            <tr><th>Türler arası karşılaştırma</th><td>İnsan fareden, fil insandan çok daha fazla hücre bölünmesi geçirir, ama kanser oranı buna göre artmaz (Peto paradoksu).</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <figcaption><span class="no">Tablo 5.1</span>Lane'in mutasyon merkezli görüşe yönelttiği itirazlar. Bunlar mutasyonların önemsiz olduğunu değil, bağlamın en az onlar kadar belirleyici olduğunu gösterir.</figcaption>
+            </figure>
+
+            <h3>Warburg etkisi: doğru gözlem, eksik yorum</h3>
+            <p>Otto Warburg 1920'lerde tümör dokusunun, oksijen varken bile, normal dokudan kat kat fazla laktat ürettiğini gösterdi (Lane'in aktardığı değer yaklaşık 70 kattır). Buna <strong>aerobik glikoliz</strong> ya da Warburg etkisi denir. Warburg bunu solunumun hasar görmesine bağladı ve 1956'da kanserin "tek ana nedeni" olarak ilan etti. Oysa etki evrensel değildir: birçok tümör solunum yapar, bazıları laktatı dışarıdan alıp yakar; kök hücreler ve çoğalan normal hücreler de aerobik glikoliz kullanır.</p>
+
+            <figure class="kt-sekil">
+                <div class="kt-yollar">
+                    <div class="kt-yol">
+                        <b>Solunum: glukoz sonuna kadar yakılır</b>
+                        <div class="kt-akis">
+                            <span class="dugum">Glukoz</span><span class="git">glikoliz</span>
+                            <span class="dugum">2 pirüvat</span><span class="git">mitokondri</span>
+                            <span class="dugum">Krebs döngüsü + solunum zinciri</span><span class="git"></span>
+                            <span class="dugum son">≈ 30–32 ATP</span>
+                        </div>
+                    </div>
+                    <div class="kt-yol">
+                        <b>Fermantasyon: pirüvat laktata indirgenir</b>
+                        <div class="kt-akis">
+                            <span class="dugum">Glukoz</span><span class="git">glikoliz</span>
+                            <span class="dugum">2 pirüvat</span><span class="git">NADH → NAD⁺</span>
+                            <span class="dugum">2 laktat (dışarı atılır)</span><span class="git"></span>
+                            <span class="dugum son">2 ATP</span>
+                        </div>
+                    </div>
+                </div>
+                <figcaption><span class="no">Şekil 5.1</span>Glukozun iki yolu. Laktat yapmanın işlevi ATP üretmek değil, glikolizin sürebilmesi için NAD⁺'yı geri kazanmaktır. Warburg'un sorusu şuydu: oksijen varken bir hücre neden on beş kat daha az ATP veren yolu seçsin? ATP sayıları sitenin geri kalanında kullanılan ders kitabı değerleridir.</figcaption>
+            </figure>
+
+            <h3>Büyümenin muhasebesi: ATP değil, NADPH ve karbon</h3>
+            <p>Craig Thompson ve arkadaşlarının yorumuna göre Warburg etkisi bir arıza değil, çoğalan hücrenin gereksinimlerine uygun bir ayardır. Bölünecek hücre bütün içeriğini iki katına çıkarmak zorundadır; bunun için ATP'den çok karbon iskeletine ve indirgeyici güce, yani <strong>NADPH</strong>'ye gerek vardır. Thompson'ın örneği, zarların başlıca yağ asidi olan 16 karbonlu palmitattır.</p>
+
+            <figure class="kt-sekil">
+                <div class="kt-baslik">Bir palmitat için gereken glukoz, gereksinim türüne göre</div>
+                <div class="kt-ciz" data-sekil="palmitat"></div>
+                <figcaption><span class="no">Şekil 5.2</span>Kıt olan ATP değildir. Bir palmitat 7 ATP, 14 NADPH ve 16 karbon (8 asetil-CoA) ister. Tam yakılan tek bir glukoz gereken ATP'nin beş katını verir; pentoz fosfat yolundan geçen bir glukoz ise yalnızca 2 NADPH sağlar. NADPH için gereken 7 glukozun biyosenteze gitmeyen bölümü solunumla yakılsaydı yaklaşık 200 ATP çıkardı: gerekenin 28 katı (<a href="https://doi.org/10.1126/science.1160809" target="_blank" rel="noopener">Vander Heiden, Cantley ve Thompson, 2009</a>; Lane'in aktardığı hesap).</figcaption>
+            </figure>
+
+            <p>ATP fazlası zararsız değildir. ATP tüketilmezse ATP sentaz durur, zar potansiyeli yükselir, solunum ve Krebs akışı yavaşlar; glikoliz de baskılanır. Yani fazla ATP, yapı taşı üretimini kısar. Glukozun bir bölümünü laktata çevirip atmak, akışı açık tutmanın yoludur.</p>
+
+            <h3>Eski bir anahtar: süksinat ve HIF1α</h3>
+            <p>Kanserle ilişkilendirilen ilk Krebs enzimi mutasyonları süksinat dehidrogenaz (SDH) ve fumarat hidratazda (FH) bulundu. İkisi de döngüyü süksinat çevresinde tıkar. Süksinat sıradan bir ara ürün değildir: Bölüm 4'te görülen çatallı yolun iki kolu burada buluşur ve onu işleyen enzim, solunum zincirinin II. kompleksi olarak zarın içindedir. Oksijensiz yaşayabilen hayvanlarda elektronlar oksijen yerine fumarata aktarılır.</p>
+
+            <figure class="kt-sekil">
+                <div class="kt-ciz" data-sekil="fumarat"></div>
+                <div class="kt-lejant">
+                    <span><i class="l-hp"></i>proton hareketi</span>
+                    <span><i class="l-el"></i>elektron yolu</span>
+                    <span><i class="l-kavsak"></i>biriken sinyal molekülü</span>
+                </div>
+                <figcaption><span class="no">Şekil 5.3</span>Fumarat solunumu. Kompleks I'in pompaladığı dört proton az da olsa ATP sağlar; atık ürün süksinattır. Memelilerde ayrı bir fumarat redüktaz yoktur, ama süksinat dehidrogenaz oksijen azaldığında ters yönde çalışabilir. İskemide (inme, kalp krizi) süksinatın bu yolla biriktiği gösterilmiştir (<a href="https://doi.org/10.1038/nature13909" target="_blank" rel="noopener">Chouchani ve ark., 2014</a>).</figcaption>
+            </figure>
+
+            <p>Biriken süksinat sitozole çıkar ve hücreye "solunumda sorun var" bilgisini taşır. Bunu, oksijen algılayıcı enzimler olan prolil hidroksilazları engelleyerek yapar.</p>
+
+            <figure class="kt-sekil">
+                <div class="kt-yollar">
+                    <div class="kt-yol">
+                        <b>Oksijen yeterli: anahtar kapalı</b>
+                        <div class="kt-akis">
+                            <span class="dugum">HIF1α sürekli yapılır</span><span class="git">prolil hidroksilaz + O₂</span>
+                            <span class="dugum">işaretlenir</span><span class="git">≈ 5 dakikada</span>
+                            <span class="dugum son">yıkılır; genler kapalı</span>
+                        </div>
+                    </div>
+                    <div class="kt-yol">
+                        <b>Oksijen az: süksinat birikir, anahtar açılır</b>
+                        <div class="kt-akis">
+                            <span class="dugum fd">süksinat ↑</span><span class="git">engeller</span>
+                            <span class="dugum">prolil hidroksilaz</span><span class="git">HIF1α yıkılmaz</span>
+                            <span class="dugum">çekirdeğe girer</span><span class="git"></span>
+                            <span class="dugum son">glikoliz, yeni damar, çoğalma, inflamasyon genleri</span>
+                        </div>
+                    </div>
+                    <div class="kt-yol">
+                        <b>SDH ya da FH mutasyonu: oksijen bolken açık kalan anahtar</b>
+                        <div class="kt-akis">
+                            <span class="dugum risk">enzim çalışmaz</span><span class="git"></span>
+                            <span class="dugum fd">süksinat / fumarat ↑</span><span class="git">aynı yol</span>
+                            <span class="dugum risk">kalıcı "oksijen yok" yanıtı</span>
+                        </div>
+                    </div>
+                </div>
+                <figcaption><span class="no">Şekil 5.4</span>Süksinat–HIF1α anahtarı (<a href="https://doi.org/10.1016/j.ccr.2004.11.022" target="_blank" rel="noopener">Selak ve ark., 2005</a>). Yanıt, enfeksiyon ya da yara gibi geçici oksijen sıkıntıları için evrimleşmiştir: hücre glikolize geçer, damarlanma ve çoğalma uyarılır. Mutasyon aynı yanıtı yanlış bağlamda ve kapatılamaz biçimde açar; Lane buna "sahte haber" der.</figcaption>
+            </figure>
+
+            <h3>Glutamin: döngünün yarısı geri döner</h3>
+            <p>Kültürdeki kanser hücrelerinin çoğuna büyümek için glukoz ve glutamin yeter; glutamin hem karbon hem azot getirir. 2012'de Mullen, Chandel, DeBerardinis ve arkadaşları, solunumu bozuk tümör hücrelerinin sitratı alışılmış yoldan değil, glutaminden gelen α-ketoglutarata CO₂ ekleyerek yaptığını gösterdi. Bu, Bölüm 2'deki ters Krebs basamaklarının hayvan hücresinde çalışmasıdır.</p>
+
+            <figure class="kt-sekil">
+                <div class="kt-ciz" data-sekil="glutamin"></div>
+                <div class="kt-lejant">
+                    <span><i class="l-co2"></i>CO₂</span>
+                    <span><i class="l-2h"></i>2H taşıyıcıları</span>
+                    <span><i class="l-az"></i>azot</span>
+                    <span><i class="l-hp"></i>proton akışı</span>
+                    <span><i class="l-atp"></i>ATP</span>
+                </div>
+                <figcaption><span class="no">Şekil 5.5</span>Glutaminden iki yöne akış (<a href="https://doi.org/10.1038/nature10642" target="_blank" rel="noopener">Mullen ve ark., 2012</a>). Geri kolu NADPH'ye bağlı izositrat dehidrogenaz yürütür; gereken NADPH'yi zardaki transhidrogenaz, proton akışını kullanarak NADH'den üretir. Sitrat yağ asidi yapımına, süksinat Şekil 5.4'teki anahtara gider.</figcaption>
+            </figure>
+
+            <p>Aynı düzenek sağlıklı hücrede bir emniyet supabıdır. Dinlenmede ATP tüketilmez, zar potansiyeli ve NADH yükselir; transhidrogenaz bu fazlalığı NADPH'ye çevirir ve döngünün bir bölümü geri akar. ATP talebi artınca yön değişir ve iki izositrat dehidrogenaz birlikte ileri çalışır. Kanser hücresi, düzeneğin dinlenme konumunu büyüme için kullanır.</p>
+
+            <h3>Krebs kavşağı</h3>
+            <p>Sitozole çıkan sitrat, asetil-CoA ve oksaloasetata bölünür. Asetil-CoA yağ asidi yapımına gider, ayrıca histonları asetilleyerek büyüme genlerini açar. Asetil gruplarını söken sirtuinler NAD⁺ harcar; NADH/NAD⁺ oranı yükseldiğinde yavaşlarlar ve büyüme sinyali açık kalır. Oksaloasetat ise hemen her çıkışı büyümeye varan bir kavşaktır.</p>
+
+            <figure class="kt-sekil">
+                <div class="kt-ciz" data-sekil="kavsak5"></div>
+                <div class="kt-lejant">
+                    <span><i class="l-kavsak"></i>kavşak</span>
+                    <span><i class="l-az"></i>azot girer</span>
+                    <span><i class="l-2h"></i>NADPH kazanılır</span>
+                    <span><i class="l-co2"></i>CO₂ çıkar</span>
+                    <span><i class="l-atp"></i>ATP harcanır</span>
+                </div>
+                <figcaption><span class="no">Şekil 5.6</span>Krebs kavşağı. Glutaminden gelen karbon, sitrat üzerinden yağa, nükleotide, şekere, NADPH'ye ya da laktata gidebilir; Lane'e göre kanser hücresinin attığı laktatın bir bölümü de glukozdan değil glutaminden gelir. Gliserol fosfat ayrıca sitozoldeki NADH'nin elektronlarını kompleks III'e taşıyabilir: 2H başına 10 yerine 6 proton pompalanır.</figcaption>
+            </figure>
+
+            <h3>Kaşeksi: kısır döngü</h3>
+            <p>Glutaminin iki azotu vardır. Kanser hücresi azotun fazlasını üreye çevirmek yerine amonyak olarak bırakabilir. Lane'in aktardığı öneriye göre kandaki amonyak, kas proteinlerinin yıkımıyla açığa çıkan azotla birlikte yeniden glutamine bağlanır ve glutamin tümöre geri döner.</p>
+
+            <figure class="kt-sekil">
+                <div class="kt-ciz" data-sekil="kaseksi"></div>
+                <figcaption><span class="no">Şekil 5.7</span>Önerilen glutamin–amonyak döngüsü. Kaşeksinin tek nedeni bu değildir (inflamasyon ve iştah kaybı da rol oynar); şekil yalnızca bölümde anlatılan mekanizmayı gösterir.</figcaption>
+            </figure>
+
+            <div class="concept-card">
+                <h3>Beslenme bağlantısı: "şekeri kes, tümör aç kalsın" mı?</h3>
+                <p>Bu bölümden böyle bir sonuç çıkmaz. Tümör glukozun yanında glutamini, laktatı ve yağ asitlerini de kullanabilir; kan glukozu da diyetle değil hormonlarla belirli sınırlarda tutulur. Lane, keton cisimlerinin kanser hücresi için zor bir yakıt olabileceğini, ancak bunun da aşılmaz olmadığını yazar. Ketojenik diyetin kanserde sağkalımı uzattığını gösteren yeterli klinik kanıt yoktur. Klinik beslenme kılavuzlarının önceliği, kas kaybını önlemek için yeterli enerji ve protein alımıdır (<a href="https://doi.org/10.1016/j.clnu.2021.02.005" target="_blank" rel="noopener">ESPEN, 2021</a>).</p>
+            </div>
+            <div class="kt-git">
+                <button type="button" data-page="tartisma">⚖️ Tartışmalı Konular: ketojenik diyet</button>
+                <button type="button" data-page="oyun-hucre">🧫 Hücre Yöneticisi'nde ATP–NADPH dengesini dene</button>
+            </div>
+
+            <div class="kt-uyari">
+                <b>Derste nasıl anılmalı?</b>
+                <p>Metabolik görüş genetik görüşün yerine geçmez, onu tamamlar. İki noktada kitabın anlatımı güncel literatürle birebir örtüşmez. Birincisi: Lane, kötü huylu tümörlerden ölüm hızının 1971'den beri pek değişmediğini yazar; ABD verilerinde yaşa göre standardize kanser ölüm hızı 1991'den beri düşmektedir (<a href="https://doi.org/10.3322/caac.21871" target="_blank" rel="noopener">Siegel ve ark., 2025</a>). İkincisi: Lane, izositrat dehidrogenaz mutasyonlarının enzimi "geri yönde kilitlediğini" söyler; tanımlanan mekanizma, mutant enzimin α-ketoglutaratı NADPH harcayarak 2-hidroksiglutarata indirgemesidir (<a href="https://doi.org/10.1038/nature08617" target="_blank" rel="noopener">Dang ve ark., 2009</a>).</p>
+            </div>
+
+            <details class="kt-kaynak">
+                <summary>Bu sayfanın kaynakları</summary>
+                <ul>
+                    <li>Lane N. <i>Transformer: The Deep Chemistry of Life and Death</i>. Profile Books, 2022. Bölüm 5. Sayfadaki şemalar bu bölümdeki anlatımdan yeniden çizilmiştir.</li>
+                    <li>Warburg O. On the origin of cancer cells. Science 1956;123:309–314. <a href="https://doi.org/10.1126/science.123.3191.309" target="_blank" rel="noopener">doi:10.1126/science.123.3191.309</a></li>
+                    <li>Vander Heiden MG, Cantley LC, Thompson CB. Understanding the Warburg effect: the metabolic requirements of cell proliferation. Science 2009;324:1029–1033. <a href="https://doi.org/10.1126/science.1160809" target="_blank" rel="noopener">doi:10.1126/science.1160809</a></li>
+                    <li>Selak MA ve ark. Succinate links TCA cycle dysfunction to oncogenesis by inhibiting HIF-α prolyl hydroxylase. Cancer Cell 2005;7:77–85. <a href="https://doi.org/10.1016/j.ccr.2004.11.022" target="_blank" rel="noopener">doi:10.1016/j.ccr.2004.11.022</a></li>
+                    <li>Mullen AR ve ark. Reductive carboxylation supports growth in tumour cells with defective mitochondria. Nature 2012;481:385–388. <a href="https://doi.org/10.1038/nature10642" target="_blank" rel="noopener">doi:10.1038/nature10642</a></li>
+                    <li>Chouchani ET ve ark. Ischaemic accumulation of succinate controls reperfusion injury through mitochondrial ROS. Nature 2014;515:431–435. <a href="https://doi.org/10.1038/nature13909" target="_blank" rel="noopener">doi:10.1038/nature13909</a></li>
+                    <li>Dang L ve ark. Cancer-associated IDH1 mutations produce 2-hydroxyglutarate. Nature 2009;462:739–744. <a href="https://doi.org/10.1038/nature08617" target="_blank" rel="noopener">doi:10.1038/nature08617</a></li>
+                    <li>Siegel RL ve ark. Cancer statistics, 2025. CA Cancer J Clin 2025;75:10–45. <a href="https://doi.org/10.3322/caac.21871" target="_blank" rel="noopener">doi:10.3322/caac.21871</a></li>
+                    <li>Muscaritoli M ve ark. ESPEN practical guideline: Clinical Nutrition in cancer. Clin Nutr 2021;40:2898–2913. <a href="https://doi.org/10.1016/j.clnu.2021.02.005" target="_blank" rel="noopener">doi:10.1016/j.clnu.2021.02.005</a></li>
+                </ul>
+            </details>
         </section>
 
         <!-- BÖLÜM 6 -->
         <section id="p6" class="page kt">
             <h2>6. Akış Kapasitörü</h2>
-            <div class="subtitle">Yaşlanma ve Mitokondriyel Denge</div>
+            <div class="subtitle">Yaşlanma: takvim yaşı değil, akış</div>
 
-            <p>Yaşlanmak, sadece yıpranmak değildir. Yaşlanmak, mitokondrilerdeki elektron akışının yavaşlamasıdır. Mitokondrilerimiz birer "Flux Capacitor" (Akış Kapasitörü) gibi çalışır.</p>
+            <p>Peter Medawar'ın klasik açıklamasına göre yaşlanırız, çünkü doğal seçilim ileri yaşta ortaya çıkan zararlı gen varyantlarını ayıklayamaz. Bu doğrudur, ama iki gözlemi açıklamakta zorlanır. Birincisi, solucan, sinek ve farede tek tek genler ya da kalori kısıtlaması ömrü iki üç katına çıkarabilir; ömür sanıldığından esnektir. İkincisi <strong>kayıp kalıtımdır</strong>: ikiz çalışmalarının gösterdiği kalıtsal riskin çoğu, genom çapında ilişkilendirme çalışmalarında (GWAS) bulunan varyantlarla açıklanamaz. Lane'in önerisi: ömür takvimle değil metabolik akışla ölçülür ve GWAS'ın genellikle dışarıda bıraktığı mitokondri genleri bu akışı en çok etkileyen genlerdir.</p>
 
-            <div class="concept-card" style="border-left-color: #f39c12;">
-                <h3>ROS (Serbest Radikaller) Dost mu Düşman mı?</h3>
-                <p>Eskiden ROS'un hücreye zarar vererek yaşlandırdığı sanılırdı. Şimdi biliyoruz ki ROS bir <strong>sinyaldir</strong>. "Çok fazla yakıt var, yavaşla!" der.</p>
-                <p>Yaşlandıkça mitokondrilerimiz bu sinyali yanlış anlar. Solunumu kısarlar. Bu da hücrenin "sanki oksijen yokmuş gibi" davranmasına, yağ depolamasına ve iltihaplanmasına (inflamasyon) neden olur. Yaşlılık hastalıklarının kökeni budur.</p>
+            <div class="kt-sayilar">
+                <div><b>≈ 500 000</b><span>olgun bir yumurta hücresindeki mitokondri DNA'sı kopyası</span></div>
+                <div><b>10–50 kat</b><span>mitokondri genlerinin çekirdek genlerine göre evrim hızı</span></div>
+                <div><b>≥ 300</b><span>mitokondri DNA'sı mutasyonuna bağlı hastalık</span></div>
+                <div><b>1 / 5000</b><span>mitokondri hastalıklarının görülme sıklığı</span></div>
             </div>
+
+            <p>Mitokondri DNA'sı yalnızca anneden geçer; bunu insanda ilk kez 1980'de Doug Wallace'ın grubu gösterdi. Her birimizin mitokondri genleri, çekirdek genomumuzla kendine özgü bir bileşim oluşturur; tek yumurta ikizlerinde bile bu bileşim tam aynı olmayabilir. Bazı mitokondri varyantları uzun ömürle ilişkilendirilmiştir; Japonya'da yaygın bir varyant bunun bilinen örneğidir (<a href="https://doi.org/10.1016/S0140-6736(05)78211-8" target="_blank" rel="noopener">Tanaka ve ark., 1998</a>).</p>
+
+            <h3>Mitokondri bir akış kapasitörüdür</h3>
+            <p>Kapasitör, iki iletken ortamı ayıran ince bir yalıtkandır; iç mitokondri zarı tam olarak budur. Krebs döngüsünden gelen 2H'nin akışı zar potansiyeline dönüştürülür. Potansiyel de geri döner ve akışı biçimlendirir: ATP tüketilmezse potansiyel yükselir, Krebs akışı yavaşlar ya da tersine döner; süksinat ve sitrat sitozole çıkarak çekirdekte binlerce genin etkinliğini değiştirir.</p>
+
+            <figure class="kt-sekil">
+                <div class="kt-ciz" data-sekil="kapasitor"></div>
+                <figcaption><span class="no">Şekil 6.1</span>Akış ile zar potansiyeli arasındaki çift yönlü ilişki. Lane'e göre bu "kapasitans"taki küçük kişisel farklar, hepimizin yaşlanıp farklı hastalıklara yakalanmasını açıklayabilir. Adlandırma <i>Geleceğe Dönüş</i> filmindeki aygıta göndermedir; işlev ise gerçektir.</figcaption>
+            </figure>
+
+            <h3>Sineklerden gelen sürpriz</h3>
+            <p>Lane ve Florencia Camus, çekirdek genomu özdeş, yalnızca mitokondri DNA'sı birkaç harf farklı olan meyve sineği hatlarıyla çalıştı. Hatlara, glutatyon öncülü bir antioksidan olan N-asetilsistein (NAC) verildi. Beklenen, oksidatif stresin azalmasıydı. Bunun yerine bir hattın dişilerinin çoğu öldü; öteki hatlar ve erkekler belirgin biçimde etkilenmedi.</p>
+
+            <figure class="kt-sekil">
+                <div class="kt-olcum">
+                    <div class="art"><i>↑</i><b>Glutatyon düzeyi</b><span>bütün hatlarda arttı; NAC beklenen işi yaptı</span></div>
+                    <div class="az"><i>↓</i><b>Kompleks I solunumu</b><span>dişilerde baskılandı; ölen hatta %50'den fazla</span></div>
+                    <div class="es"><i>≈</i><b>ROS akısı</b><span>değişmedi; yalnızca ölen hattın yumurtalıklarında yükseldi</span></div>
+                    <div class="art kotu"><i>↑</i><b>Oksitlenmiş glutatyon</b><span>ölen hatta glutatyon havuzu belirgin biçimde oksitlendi</span></div>
+                </div>
+                <figcaption><span class="no">Şekil 6.2</span>NAC verilen sineklerde ölçülenler (<a href="https://doi.org/10.1016/j.exger.2023.112158" target="_blank" rel="noopener">Camus ve ark., 2023</a>). Çıkarım: hücre ROS akısını dar sınırlar içinde tutar ve bunu gerekirse solunumu kısarak yapar. Hatlar arasındaki farkı mitokondri DNA'sındaki harf sayısı değil, çekirdek genleriyle birkaç talihsiz etkileşim belirledi.</figcaption>
+            </figure>
+
+            <h3>Glutatyon, NADPH ve kısır döngü</h3>
+            <p>Glutatyon hücrenin başlıca antioksidanıdır; oksitlendikten sonra yeniden kullanılabilmesi için NADPH gerekir. NADPH'nin kaynakları (pentoz fosfat yolu, malik enzim, transhidrogenaz) doğrudan ya da dolaylı olarak Krebs akışına bağlıdır. Bu yüzden glutatyon havuzunun oksitlenme oranı, hücrenin metabolik sağlığının duyarlı bir göstergesidir.</p>
+
+            <figure class="kt-sekil">
+                <div class="kt-ciz" data-sekil="glutatyon"></div>
+                <figcaption><span class="no">Şekil 6.3</span>Üstte glutatyon döngüsü: 2 GSH + H₂O₂ → GSSG + 2 H₂O; GSSG'yi geri indirgeyen NADPH'dir. Altta Lane'in önerdiği kısır döngü: oksitlenmiş glutatyon proteinlere bağlanarak (S-glutatyonilasyon) kompleks I'i kısar; bu ROS akısını düşürür, ama Krebs akışını ve dolayısıyla NADPH üretimini de zayıflatır. Bu son adımlar sineklerde doğrudan gösterilmiş değildir; Lane "büyük olasılıkla" der.</figcaption>
+            </figure>
+
+            <h3>Yaşlanma: içeriden boğulma</h3>
+            <p>Serbest radikal kuramı ilk biçimiyle doğrulanmadı: antioksidan takviyeleri ömrü uzatmıyor, bazı çalışmalarda kısaltıyor. Lane'in modeli hasarın kendisini değil, hücrenin hasara verdiği yanıtı öne çıkarır.</p>
+
+            <figure class="kt-sekil">
+                <div class="kt-yollar">
+                    <div class="kt-yol">
+                        <b>Serbest radikal kuramı (ilk biçimi)</b>
+                        <div class="kt-akis">
+                            <span class="dugum">solunum</span><span class="git"></span>
+                            <span class="dugum">ROS</span><span class="git">yaşla artar</span>
+                            <span class="dugum">hasar birikir</span><span class="git"></span>
+                            <span class="dugum risk">öngörü: antioksidan ömrü uzatır · doğrulanmadı</span>
+                        </div>
+                    </div>
+                    <div class="kt-yol">
+                        <b>Lane'in modeli: ROS sabit tutulur, bedeli solunum öder</b>
+                        <div class="kt-akis">
+                            <span class="dugum">yıpranan solunum zinciri</span><span class="git">ROS artma eğiliminde</span>
+                            <span class="dugum fd">kompleks I kısılır</span><span class="git">NADH birikir</span>
+                            <span class="dugum">Krebs akışı yavaşlar, yer yer tersine döner</span><span class="git">süksinat, sitrat</span>
+                            <span class="dugum">HIF1α ve asetilasyon</span><span class="git"></span>
+                            <span class="dugum risk">büyüme ve inflamasyon genleri: "yaşlı" profil</span>
+                        </div>
+                    </div>
+                </div>
+                <figcaption><span class="no">Şekil 6.4</span>İki açıklama. Lane'in modelinde ROS yaşla belirgin biçimde artmaz; hücre onu sabit tutmak için solunumu kısar. Enerji giderek daha çok glikolizden ve gliserol fosfat mekiğinden sağlanır: 2H başına 10 yerine 6 proton. Sonuç on yıllarca kararlı kalabilen kısık bir düzendir: daha az enerji, kilo almaya yatkınlık, ani efor güçlüğü, kronik düşük dereceli inflamasyon. Bu, Bölüm 5'te kansere zemin hazırlayan akış düzeninin aynısıdır.</figcaption>
+            </figure>
+
+            <h3>Hızlı yaşayan erken mi ölür?</h3>
+            <div class="kt-sayilar">
+                <div><b>≈ 1 milyar</b><span>cüce sivri farenin ömür boyu kalp atışı: dakikada 1300, bir buçuk yıl</span></div>
+                <div><b>≈ 1 milyar</b><span>filin ömür boyu kalp atışı: dakikada 28, yetmiş yıl</span></div>
+                <div><b>&gt; 2 milyar</b><span>insan: dakikada 60, yetmiş yıl</span></div>
+                <div><b>10 kata kadar</b><span>kuşlar ve yarasalar, aynı boydaki kara memelilerinden uzun yaşar</span></div>
+            </div>
+            <p>Metabolik hız ile ömür arasındaki ilişki gerçektir ama gevşektir, çünkü canlılar hasarı önlemeye ve onarmaya farklı ölçüde yatırım yapar. Gustavo Barja'nın çalışmalarına göre uzun yaşayan uçucular, kompleks I'den elektron sızıntısını azaltır; böylece solunumu kısmak zorunda kalmadan ROS dengesini korurlar.</p>
+
+            <h3>Glukoz, zar potansiyeli ve beyin</h3>
+            <p>Pankreasın β-hücreleri ve nöronlar glukoza bağımlıdır; ikisinde de glukoz hızla zar potansiyeline çevrilir. Lane bu yüzden diyabet ile Alzheimer hastalığını aynı çerçevede ele alır.</p>
+
+            <figure class="kt-sekil">
+                <div class="kt-yollar">
+                    <div class="kt-yol">
+                        <b>β-hücresi: glukoz algılayıcısı</b>
+                        <div class="kt-akis">
+                            <span class="dugum">kan glukozu ↑</span><span class="git">pirüvat</span>
+                            <span class="dugum">Krebs akışı ↑</span><span class="git"></span>
+                            <span class="dugum">zar potansiyeli ↑</span><span class="git"></span>
+                            <span class="dugum son">insülin salgısı ↑</span>
+                        </div>
+                    </div>
+                    <div class="kt-yol">
+                        <b>Nöron: saniyeler içinde güç artışı</b>
+                        <div class="kt-akis">
+                            <span class="dugum">uyarı</span><span class="git">MAM'lardan Ca²⁺</span>
+                            <span class="dugum">pirüvat dehidrogenaz etkinleşir</span><span class="git"></span>
+                            <span class="dugum">zar potansiyeli ≈ 120 → 160 mV üstü</span><span class="git"></span>
+                            <span class="dugum son">ATP sentezi ≈ 2 kat</span>
+                        </div>
+                    </div>
+                    <div class="kt-yol">
+                        <b>Alzheimer için MAM hipotezi</b>
+                        <div class="kt-akis">
+                            <span class="dugum">insülin direnci: glukoz girişi ↓</span><span class="git">telafi</span>
+                            <span class="dugum fd">daha çok Ca²⁺</span><span class="git">zamanla</span>
+                            <span class="dugum risk">MAM hasarı</span><span class="git"></span>
+                            <span class="dugum risk">amiloid öncül proteinin hatalı işlenmesi</span>
+                        </div>
+                    </div>
+                </div>
+                <figcaption><span class="no">Şekil 6.5</span>Glukozdan zar potansiyeline. MAM, endoplazmik retikulumun mitokondriye yapışık bölgesidir. Üçüncü satır bir hipotezdir (<a href="https://doi.org/10.1096/fj.201601309" target="_blank" rel="noopener">Area-Gomez ve Schon, 2017</a>); amiloid kaskadına alternatif olarak önerilmiştir, kanıtlanmış değildir. Tip 2 diyabette Alzheimer riskinin arttığı ise kohort çalışmalarıyla desteklenir: 17 kohortun meta-analizinde göreli risk 1,53 (<a href="https://doi.org/10.1016/j.diabres.2016.10.024" target="_blank" rel="noopener">Zhang ve ark., 2017</a>); Lane "iki kat" der.</figcaption>
+            </figure>
+
+            <div class="concept-card">
+                <h3>Beslenme bağlantısı: kendini bil, aşırıya kaçma</h3>
+                <p>Lane bölümü Delphi tapınağının öğütleriyle kapatır. Uygulamaya çevrilebilecek üç sonuç vardır. <strong>Antioksidan takviyesi</strong> ömrü uzatmaz; insanlardaki rastgele kontrollü çalışmalar da aynı yöndedir. <strong>Aerobik egzersiz</strong> mitokondrileri yıpratmaz, yenilenmelerini uyarır; aşırı beslenme ve hareketsizlik aerobik kapasiteyi düşürür. <strong>Tek bir diyet herkese uymaz</strong>: Lane'in sinek deneylerinde diyete ve ilaca yanıt mitokondri genotipine göre değişmiştir (<a href="https://doi.org/10.3389/fgene.2021.734255" target="_blank" rel="noopener">Rodríguez ve ark., 2021</a>). Bu son bulgu sinekten gelir; insana doğrudan aktarılamaz, ama bireysel farkların neden bu kadar büyük olabildiğine dair sınanabilir bir açıklama sunar.</p>
+            </div>
+            <div class="kt-git">
+                <button type="button" data-page="tartisma">⚖️ Tartışmalı Konular: antioksidan takviyeleri</button>
+                <button type="button" data-page="oyun-zincir">⚡ Solunum Zinciri 3B'de kompleks I'i kıs</button>
+            </div>
+
+            <div class="kt-uyari">
+                <b>Derste nasıl anılmalı?</b>
+                <p>Buradaki yaşlanma modeli Lane'in sentezidir. Dayanakları sinek deneyleri, kanser metabolizması bulguları ve karşılaştırmalı biyolojidir; insanda kompleks I'in yaşla birlikte ROS'u sabit tutmak için kısıldığı doğrudan gösterilmiş değildir. Model, serbest radikal kuramının neden doğrulanmadığına tutarlı bir açıklama getirdiği için değerlidir, kesinleşmiş bilgi olduğu için değil.</p>
+            </div>
+
+            <details class="kt-kaynak">
+                <summary>Bu sayfanın kaynakları</summary>
+                <ul>
+                    <li>Lane N. <i>Transformer: The Deep Chemistry of Life and Death</i>. Profile Books, 2022. Bölüm 6. Sayfadaki şemalar bu bölümdeki anlatımdan yeniden çizilmiştir.</li>
+                    <li>Camus MF, Rodriguez E, Kotiadis V, Carter H, Lane N. Redox stress shortens lifespan through suppression of respiratory complex I in flies with mitonuclear incompatibilities. Exp Gerontol 2023;175:112158. <a href="https://doi.org/10.1016/j.exger.2023.112158" target="_blank" rel="noopener">doi:10.1016/j.exger.2023.112158</a></li>
+                    <li>Rodríguez E, Grover Thomas F, Camus MF, Lane N. Mitonuclear interactions produce diverging responses to mild stress in <i>Drosophila</i> larvae. Front Genet 2021;12:734255. <a href="https://doi.org/10.3389/fgene.2021.734255" target="_blank" rel="noopener">doi:10.3389/fgene.2021.734255</a></li>
+                    <li>Giles RE, Blanc H, Cann HM, Wallace DC. Maternal inheritance of human mitochondrial DNA. PNAS 1980;77:6715–6719. <a href="https://doi.org/10.1073/pnas.77.11.6715" target="_blank" rel="noopener">doi:10.1073/pnas.77.11.6715</a></li>
+                    <li>Area-Gomez E, Schon EA. On the pathogenesis of Alzheimer's disease: the MAM hypothesis. FASEB J 2017;31:864–867. <a href="https://doi.org/10.1096/fj.201601309" target="_blank" rel="noopener">doi:10.1096/fj.201601309</a></li>
+                    <li>Zhang J ve ark. An updated meta-analysis of cohort studies: diabetes and risk of Alzheimer's disease. Diabetes Res Clin Pract 2017;124:41–47. <a href="https://doi.org/10.1016/j.diabres.2016.10.024" target="_blank" rel="noopener">doi:10.1016/j.diabres.2016.10.024</a></li>
+                    <li>Tanaka M ve ark. Mitochondrial genotype associated with longevity. Lancet 1998;351:185–186. <a href="https://doi.org/10.1016/S0140-6736(05)78211-8" target="_blank" rel="noopener">doi:10.1016/S0140-6736(05)78211-8</a></li>
+                </ul>
+            </details>
         </section>
 
         <!-- SONSÖZ -->
         <section id="p7" class="page kt">
             <h2>Sonsöz: Benlik</h2>
-            <div class="subtitle">Bilinç ve Elektrik Alanları</div>
+            <div class="subtitle">Bilinç üzerine bir spekülasyon: zarların elektrik alanı</div>
 
-            <p>Kitabın en etkileyici bölümü burasıdır. Lane sorar: "Benlik hissi, o içsel 'Ben' duygusu nereden gelir?"</p>
+            <p>Sonsöz, kitabın en cesur ve en az kanıtlanmış bölümüdür; Lane de bunu saklamaz. Soru şudur: düşünebilen bir sistem neden bir şey <em>hisseder</em>? Lane'in önerisi, duygunun hücrenin anlık metabolik durumuyla, onun da zarlardaki elektrik yükünün hareketiyle ilişkili olabileceğidir. Bu sayfa o öneriyi, hangi bölümünün kanıta hangi bölümünün varsayıma dayandığını ayırarak özetler.</p>
 
-            <p>Cevap, mitokondrilerin zarlarındaki o muazzam elektrik alanında (milivoltlar seviyesinde ama mikroskobik mesafede olduğu için yıldırım kadar güçlü) yatıyor olabilir. Bu elektrik alanı, hücre içindeki milyarlarca molekülü bir hizaya sokar, onlara bir yön ve "amaç" verir.</p>
+            <h3>Anestezi bilmecesi</h3>
+            <p>Genel anesteziklerin nasıl çalıştığı hâlâ tam bilinmiyor. Yapıları birbirine hiç benzemez: eter, kloroform ve kimyasal tepkimeye girmeyen ksenon gazı aynı işi görür. Ortak özellikleri yağda çözünmeleri ve zarlarda birikmeleridir. Üstelik yalnızca insanı değil, sineği ve tek hücreli paramesyumu da geri dönüşlü olarak "uyuturlar". Biyofizikçi Luca Turin buradan, bilincin karmaşık sinir sistemlerine özgü olmayan, hücre düzeyinde bir olguya dayanabileceği sonucunu çıkarır.</p>
 
-            <div class="quote-box">
-                "Anestezi verdiğimizde bilinci kapatırız. Anestezikler ne yapar? Mitokondriyel elektron akışını bozar. Belki de hissetmek, bu akışın kendisidir."
+            <figure class="kt-sekil">
+                <div class="kt-yollar">
+                    <div class="kt-yol">
+                        <b>Turin'in önerisi, adım adım</b>
+                        <div class="kt-akis">
+                            <span class="dugum">anestezik (ör. ksenon)</span><span class="git">yağda çözünür</span>
+                            <span class="dugum">mitokondri zarında birikir</span><span class="git"></span>
+                            <span class="dugum fd">elektronlar oksijene "kısa devre" yapar</span><span class="git">proton pompalanmaz</span>
+                            <span class="dugum fd">zar potansiyeli değişir</span><span class="git">?</span>
+                            <span class="dugum risk">bilinç kapanır</span>
+                        </div>
+                    </div>
+                </div>
+                <figcaption><span class="no">Şekil 7.1</span>Düz çerçeveli adımlar yerleşik bilgidir; renkli adımlar hipotezdir, kesikli son adım ise açık sorudur. Turin ve arkadaşları sineklerde anestezi sırasında elektron spin sinyalinin değiştiğini, anesteziye dirençli mutantlarda yanıtın farklı olduğunu bildirdi (<a href="https://doi.org/10.1073/pnas.1404387111" target="_blank" rel="noopener">Turin ve ark., 2014</a>). Bu bulgu öneriyle uyumludur, onu kanıtlamaz.</figcaption>
+            </figure>
+
+            <h3>Bakterinin zarı, mitokondrinin zarı</h3>
+            <p>Mitokondriler yaklaşık iki milyar yıl önce başka bir hücrenin içine yerleşmiş bakterilerdir. Bir bakteri için zar potansiyeli yaşam ile ölüm arasındaki sınırdır: ATP sentezini, kamçıyı, madde taşınmasını ve bölünmeyi o sürer. Virüs saldırısına uğrayan bazı bakteriler zarlarında gözenek açıp potansiyeli çökerterek kendilerini öldürür; böylece virüs çoğalamadan kardeş hücreler korunur. Lane'e göre bu yüklü zar, hücrenin "kendisi" ile dış dünya arasındaki eşiktir ve mitokondriyle birlikte hücrenin içine taşınmıştır.</p>
+
+            <figure class="kt-sekil">
+                <div class="kt-ciz" data-sekil="zarlar"></div>
+                <figcaption><span class="no">Şekil 7.2</span>Aynı zar, iki konum. Mitokondri iç zarındaki potansiyel, nöron zarındakinin yaklaşık iki katıdır ve kıvrımlı yapısı (kristalar) nedeniyle toplam yüklü yüzey çok daha geniştir. Lane, beyindeki elektrik alanlarının önemli bir bölümünün buradan kaynaklanabileceğini düşünür.</figcaption>
+            </figure>
+
+            <p>Hareket eden yük elektromanyetik alan üretir. Lane'in vardığı yer şudur: mitokondri zarlarındaki alanlar, hücredeki sayısız molekülü tek bir "durum"da birleştiren şey olabilir; duygu da bu durumun yaşantısıdır. Elektrik alanlarının hücre topluluklarını gerçekten yönlendirebildiğine dair deneysel destek vardır (Michael Levin'in rejenerasyon çalışmaları); bunun ötesi şimdilik varsayımdır.</p>
+
+            <figure class="kt-sekil">
+                <div class="kt-tablo-sar">
+                    <table class="kt-tablo">
+                        <thead><tr><th>Öne sürülen</th><th>Durumu</th></tr></thead>
+                        <tbody>
+                            <tr><td>Genel anestezikler yapıca çok farklıdır; etki güçleri yağda çözünürlükle ilişkilidir.</td><td><span class="kt-duzey d1">yerleşik bilgi</span></td></tr>
+                            <tr><td>Anestezikler sinekleri ve tek hücrelileri de etkiler.</td><td><span class="kt-duzey d1">yerleşik bilgi</span></td></tr>
+                            <tr><td>Elektrik alanları hücre davranışını ve gelişimi yönlendirebilir.</td><td><span class="kt-duzey d2">deneysel destek var</span></td></tr>
+                            <tr><td>Anestezi sırasında sinekte elektron spin sinyali değişir.</td><td><span class="kt-duzey d2">tek grubun deneysel bulgusu</span></td></tr>
+                            <tr><td>Ksenon, solunum zincirinde elektronları oksijene kısa devre yaptırır.</td><td><span class="kt-duzey d3">hipotez</span></td></tr>
+                            <tr><td>EEG sinyalinin önemli bir kaynağı mitokondri zar potansiyelidir.</td><td><span class="kt-duzey d3">hipotez</span></td></tr>
+                            <tr><td>Duygu, hücrenin elektriksel ve metabolik durumunun yaşantısıdır.</td><td><span class="kt-duzey d4">felsefi öneri</span></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <figcaption><span class="no">Tablo 7.1</span>Sonsözdeki savların kanıt düzeyi. Sınıflandırma bu sitenin değerlendirmesidir; Lane metinde hangi adımların varsayım olduğunu kendisi de belirtir.</figcaption>
+            </figure>
+
+            <div class="kt-fikir">
+                <b>Kitabın son düşüncesi (özet)</b>
+                <p>Krebs döngüsündeki bir süksinat molekülü saniyenin çok küçük bir kesrinde başka bir şeye dönüşür. Kalıcı olan moleküller değil, akışın düzenidir: biçimi yaratan harekettir. Akış durduğunda madde yerinde kalır, ama "ben" kalmaz.</p>
             </div>
 
-            <p>Bizler madde değiliz; bizler maddenin içinden geçen, milyarlarca yıldır sönmeyen bir aleviz. Metabolizma durduğunda, madde kalır ama "Ben" gider.</p>
+            <details class="kt-kaynak">
+                <summary>Bu sayfanın kaynakları</summary>
+                <ul>
+                    <li>Lane N. <i>Transformer: The Deep Chemistry of Life and Death</i>. Profile Books, 2022. Sonsöz ("Self"). Kitap, Richard Howard'ın "Like Most Revelations" şiiriyle kapanır.</li>
+                    <li>Turin L, Skoulakis EMC, Horsfield AP. Electron spin changes during general anesthesia in <i>Drosophila</i>. PNAS 2014;111:E3524–E3533. <a href="https://doi.org/10.1073/pnas.1404387111" target="_blank" rel="noopener">doi:10.1073/pnas.1404387111</a></li>
+                    <li>Levin M. Bioelectric signaling: reprogrammable circuits underlying embryogenesis, regeneration, and cancer. Cell 2021;184:1971–1989. <a href="https://doi.org/10.1016/j.cell.2021.02.034" target="_blank" rel="noopener">doi:10.1016/j.cell.2021.02.034</a></li>
+                </ul>
+            </details>
         </section>
 
         <!-- BESLENME VE DİYETETİK · 1: BİYOKİMYADAN SOFRAYA -->
