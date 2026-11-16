@@ -99,6 +99,9 @@
         for (i = 0; i < liste.length; i++) { this.cip(bas, y, liste[i][0], liste[i][1], 's'); bas += w[i] + ara; }
         return top;
     };
+    Cizim.prototype.kutu = function (x, y, w, h, sinif) {
+        this.g0.push('<rect class="kutu' + (sinif ? ' ' + sinif : '') + '" x="' + n(x) + '" y="' + n(y) + '" width="' + n(w) + '" height="' + n(h) + '" rx="10"/>');
+    };
     Cizim.prototype.svg = function (maks) {
         return '<svg class="kt-svg" viewBox="0 0 ' + this.w + ' ' + this.h + '" role="img" aria-label="' + esc(this.etiket) +
             '" style="max-width:' + (maks || Math.round(this.w * 1.3)) + 'px">' +
@@ -466,6 +469,271 @@
         c.yazi(sag, 354, '2H tüketir', 't-k', 'middle');
         c.ok(166, 346, 252, 346, 'h2');
         return c.svg(540);
+    };
+
+    /* ===== 5.3 Bir palmitat için kaç glukoz gerekir? ===== */
+    SEKIL.palmitat = function () {
+        var c = new Cizim(420, 172, 'Bir palmitat molekülünün gereksinimleri glukoz cinsinden: ATP için 0,2, karbon için yaklaşık 3, ' +
+            'NADPH için 7 glukoz gerekir. Kıt olan ATP değil, NADPH’dir.');
+        function X(v) { return 132 + v * 38; }
+        var R = [['ATP', '7 ATP gerekir', 0.2, '0,2'], ['Karbon', '16 karbon gerekir', 16 / 6, '≈ 3'], ['NADPH', '14 NADPH gerekir', 7, '7']];
+        var i, y, w, r;
+        for (i = 0; i <= 7; i++) {
+            c.ham(0, '<line class="' + (i ? 'izgara' : 'eksen') + '" x1="' + X(i) + '" y1="8" x2="' + X(i) + '" y2="134"/>');
+            c.yazi(X(i), 149, String(i), 't-k', 'middle');
+        }
+        c.yazi(X(3.5), 166, 'gereken glukoz sayısı', 't-k', 'middle');
+        for (i = 0; i < R.length; i++) {
+            y = 28 + i * 42; w = R[i][2] * 38; r = Math.min(4, w / 2);
+            c.yazi(122, y, R[i][0], 't-b', 'end');
+            c.yazi(122, y + 14, R[i][1], 't-k', 'end');
+            c.ham(1, '<path class="cubuk" d="M' + X(0) + ' ' + (y - 11) + ' h' + n(w - r) + ' a' + n(r) + ' ' + n(r) + ' 0 0 1 ' + n(r) + ' ' + n(r) +
+                ' v' + n(22 - 2 * r) + ' a' + n(r) + ' ' + n(r) + ' 0 0 1 -' + n(r) + ' ' + n(r) + ' H' + X(0) + ' Z"><title>' + R[i][0] + ': ' + R[i][3] + ' glukoz</title></path>');
+            c.yazi(X(R[i][2]) + 7, y + 4.5, R[i][3], 't-m t-b');
+        }
+        return c.svg(600);
+    };
+
+    /* ===== 5.4 Oksijensiz koşulda fumarat solunumu ===== */
+    SEKIL.fumarat = function () {
+        var c = new Cizim(420, 272, 'Fumarat solunumu: oksijen yokken NADH’nin elektronları kompleks I’den kompleks II’ye akar ve fumaratı ' +
+            'süksinata indirger. Kompleks I dört proton pompalar; ATP sentaz az miktarda ATP yapar. Süksinat birikir ve sitozole çıkar.');
+        c.ham(0, '<rect class="zar" x="26" y="96" width="386" height="54" rx="4"/>');
+        c.yazi(26, 18, 'Zarlar arası boşluk', 't-m t-b');
+        c.yazi(404, 266, 'Matriks', 't-k', 'end');
+        c.cip(222, 44, 'O₂ yok', 'o2', 'm');
+
+        c.ham(0, '<rect class="prot" x="40" y="84" width="64" height="100" rx="14"/>');
+        c.yazi(88, 177, 'I', 'prot-t', 'middle');
+        c.ok(88, 120, 88, 58, 'hp');
+        c.cip(88, 44, '4 H⁺', 'hp', 'm');
+
+        c.ham(0, '<rect class="prot" x="164" y="112" width="60" height="72" rx="14"/>');
+        c.yazi(208, 177, 'II', 'prot-t', 'middle');
+
+        c.ham(0, '<rect class="prot sentaz" x="351" y="154" width="10" height="20"/>' +
+            '<rect class="prot sentaz" x="330" y="88" width="52" height="70" rx="10"/>' +
+            '<circle class="prot sentaz" cx="356" cy="194" r="22"/>');
+        c.ok(356, 58, 356, 146, 'hp');
+        c.cip(356, 44, '4 H⁺', 'hp', 'm');
+        c.yazi(356, 24, 'ATP sentaz', 't-k t-b', 'middle');
+        c.yazi(356, 238, 'ADP + Pi → ATP', 't-m t-b', 'middle');
+
+        c.yol('M58 200 L58 136 Q58 125 69 125 L167 125 Q177 125 177 135 L177 222', 'el');
+        c.bas(177, 229, Math.PI / 2, 'el');
+        c.yazi(134, 119, 'Q', 't-k t-b', 'middle');
+        c.yazi(62, 216, 'NADH → NAD⁺', 't-m t-b', 'middle');
+
+        var f = c.hap(114, 244, 'Fumarat', { c: 4 });
+        var s = c.hap(244, 244, 'Süksinat', { c: 4, sinif: 'kavsak' });
+        c.ok(f.sag + 3, 244, s.sol - 3, 244);
+        c.yazi(244, 269, 'birikir, sitozole çıkar', 't-k', 'middle');
+        return c.svg(600);
+    };
+
+    /* ===== 5.5 Glutamin: döngünün bir yarısı geri, bir yarısı ileri ===== */
+    SEKIL.glutamin = function () {
+        var c = new Cizim(420, 326, 'Glutaminin kanser hücresindeki akışı: glutamin azotunu verip α-ketoglutarata dönüşür. α-Ketoglutaratın bir bölümü ' +
+            'CO₂ ve NADPH ile geri yönde sitrata, bir bölümü ileri yönde süksinata gider; ikisi de sitozole çıkar. Zardaki transhidrogenaz NADH’den NADPH üretir.');
+        var x = 216;
+        var g = c.hap(60, 165, 'Glutamin', { c: 5 });
+        var k = c.hap(x, 165, 'α-Ketoglutarat', { c: 5, sinif: 'kavsak' });
+        c.ok(g.sag + 3, 165, k.sol - 3, 165);
+        c.cip(60, 197, '−NH₃', 'az', 'm');
+        c.yazi(8, 222, 'azot: amino asit ve', 't-k');
+        c.yazi(8, 235, 'nükleotit yapımına', 't-k');
+
+        var st = c.hap(x, 30, 'Sitrat', { c: 6 });
+        c.hap(x, 96, 'İzositrat', { c: 6 });
+        c.hap(x, 234, 'Süksinil-CoA', { c: 4 });
+        var su = c.hap(x, 300, 'Süksinat', { c: 4 });
+        c.ok(x, 150, x, 111);
+        c.ok(x, 81, x, 45);
+        c.ok(x, 180, x, 219);
+        c.ok(x, 249, x, 285);
+        var ust = c.cipler(x + 12, 131, [['+CO₂', 'co2'], ['+2H · NADPH', 'h2']], 's');
+        var alt = c.cipler(x + 12, 200, [['−CO₂', 'co2'], ['−2H · NADH', 'h2']], 's');
+        c.cip(x + 12, 267, 'ATP', 'atp', 's');
+        c.yazi(x - 12, 135, 'geri · indirgeyici', 't-k', 'end');
+        c.yazi(x - 12, 204, 'ileri · oksidatif', 't-k', 'end');
+
+        c.ok(st.sag + 3, 30, st.sag + 36, 30);
+        c.yazi(st.sag + 42, 27, 'sitozole:', 't-k');
+        c.yazi(st.sag + 42, 40, 'yağ asidi yapımı', 't-k t-b');
+        c.ok(su.sag + 3, 300, su.sag + 36, 300);
+        c.yazi(su.sag + 42, 297, 'sitozole:', 't-k');
+        c.yazi(su.sag + 42, 310, 'HIF1α sinyali', 't-k t-b');
+
+        // transhidrogenaz: NADH → NADPH (proton akışıyla)
+        var sagUc = x + 12 + Math.max(ust, alt);
+        var tx = Math.min(sagUc + 20, 388);
+        c.yol('M' + n(x + 12 + alt + 3) + ' 200 L' + tx + ' 200 L' + tx + ' 131 L' + n(x + 12 + ust + 11) + ' 131', 'h2');
+        c.bas(x + 12 + ust + 4, 131, Math.PI, 'h2');
+        c.cip(tx, 166, 'H⁺', 'hp', 'm');
+        c.yazi(tx + 25, 166, 'transhidrogenaz', 't-k', 'middle', ' transform="rotate(-90 ' + (tx + 25) + ' 166)"');
+        return c.svg(540);
+    };
+
+    /* ===== 5.6 Krebs kavşağı: sitozoldeki sitratın yolları ===== */
+    SEKIL.kavsak5 = function () {
+        var c = new Cizim(420, 342, 'Krebs kavşağı: sitozole çıkan sitrat asetil-CoA ve oksaloasetata bölünür. Asetil-CoA yağ asidi yapımına ve histon ' +
+            'asetilasyonuna gider. Oksaloasetat aspartata, fosfoenolpirüvat üzerinden şekerlere ya da malat üzerinden pirüvat ve NADPH’ye dönüşebilir.');
+        var st = c.hap(100, 26, 'Sitrat', { c: 6 });
+        var ac = c.hap(300, 26, 'Asetil-CoA', { c: 2 });
+        c.ok(st.sag + 3, 26, ac.sol - 3, 26);
+        c.yazi(300, 58, '→ yağ asitleri (zarlar)', 't-k', 'middle');
+        c.yazi(300, 73, '→ histon asetilasyonu: büyüme genleri', 't-k', 'middle');
+
+        c.hap(210, 138, 'Oksaloasetat', { c: 4, sinif: 'kavsak' });
+        c.ok(112, 41, 180, 123);
+
+        // sol: azot yolu
+        c.hap(66, 204, 'Aspartat', { c: 4 });
+        c.ok(168, 153, 104, 189);
+        c.cip(100, 158, '+NH₃', 'az', 'm');
+        c.yazi(66, 232, 'nükleotitler', 't-k', 'middle');
+        c.yazi(66, 245, 'üre döngüsü', 't-k', 'middle');
+
+        // aşağı: şeker yolu
+        c.hap(210, 226, 'Fosfoenolpirüvat', { c: 3 });
+        c.ok(210, 153, 210, 211);
+        c.cip(222, 172, '−CO₂', 'co2', 's');
+        c.cip(222, 195, 'ATP', 'atp', 's');
+        c.ok(210, 241, 210, 264);
+        c.hap(210, 279, 'Şekerler');
+        c.yazi(210, 308, 'riboz → nükleotitler', 't-k', 'middle');
+        c.yazi(210, 322, 'gliserol fosfat → zar lipitleri', 't-k', 'middle');
+        c.yazi(210, 336, 'pentoz fosfat yolu → NADPH', 't-k', 'middle');
+
+        // sağ: malat üzerinden pirüvat
+        c.hap(356, 204, 'Pirüvat', { c: 3 });
+        c.ok(252, 153, 318, 189);
+        c.cipler(298, 130, [['−CO₂', 'co2'], ['NADPH', 'h2']], 's');
+        c.yazi(300, 160, 'malat üzerinden', 't-k t-i');
+        c.yazi(356, 232, '→ laktat (dışarı atılır)', 't-k', 'middle');
+        c.yazi(356, 245, '→ asetil-CoA', 't-k', 'middle');
+        return c.svg(560);
+    };
+
+    /* ===== 5.7 Kaşeksi: glutamin ve amonyak arasındaki kısır döngü ===== */
+    SEKIL.kaseksi = function () {
+        var c = new Cizim(420, 198, 'Kaşeksi kısır döngüsü: tümör glutamini tüketir ve azotun fazlasını amonyak olarak kana verir; kasta protein ' +
+            'yıkılır, açığa çıkan azot ve amonyak yeni glutamine bağlanır; glutamin kanla tümöre geri döner.');
+        c.kutu(14, 40, 160, 124);
+        c.kutu(246, 40, 160, 124);
+        c.yazi(94, 64, 'Tümör', 't-b', 'middle');
+        c.yazi(94, 90, 'glutamini tüketir;', 't-m', 'middle');
+        c.yazi(94, 107, 'azotun fazlası', 't-m', 'middle');
+        c.yazi(94, 124, 'amonyak olarak çıkar', 't-m', 'middle');
+        c.yazi(326, 64, 'İskelet kası', 't-b', 'middle');
+        c.yazi(326, 90, 'protein yıkılır;', 't-m', 'middle');
+        c.yazi(326, 107, 'amino azotu + amonyak', 't-m', 'middle');
+        c.yazi(326, 124, '→ yeni glutamin', 't-m', 'middle');
+        c.yazi(210, 22, 'kan dolaşımı', 't-k', 'middle');
+        c.ok(178, 78, 242, 78);
+        c.cip(210, 60, 'NH₃', 'az', 'm');
+        c.ok(242, 132, 178, 132);
+        c.cip(210, 150, 'glutamin', 'az', 'm');
+        c.yazi(210, 188, 'sonuç: kas kaybı', 't-k t-b', 'middle');
+        return c.svg(580);
+    };
+
+    /* ===== 6.1 Mitokondri: akış kapasitörü ===== */
+    SEKIL.kapasitor = function () {
+        var c = new Cizim(420, 264, 'Akış kapasitörü: Krebs döngüsünün akışı solunum zinciriyle zar potansiyeline çevrilir. Zar potansiyeli ATP sentezini, ' +
+            'ROS akısını ve NADPH yapımını belirler; çok yükselirse Krebs akışını yavaşlatır. Akıştaki değişim süksinat ve sitrat aracılığıyla çekirdeğe bildirilir.');
+        c.kutu(44, 14, 160, 40);
+        c.yazi(124, 39, 'Krebs döngüsü akışı', 't-b', 'middle');
+        c.ok(124, 56, 124, 86);
+        c.cip(136, 71, '2H · NADH', 'h2', 's');
+        c.kutu(44, 88, 160, 42);
+        c.yazi(124, 106, 'Solunum zinciri', 't-b', 'middle');
+        c.yazi(124, 121, 'proton pompalar', 't-k', 'middle');
+        c.ok(124, 132, 124, 160);
+        c.cip(136, 146, 'H⁺', 'hp', 's');
+        c.kutu(44, 162, 160, 60, 'vurgu');
+        c.ham(1, '<line class="plaka" x1="60" y1="176" x2="60" y2="208"/><line class="plaka" x1="69" y1="176" x2="69" y2="208"/>');
+        c.yazi(138, 188, 'Zar potansiyeli', 't-b', 'middle');
+        c.yazi(138, 205, 'kapasitör: yükü ayırır', 't-k', 'middle');
+
+        // çıktılar
+        var a = c.hap(346, 142, 'ATP sentezi');
+        var r = c.hap(346, 192, 'ROS akısı');
+        var p = c.hap(346, 242, 'NADPH yapımı');
+        c.ok(206, 180, a.sol - 3, 148);
+        c.ok(206, 192, r.sol - 3, 192);
+        c.ok(206, 204, p.sol - 3, 236);
+
+        // çekirdeğe sinyal
+        c.kutu(292, 14, 120, 40);
+        c.yazi(352, 31, 'Çekirdek', 't-b', 'middle');
+        c.yazi(352, 46, 'gen etkinliği', 't-k', 'middle');
+        c.ok(206, 34, 289, 34);
+        c.yazi(248, 26, 'süksinat · sitrat', 't-k', 'middle');
+
+        // geri besleme
+        c.yol('M42 192 L22 192 L22 34 L36 34', 'kesik');
+        c.bas(43, 34, 0);
+        c.yazi(12, 113, 'çok yükselirse akış yavaşlar', 't-k', 'middle', ' transform="rotate(-90 12 113)"');
+        return c.svg(560);
+    };
+
+    /* ===== 6.3 Glutatyon döngüsü ve solunumun kısılması ===== */
+    SEKIL.glutatyon = function () {
+        var c = new Cizim(420, 316, 'Glutatyon döngüsü: indirgenmiş glutatyon hidrojen peroksidi suya çevirirken oksitlenir; NADPH onu yeniden indirger. ' +
+            'Glutatyon havuzu oksitlenirse kompleks I kısılır, NADH birikir, Krebs akışı yavaşlar, NADPH azalır ve glutatyon daha da oksitlenir.');
+        var g = c.hap(108, 46, '2 GSH', { alt: 'indirgenmiş glutatyon' });
+        var s = c.hap(312, 46, 'GSSG', { alt: 'oksitlenmiş glutatyon' });
+        c.ok(g.sag + 3, 38, s.sol - 3, 38);
+        c.yazi(210, 26, 'H₂O₂ → 2 H₂O', 't-k t-b', 'middle');
+        c.ok(s.sol - 3, 56, g.sag + 3, 56);
+        c.yazi(210, 86, 'NADPH → NADP⁺', 't-k t-b', 'middle');
+        c.ham(0, '<line class="izgara" x1="20" y1="104" x2="400" y2="104"/>');
+
+        var ust = c.hap(210, 138, 'Glutatyon havuzu oksitlenir', { alt: 'GSSG oranı artar' });
+        var sag = c.hap(326, 214, 'Kompleks I kısılır', { alt: 'S-glutatyonilasyon' });
+        var al = c.hap(210, 290, 'Krebs akışı yavaşlar', { alt: 'NADH birikir' });
+        var sol = c.hap(94, 214, 'NADPH azalır', { alt: 'GSH yenilenemez' });
+        c.ok(sag.x - 30, ust.alt + 3, sag.x, sag.ust - 3);
+        c.ok(sag.x, sag.alt + 3, al.sag - 22, al.ust - 3);
+        c.ok(al.sol + 22, al.ust - 3, sol.x, sol.alt + 3);
+        c.ok(sol.x, sol.ust - 3, sol.x + 30, ust.alt + 3);
+        c.yazi(210, 212, 'kısır', 't-k t-i', 'middle');
+        c.yazi(210, 225, 'döngü', 't-k t-i', 'middle');
+        return c.svg(540);
+    };
+
+    /* ===== 7.2 Bakterinin zarı, mitokondrinin zarı ===== */
+    SEKIL.zarlar = function () {
+        var c = new Cizim(420, 228, 'Solda bir bakteri: zar potansiyeli hücreyi dış dünyadan ayıran sınırdadır. Sağda bir ökaryot hücre: ' +
+            'bakteri kökenli mitokondriler aynı yüklü zarı hücrenin içinde taşır.');
+        c.yazi(99, 20, 'Bakteri', 't-b', 'middle');
+        c.yazi(99, 35, 'yüklü zar = dış dünyayla sınır', 't-k', 'middle');
+        c.ham(0, '<rect class="hucre" x="24" y="52" width="150" height="84" rx="42"/><rect class="hucre-ic" x="30" y="58" width="138" height="72" rx="36"/>');
+        c.yazi(99, 92, 'içerisi (−)', 't-m t-b', 'middle');
+        c.yazi(99, 108, 'dışarısı (+)', 't-k', 'middle');
+        c.yazi(99, 160, 'ATP sentezi · kamçı', 't-k', 'middle');
+        c.yazi(99, 174, 'madde taşınması · bölünme', 't-k', 'middle');
+        c.yazi(99, 198, 'potansiyel çökerse', 't-k', 'middle');
+        c.yazi(99, 212, 'hücre ölür', 't-k t-b', 'middle');
+
+        c.ok(186, 94, 234, 94);
+        c.yazi(210, 80, '≈ 2 milyar', 't-k', 'middle');
+        c.yazi(210, 112, 'yıl önce', 't-k', 'middle');
+
+        c.yazi(325, 20, 'Ökaryot hücre', 't-b', 'middle');
+        c.yazi(325, 35, 'aynı zar, artık içeride', 't-k', 'middle');
+        c.ham(0, '<rect class="hucre-buyuk" x="244" y="48" width="162" height="150" rx="34"/>' +
+            '<circle class="cekirdek" cx="292" cy="96" r="26"/>' +
+            '<rect class="hucre" x="322" y="110" width="72" height="34" rx="17"/><rect class="hucre-ic" x="327" y="115" width="62" height="24" rx="12"/>' +
+            '<rect class="hucre" x="262" y="148" width="72" height="34" rx="17"/><rect class="hucre-ic" x="267" y="153" width="62" height="24" rx="12"/>');
+        c.yazi(292, 100, 'çekirdek', 't-k', 'middle');
+        c.yazi(358, 131, '−', 't-b', 'middle');
+        c.yazi(298, 169, '−', 't-b', 'middle');
+        c.yazi(358, 78, 'mitokondri', 't-k', 'middle');
+        c.ham(1, '<line class="eksen" x1="358" y1="82" x2="358" y2="108"/>');
+        c.yazi(325, 216, 'iç zarda ≈ 150–200 mV', 't-k', 'middle');
+        return c.svg(580);
     };
 
     function ciz() {

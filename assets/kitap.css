@@ -104,6 +104,13 @@
 .kt-svg .cip-o2 text { fill: var(--kt-o2-y); }
 .kt-svg .cip-fd rect { fill: var(--kt-fd-z); stroke: var(--kt-fd); }
 .kt-svg .cip-fd text { fill: var(--kt-fd-y); }
+.kt-svg .cip-az rect { fill: #f0e8f8; stroke: #8e5bb5; }
+.kt-svg .cip-az text { fill: #55307a; }
+.kt-svg .cubuk { fill: var(--kt-mavi); }
+.kt-svg .kutu.vurgu { fill: #fff7ec; stroke: var(--kt-2h); stroke-width: 2; }
+.kt-svg .plaka { stroke: var(--primary); stroke-width: 3.5; stroke-linecap: round; }
+.kt-svg .hucre-buyuk { fill: #f1f5fa; stroke: var(--primary); stroke-width: 1.5; }
+.kt-svg .cekirdek { fill: #dfe7f1; stroke: var(--primary); stroke-width: 1.2; }
 .kt-svg .zar { fill: #f3e9d2; stroke: #cbb98d; stroke-width: 1.2; }
 .kt-svg .prot { fill: #dfe7f1; stroke: var(--primary); stroke-width: 1.5; }
 .kt-svg .prot.sentaz { fill: #fff4c7; stroke: #b08900; }
@@ -136,6 +143,7 @@
 .kt-lejant .l-hp { background: var(--kt-hp-z); border-color: var(--kt-hp); }
 .kt-lejant .l-o2 { background: var(--kt-o2-z); border-color: var(--kt-o2); }
 .kt-lejant .l-fd { background: var(--kt-fd-z); border-color: var(--kt-fd); }
+.kt-lejant .l-az { background: #f0e8f8; border-color: #8e5bb5; }
 .kt-lejant .l-kavsak { background: #fff; border-color: var(--kt-2h); border-width: 2.5px; border-radius: 999px; }
 .kt-lejant .l-el { width: 18px; height: 0; border: 0; border-top: 2px dotted var(--kt-o2); border-radius: 0; }
 .kt-lejant .l-fes { background: var(--kt-fes); border-color: var(--kt-fes); }
@@ -218,10 +226,10 @@
 
 /* ---------- Elektron yolu (iki şerit) ---------- */
 .kt-yollar { display: grid; gap: 0.7rem; }
-.kt-yol { background: #fff; border: 1px solid var(--kt-cizgi); border-radius: 12px; padding: 0.7rem 0.8rem; }
+.kt-yol { min-width: 0; background: #fff; border: 1px solid var(--kt-cizgi); border-radius: 12px; padding: 0.7rem 0.8rem; }
 .kt-yol > b { display: block; font-size: 0.86rem; color: var(--kt-ink); margin-bottom: 0.5rem; }
-.kt-akis { display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem 0.3rem; font-size: 0.86rem; color: #444; }
-.kt-akis .dugum { padding: 0.25rem 0.6rem; border-radius: 999px; border: 1.5px solid var(--primary); background: #fff; font-weight: 600; color: var(--kt-ink); white-space: nowrap; }
+.kt-akis { min-width: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem 0.3rem; font-size: 0.86rem; color: #444; }
+.kt-akis .dugum { padding: 0.25rem 0.65rem; border-radius: 15px; border: 1.5px solid var(--primary); background: #fff; font-weight: 600; color: var(--kt-ink); max-width: 100%; }
 .kt-akis .dugum.fd { border-color: var(--kt-fd); background: var(--kt-fd-z); color: var(--kt-fd-y); }
 .kt-akis .dugum.son { border-color: var(--success); background: #e6f6ec; color: #1c6b3d; }
 .kt-akis .dugum.risk { border-color: var(--kt-hp); background: var(--kt-hp-z); color: var(--kt-hp-y); border-style: dashed; }
@@ -254,6 +262,32 @@
 .kt-dokular b { display: block; font-size: 0.86rem; }
 .kt-alisveris { margin-top: 0.55rem; text-align: center; font-size: 0.78rem; color: var(--kt-soluk); }
 .kt-alisveris b { color: var(--kt-ink); }
+
+/* ---------- Ölçüm kutuları (artış / azalış) ---------- */
+.kt-olcum { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0.6rem; }
+.kt-olcum div { background: #fff; border: 1px solid var(--kt-cizgi); border-radius: 12px; padding: 0.7rem 0.8rem; }
+.kt-olcum i { display: block; font-style: normal; font-size: 1.7rem; line-height: 1; font-weight: 700; margin-bottom: 0.25rem; }
+.kt-olcum b { display: block; font-size: 0.93rem; color: var(--kt-ink); }
+.kt-olcum span { display: block; margin-top: 0.2rem; font-size: 0.82rem; line-height: 1.45; color: var(--kt-soluk); }
+.kt-olcum .art i { color: var(--kt-mavi); }
+.kt-olcum .az i { color: var(--kt-hp); }
+.kt-olcum .es i { color: var(--kt-soluk); }
+.kt-olcum .kotu i { color: var(--kt-hp); }
+
+/* ---------- Kanıt düzeyi etiketleri ---------- */
+.kt-duzey { display: inline-block; padding: 0.1rem 0.6rem; border-radius: 999px; border: 1.5px solid; font-size: 0.8rem; font-weight: 600; white-space: nowrap; }
+.kt-duzey.d1 { background: #e6f6ec; border-color: var(--success); color: #1c6b3d; }
+.kt-duzey.d2 { background: var(--kt-o2-z); border-color: var(--kt-o2); color: var(--kt-o2-y); }
+.kt-duzey.d3 { background: var(--kt-atp-z); border-color: var(--kt-atp); color: var(--kt-atp-y); }
+.kt-duzey.d4 { background: var(--kt-hp-z); border-color: var(--kt-hp); color: var(--kt-hp-y); border-style: dashed; }
+
+/* ---------- Kitabın yol haritası (Giriş) ---------- */
+.kt-harita { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 0.7rem; margin: 0.6rem 0 1rem; }
+.kt-harita button { display: block; text-align: left; font: inherit; cursor: pointer; background: #fff; border: 1px solid var(--kt-cizgi); border-left: 5px solid var(--primary); border-radius: 12px; padding: 0.75rem 0.85rem 0.8rem; color: inherit; transition: transform 0.15s, box-shadow 0.15s; }
+.kt-harita button:hover { transform: translateY(-2px); box-shadow: 0 6px 14px rgba(0,0,0,0.08); border-left-color: var(--accent); }
+.kt-harita .n { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; margin-right: 0.45rem; border-radius: 50%; background: var(--primary); color: #fff; font-size: 0.82rem; font-weight: 700; vertical-align: -2px; }
+.kt-harita b { font-size: 1rem; color: var(--kt-ink); }
+.kt-harita span:not(.n) { display: block; margin-top: 0.4rem; font-size: 0.86rem; line-height: 1.5; color: var(--kt-soluk); }
 
 /* ---------- Ana fikir, uyarı, kaynak, bağlantı ---------- */
 .kt-fikir { margin: 1.8rem 0; padding: 1rem 1.2rem; border-left: 5px solid var(--accent); background: #fff7ec; border-radius: 0 10px 10px 0; }
