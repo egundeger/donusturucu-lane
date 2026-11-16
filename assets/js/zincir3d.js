@@ -280,6 +280,7 @@ export function olustur(kap, olay) {
     const w = kap.clientWidth, h = kap.clientHeight;
     if (!w || !h) return;
     genislik = w; yukseklik = h;
+    etiketKap.classList.toggle('dar', w < 600);
     renderer.setSize(w, h, false);
     camera.aspect = w / h; camera.updateProjectionMatrix();
     const tv = Math.tan(THREE.MathUtils.degToRad(camera.fov / 2));

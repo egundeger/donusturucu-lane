@@ -1,0 +1,111 @@
+/* ==========================================================
+   Arayüz: gezinme, telefon ve tablet uyumu
+   - 1200 px ve üzeri: sabit yan menü
+   - 1199 px ve altı (telefon, tablet): üst çubuk + yandan açılan menü
+   ========================================================== */
+:root {
+  --font-main: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", Arial, sans-serif;
+}
+body { height: 100vh; height: 100dvh; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+button, input, select { font-family: inherit; }
+button, a, summary, select { touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+.oyun button, .nav-btn, .menu-dugme, .ust-kisayol { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
+
+.app-container { height: auto; min-height: 0; }
+.main-content { overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
+.sidebar { position: relative; }
+.nav-btn { width: 100%; min-height: 44px; font-family: inherit; line-height: 1.25; }
+.nav-btn:focus-visible, .menu-dugme:focus-visible, .ust-kisayol:focus-visible, .menu-kapat:focus-visible { outline: 2px solid #f1c40f; outline-offset: 2px; }
+
+.ust-bar, .menu-perde, .menu-kapat { display: none; }
+
+/* ---------- geniş ekran: yan menü biraz daralır, içerik genişler ---------- */
+@media (min-width: 1200px) and (max-width: 1439px) {
+  .sidebar { width: 250px; }
+  .main-content { padding: 1.5rem 2rem; }
+}
+
+/* ---------- telefon ve tablet: üst çubuk + açılır menü ---------- */
+@media (max-width: 1199px) {
+  .ust-bar {
+    display: flex; align-items: center; gap: 8px; flex: none;
+    height: 56px; padding: 0 8px; padding-left: max(8px, env(safe-area-inset-left)); padding-right: max(8px, env(safe-area-inset-right));
+    background: var(--primary); color: #fff; box-shadow: 0 2px 8px rgba(0, 0, 0, .28);
+    position: relative; z-index: 20;
+  }
+  .menu-dugme { width: 46px; height: 46px; flex: none; border: 0; background: transparent; border-radius: 12px; display: grid; place-content: center; gap: 5px; cursor: pointer; }
+  .menu-dugme span { display: block; width: 22px; height: 2.5px; border-radius: 2px; background: #fff; transition: transform .2s, opacity .2s; }
+  .menu-dugme:active, .ust-kisayol:active { background: rgba(255, 255, 255, .18); }
+  body.menu-acik .menu-dugme span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+  body.menu-acik .menu-dugme span:nth-child(2) { opacity: 0; }
+  body.menu-acik .menu-dugme span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+  .ust-baslik { min-width: 0; flex: 1; display: grid; line-height: 1.15; }
+  .ust-baslik b { font-size: .68rem; letter-spacing: .16em; opacity: .7; font-weight: 700; }
+  .ust-baslik span { font-size: 1.05rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .ust-kisayol { width: 46px; height: 46px; flex: none; border: 0; border-radius: 12px; background: rgba(255, 255, 255, .1); font-size: 1.25rem; cursor: pointer; }
+
+  .sidebar {
+    position: fixed; top: 0; left: 0; bottom: 0; z-index: 60;
+    width: min(86vw, 340px); height: auto; padding: 1rem 1rem 2rem; padding-left: max(1rem, env(safe-area-inset-left));
+    transform: translateX(-105%); visibility: hidden;
+    transition: transform .26s ease, visibility 0s linear .26s;
+    box-shadow: 6px 0 28px rgba(0, 0, 0, .4); overscroll-behavior: contain; -webkit-overflow-scrolling: touch;
+  }
+  body.menu-acik .sidebar { transform: none; visibility: visible; transition: transform .26s ease; }
+  .sidebar h1 { text-align: left; padding-left: .5rem; padding-right: 48px; }
+  .menu-kapat { display: grid; place-items: center; position: absolute; top: 12px; right: 10px; width: 42px; height: 42px; border: 0; border-radius: 12px; background: rgba(255, 255, 255, .1); color: #fff; font-size: 1.1rem; cursor: pointer; }
+  .menu-perde { display: block; position: fixed; top: 0; right: 0; bottom: 0; left: 0; z-index: 50; background: rgba(8, 13, 25, .55); opacity: 0; pointer-events: none; transition: opacity .26s; }
+  body.menu-acik .menu-perde { opacity: 1; pointer-events: auto; }
+  .nav-btn { font-size: 1rem; padding: .75rem 1rem; }
+
+  .main-content { padding: 1.25rem 1.5rem 2rem; }
+  .page { margin-bottom: 2rem; }
+}
+
+/* ---------- telefon ---------- */
+@media (max-width: 760px) {
+  .main-content { padding: .9rem .7rem 1.5rem; }
+  h2 { font-size: 1.6rem; line-height: 1.2; }
+  .subtitle { font-size: 1.02rem; margin-bottom: 1.2rem; }
+  h3 { font-size: 1.25rem; }
+  p { text-align: left; font-size: 1rem; line-height: 1.7; }
+  .quote-box { padding: 1.4rem 1.1rem 1.1rem; margin: 1.4rem 0; }
+  .concept-card { padding: 1.1rem; }
+}
+
+/* ---------- dokunmatik ekran: parmağa uygun hedef boyutları ---------- */
+@media (pointer: coarse) {
+  .o-btn { min-height: 42px; }
+  .o-btn.kucuk { min-height: 40px; padding: 7px 12px; }
+  .zn-kcip, .zn-cip, .zn-supheli, .zn-mod button, .ta-dugme button, .ta-sekme button, .ta-sec, .kr-kart, .bes-git, .ky-cipler button, .id-btn { min-height: 42px; }
+  .zn-cipler, .zn-grup { gap: 8px; }
+  .oyun button.zn-etiket { padding: 4px 10px; }
+  .hs-kutu input, .hs-kutu select { min-height: 44px; }
+  .bes-kart summary { min-height: 56px; }
+  .o-not summary, .hs-formul summary { padding: 12px 0; }
+  .o-not { padding-top: 0; padding-bottom: 0; }
+  .hs-formul { padding-top: 0; padding-bottom: 0; }
+  .hs-formul[open], .o-not[open] { padding-bottom: 12px; }
+}
+
+/* ---------- dar ölçer alanı (tablet dikey) ---------- */
+@media (max-width: 900px) {
+  .hc-olcer.o-mito .karsi { display: none; }
+}
+
+/* ---------- yatay tutulan telefon: dikey alan kıt ---------- */
+@media (max-height: 500px) and (orientation: landscape) {
+  .ust-bar { height: 48px; }
+  .menu-dugme, .ust-kisayol { width: 42px; height: 42px; }
+  .main-content { padding-top: .6rem; }
+  .oyun { padding: 12px; }
+  .o-bas { margin-bottom: 8px; gap: 8px; }
+  .o-alt { display: none; }
+  .oyun h3.o-baslik { font-size: 18px; margin-bottom: 0; }
+  h2 { font-size: 1.4rem; }
+  .subtitle { margin-bottom: .8rem; padding-bottom: .5rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sidebar, .menu-perde, .menu-dugme span { transition: none !important; }
+}

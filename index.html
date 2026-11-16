@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#2c3e50">
     <title>Transformer: Yaşamın Derin Kimyası ve Beslenme</title>
     <style>
         :root {
@@ -128,57 +129,27 @@
         
         .highlight { background: #fff3cd; padding: 0 4px; border-radius: 2px; }
 
-        /* Visual Diagrams (CSS Only) */
-        .diagram-box {
-            margin: 2rem 0;
-            padding: 1rem;
-            background: #f9f9f9;
-            border: 1px dashed #ccc;
-            border-radius: 8px;
-            text-align: center;
-        }
-        .cycle-diagram {
-            width: 200px;
-            height: 200px;
-            border: 4px solid var(--primary);
-            border-radius: 50%;
-            margin: 0 auto;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            color: var(--primary);
-        }
-        .cycle-arrow {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            border-top: 4px solid var(--accent);
-            border-right: 4px solid var(--accent);
-            transform: rotate(45deg);
-        }
-
-
         /* Responsive */
-        @media (max-width: 900px) {
-            .app-container { flex-direction: column; }
-            .sidebar { width: 100%; height: auto; flex-direction: row; overflow-x: auto; padding: 1rem; }
-            .sidebar h1 { display: none; }
-            .nav-group-title { display: none; }
-            .nav-btn { flex: 0 0 auto; margin-right: 10px; padding: 0.5rem 1rem; }
-            .main-content { padding: 1rem; }
-        }
         .nav-btn.nav-oyun { color: #f1c40f; }
         .nav-btn.nav-oyun.active { color: white; }
     </style>
     <link rel="stylesheet" href="assets/oyunlar.css">
     <link rel="stylesheet" href="assets/beslenme.css">
+    <link rel="stylesheet" href="assets/kitap.css">
+    <link rel="stylesheet" href="assets/arayuz.css">
 </head>
 <body>
 
+<header class="ust-bar">
+    <button type="button" class="menu-dugme" aria-label="Menüyü aç" aria-expanded="false" aria-controls="yan-menu"><span></span><span></span><span></span></button>
+    <div class="ust-baslik"><b>TRANSFORMER</b><span id="ust-sayfa">Giriş: Yaşamın Kendisi</span></div>
+    <button type="button" class="ust-kisayol" data-page="oyunlar" aria-label="Oyun merkezi">🎮</button>
+</header>
+<div class="menu-perde" aria-hidden="true"></div>
+
 <div class="app-container">
-    <aside class="sidebar">
+    <aside class="sidebar" id="yan-menu" aria-label="Site menüsü">
+        <button type="button" class="menu-kapat" aria-label="Menüyü kapat">✕</button>
         <h1>TRANSFORMER</h1>
         
         <div class="nav-group-title">Kitap İçeriği</div>
@@ -209,7 +180,7 @@
     <main class="main-content">
 
         <!-- GİRİŞ -->
-        <section id="p0" class="page active">
+        <section id="p0" class="page kt active">
             <h2>Giriş: Yaşamın Kendisi</h2>
             <div class="subtitle">Enerji Akışı Genetik Bilgiyi Yapılandırır</div>
             
@@ -228,78 +199,432 @@
         </section>
 
         <!-- BÖLÜM 1 -->
-        <section id="p1" class="page">
+        <section id="p1" class="page kt">
             <h2>1. Nanokozmosu Keşfetmek</h2>
-            <div class="subtitle">Hans Krebs ve Döngünün Doğuşu</div>
+            <div class="subtitle">Hans Krebs, döngünün doğuşu ve zarın elektriği</div>
 
-            <p>1930'larda Hans Krebs, hücrelerin besinleri nasıl yaktığını çözmeye çalışıyordu. O dönemde hücrenin bir "torba enzim" olduğu düşünülüyordu. Krebs, metabolizmanın doğrusal bir hat değil, bir <strong>döngü</strong> olduğunu keşfetti.</p>
+            <p>1930'ların başında biyokimya, canlı dokuyu "ölü" kimyadan ayıran şeyin ne olduğunu arıyordu. Otto Warburg'un yöntemi bu sorunun deneysel anahtarı oldu: ince doku dilimleri canlı tutuluyor, alıp verdikleri gaz manometreyle ölçülüyordu. Warburg'un yanında yetişen Hans Krebs aynı yöntemle önce ürenin bir tepkime <strong>döngüsüyle</strong> yapıldığını gösterdi. 1933'te Nazi Almanyası'ndan ayrılmak zorunda kaldı; önce Cambridge'e, 1935'te Sheffield'e geçti ve 1937'de bugün adını taşıyan döngüyü yayımladı.</p>
 
-            <div class="diagram-box">
-                <div class="cycle-diagram">
-                    <span>KREBS<br>DÖNGÜSÜ</span>
-                    <div class="cycle-arrow" style="top: -10px; left: 50%; transform: translateX(-50%) rotate(-45deg);"></div>
-                    <div class="cycle-arrow" style="bottom: -10px; left: 50%; transform: translateX(-50%) rotate(135deg);"></div>
+            <figure class="kt-sekil">
+                <div class="kt-baslik">Otuz yılda üç buluş: döngü, asetil-CoA, proton gradyanı</div>
+                <ol class="kt-zaman">
+                    <li class="odul"><span class="yil">1931</span><div><b>Otto Warburg</b> hücre solunumu çalışmalarıyla Nobel Ödülü alır. Doku dilimi ve manometri tekniği, sonraki bütün buluşların ölçüm aracıdır.</div></li>
+                    <li><span class="yil">1932</span><div><b>Hans Krebs</b> (Kurt Henseleit ile) üre döngüsünü tanımlar: bilinen ilk metabolik döngü. Ornitin tükenmeden tepkimeyi hızlandırır.</div></li>
+                    <li><span class="yil">1935–37</span><div><b>Albert Szent-Györgyi</b> güvercin göğüs kasında dört karbonlu asitlerin solunumu katalitik olarak hızlandırdığını gösterir.</div></li>
+                    <li class="vurgu"><span class="yil">1937</span><div><b>Krebs ve Johnson</b> sitrik asit döngüsünü yayımlar. <i>Nature</i> makaleyi "yayın sırası çok uzun" gerekçesiyle geri çevirmiştir.</div></li>
+                    <li><span class="yil">1947</span><div><b>Fritz Lipmann</b> koenzim A'yı tanımlar: pirüvattan CO₂ ve 2H ayrıldıktan sonra kalan iki karbonlu asetil birimi, bu "tutamağa" bağlı olarak (asetil-CoA) döngüye girer.</div></li>
+                    <li class="odul"><span class="yil">1953</span><div>Nobel Ödülü: <b>Krebs ve Lipmann</b>.</div></li>
+                    <li class="vurgu"><span class="yil">1961–66</span><div><b>Peter Mitchell</b> kemiozmotik hipotezi önerir (1961); <b>Jennifer Moyle</b> ile birlikte 1960'ların ortasında mitokondri zarının gerçekten proton pompaladığını deneylerle gösterir.</div></li>
+                    <li class="odul"><span class="yil">1978</span><div>Nobel Ödülü yalnızca <b>Mitchell</b>'e verilir; Moyle'un deneysel katkısı ödülün dışında kalır.</div></li>
+                </ol>
+                <figcaption><span class="no">Şekil 1.1</span>Keşfin zaman çizelgesi. Sarı etiketler Nobel ödüllerini, koyu etiketler bölümün iki dönüm noktasını gösterir.</figcaption>
+            </figure>
+
+            <h3>İpucu: tükenmeyen dört asit</h3>
+            <p>Szent-Györgyi, kıyılmış güvercin göğüs kasına çok az miktarda dört karbonlu (C4) dikarboksilik asit, özellikle süksinat eklediğinde solunumun uzun süre ve %600'e varan oranda hızlandığını gördü. Deney sonunda eklenen asit azalmamıştı. Tükenmeden hızlandıran madde, tanım gereği <strong>katalizördür</strong>. Dört asidin birbirinden yalnızca 2H (iki proton + iki elektron) ya da bir su molekülü kadar farklı olması, bunların aynı tepkime zincirinin halkaları olduğunu düşündürüyordu.</p>
+
+            <figure class="kt-sekil">
+                <div class="kt-c4">
+                    <div class="mol"><b>Süksinat</b><span>⁻OOC–<em>CH₂–CH₂</em>–COO⁻</span></div>
+                    <div class="adim"><span>−2H</span><i></i><span>+2H</span></div>
+                    <div class="mol"><b>Fumarat</b><span>⁻OOC–<em>CH=CH</em>–COO⁻</span></div>
+                    <div class="adim su"><span>+H₂O</span><i></i><span>−H₂O</span></div>
+                    <div class="mol"><b>Malat</b><span>⁻OOC–<em>CH(OH)–CH₂</em>–COO⁻</span></div>
+                    <div class="adim"><span>−2H</span><i></i><span>+2H</span></div>
+                    <div class="mol"><b>Oksaloasetat</b><span>⁻OOC–<em>CO–CH₂</em>–COO⁻</span></div>
                 </div>
-                <p style="margin-top:10px; font-size:0.9rem;"><em>Şekil: Döngüsel nedensellik. Ürün, başlangıç maddesini yeniler.</em></p>
+                <figcaption><span class="no">Şekil 1.2</span>Dört C4 asit. İki uçtaki karboksilat grupları (–COO⁻) hep aynıdır; değişen yalnızca ortadaki iki karbondur (turuncu). Oksidatif yönde soldan sağa gidilir; ters Krebs döngüsünde aynı basamaklar sağdan sola işler.</figcaption>
+            </figure>
+
+            <h3>Döngü: C2'yi yakan katalitik halka</h3>
+            <p>Krebs'in kavrayışı şuydu: C4 asitler yakıt değil, yakıtı taşıyan halkanın kendisidir. İki karbonlu asetil birimi oksaloasetatla birleşerek altı karbonlu sitratı oluşturur. Halka döndükçe iki karbon CO₂ olarak ayrılır, hidrojenler 2H çiftleri halinde sökülür ve oksaloasetat yeniden ortaya çıkar. Pirüvattan başlayan bir turun bilançosu <strong>3 CO₂ ve 5 × 2H</strong>'dir; asıl enerji bu hidrojenlerin oksijene aktarılmasından gelir.</p>
+
+            <figure class="kt-sekil">
+                <div class="kt-ciz" data-sekil="krebs"></div>
+                <div class="kt-lejant">
+                    <span><i class="l-co2"></i>ayrılan CO₂</span>
+                    <span><i class="l-2h"></i>sökülen 2H (NADH; süksinatta FADH₂)</span>
+                    <span><i class="l-atp"></i>GTP (≈ ATP)</span>
+                    <span><i class="l-o2"></i>giren su</span>
+                    <span><i class="l-kavsak"></i>kavşak noktası (aşağıdaki tablo)</span>
+                </div>
+                <figcaption><span class="no">Şekil 1.3</span>Krebs döngüsü ve bir pirüvatın hesabı. Asetil-CoA'nın iki karbonu halkaya girer, iki karbon CO₂ olarak çıkar; halkanın kendisi (oksaloasetat) harcanmaz. Rozetler karbon sayısını gösterir.</figcaption>
+            </figure>
+
+            <div class="kt-git">
+                <button type="button" data-page="oyun-krebs">🔄 Krebs Bulmacası'nda sırayı kur</button>
             </div>
 
-            <p>Krebs, güvercin göğüs kaslarını kullanarak çalıştı (uçmak için çok enerji gerekir). Ancak bu seçim bir yanılgıya yol açtı: Krebs döngüsünün tek amacının enerji üretmek olduğu sanıldı. Oysa karaciğer gibi dokularda döngü, enerji değil, <strong>madde (yapı taşı)</strong> üretmek için çalışır.</p>
-            
+            <p>Güvercin göğüs kası neredeyse yalnızca yakıt yakar; döngü orada kusursuz bir çember gibi görünür. Karaciğer gibi dokularda ise ara ürünler sürekli döngüden çekilir ve başka noktalardan yerine konur (anapleroz). Lane bu yüzden döngüyü bir <strong>dönel kavşağa</strong> benzetir: araç taşıyan bir tır kavşağa girer, her çıkışta bir araç ayrılır, turu yalnızca çekici tamamlar.</p>
+
+            <figure class="kt-sekil">
+                <div class="kt-tablo-sar">
+                    <table class="kt-tablo">
+                        <thead><tr><th>Kavşak noktası</th><th>Çıkış: biyosentez</th><th>Giriş: yerine koyma</th></tr></thead>
+                        <tbody>
+                            <tr><th>Sitrat</th><td>Sitozole çıkar; asetil-CoA üzerinden yağ asitleri ve kolesterol</td><td>—</td></tr>
+                            <tr><th>α-Ketoglutarat</th><td>Glutamat, glutamin ve bunlardan türeyen amino asitler</td><td>Glutamin ve glutamat (amino asit yıkımı)</td></tr>
+                            <tr><th>Süksinil-CoA</th><td>Hem (porfirin) sentezi</td><td>Bazı amino asitler, tek sayılı karbonlu yağ asitleri</td></tr>
+                            <tr><th>Malat · Oksaloasetat</th><td>Aspartat; fosfoenolpirüvat üzerinden glukoz (glukoneogenez)</td><td>Pirüvat + CO₂ (pirüvat karboksilaz)</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <figcaption><span class="no">Tablo 1.1</span>Döngü değil, kavşak: Şekil 1.3'te turuncu çerçeveli ara ürünlerin başlıca giriş ve çıkışları.</figcaption>
+            </figure>
+
             <div class="concept-card">
-                <h3>Katalizör Olarak Metabolitler</h3>
-                <p>Süksinat, Fumarat, Malat... Bunlar sadece yakıt değildir. Bunlar döngüyü hızlandıran "katalitik" ara ürünlerdir. Döngüye ne kadar çok ara ürün girerse (örn: amino asitlerden), döngü o kadar hızlı döner.</p>
+                <h3>Beslenme bağlantısı: açlıkta glutamin</h3>
+                <p>Uzun açlıkta kas proteini yıkılır ve kana en çok glutamin verilir. Glutamin α-ketoglutarata dönüşür; ancak döngü ara ürünlerin kendisini "yakmaz", yalnızca asetil birimlerini yakar. Karbonun yakılabilmesi ya da glukoza çevrilebilmesi için döngüden malat olarak çıkması, sitozolde oksaloasetata ve fosfoenolpirüvata dönüşmesi gerekir. Aynı kavşak, tokken yağ sentezine, açken glukoneogeneze hizmet eder.</p>
             </div>
+
+            <h3>2H nereye gider? Zarın elektriği</h3>
+            <p>Krebs 1937'de, Lipmann 1947'de şu soruyu yanıtlayamamıştı: 2H'nin oksijenle tepkimesinden çıkan enerji nasıl yakalanır? Mitchell'in yanıtı kimyasal bir ara ürün değil, bir <strong>zar potansiyeliydi</strong>. Elektronlar iç mitokondri zarına gömülü komplekslerden oksijene akarken protonlar zarın dışına pompalanır. Oluşan proton-itici güç (elektrik yükü + derişim farkı), protonlar ATP sentazdan geri akarken ATP sentezini sürer.</p>
+
+            <figure class="kt-sekil">
+                <div class="kt-ciz" data-sekil="kemiozmoz"></div>
+                <div class="kt-lejant">
+                    <span><i class="l-hp"></i>proton (H⁺) hareketi</span>
+                    <span><i class="l-el"></i>elektron yolu</span>
+                    <span><i class="l-atp"></i>ATP sentaz</span>
+                </div>
+                <figcaption><span class="no">Şekil 1.4</span>Kemiozmotik düzenek. NADH başına 10 H⁺ pompalanır (kompleks I: 4, III: 4, IV: 2). Omurgalı ATP sentazının c-halkası 8 alt birimlidir: bir tam tur 8 H⁺ gerektirir ve 3 ATP verir (<a href="https://doi.org/10.1073/pnas.1011099107" target="_blank" rel="noopener">Watt ve ark., 2010</a>). ATP'nin sitozole taşınması da yaklaşık 1 H⁺'ya mal olduğundan ATP başına ≈ 3,7–4 H⁺ gerekir; bu, NADH başına ≈ 2,5–2,7 ATP eder. Sitedeki oyunlar ve hesaplayıcılar ders kitabı değeri olan 2,5'i kullanır (<a href="https://pubmed.ncbi.nlm.nih.gov/15620362/" target="_blank" rel="noopener">Hinkle, 2005</a>). Kompleks II (süksinat dehidrogenaz) proton pompalamadığı için gösterilmemiştir.</figcaption>
+            </figure>
+
+            <div class="kt-sayilar">
+                <div><b>≈ 6 nm</b><span>iç zarın kalınlığı</span></div>
+                <div><b>150–200 mV</b><span>zar potansiyeli</span></div>
+                <div><b>≈ 30 milyon V/m</b><span>zarın içindeki alan şiddeti; havanın yıldırımda delindiği alanın (≈ 3 milyon V/m) on katı kadar</span></div>
+                <div><b>≈ 4 futbol sahası</b><span>bir insandaki toplam mitokondri iç zarı alanı</span></div>
+            </div>
+
+            <div class="kt-git">
+                <button type="button" data-page="oyun-zincir">⚡ Solunum Zinciri 3B'de dene</button>
+            </div>
+
+            <details class="kt-kaynak">
+                <summary>Bu sayfanın kaynakları</summary>
+                <ul>
+                    <li>Lane N. <i>Transformer: The Deep Chemistry of Life and Death</i>. Profile Books, 2022. Bölüm 1. Sayfadaki şemalar bu bölümdeki anlatımdan yeniden çizilmiştir.</li>
+                    <li>Krebs HA, Johnson WA. The role of citric acid in intermediate metabolism in animal tissues. <i>Enzymologia</i> 1937; yeniden basım: FEBS Lett 1980;117 Suppl:K1–10. <a href="https://pubmed.ncbi.nlm.nih.gov/6998725/" target="_blank" rel="noopener">PubMed 6998725</a></li>
+                    <li>Mitchell P. Coupling of phosphorylation to electron and hydrogen transfer by a chemi-osmotic type of mechanism. Nature 1961;191:144–148. <a href="https://doi.org/10.1038/191144a0" target="_blank" rel="noopener">doi:10.1038/191144a0</a></li>
+                    <li>Watt IN ve ark. Bioenergetic cost of making an adenosine triphosphate molecule in animal mitochondria. PNAS 2010;107:16823–16827. <a href="https://doi.org/10.1073/pnas.1011099107" target="_blank" rel="noopener">doi:10.1073/pnas.1011099107</a></li>
+                </ul>
+            </details>
         </section>
 
         <!-- BÖLÜM 2 -->
-        <section id="p2" class="page">
+        <section id="p2" class="page kt">
             <h2>2. Karbonun Yolu</h2>
-            <div class="subtitle">Fotosentez, Şeker ve Bir Yanılgı</div>
+            <div class="subtitle">Fotosentez, şeker ve bir ders kitabı yanılgısı</div>
 
-            <p>Ders kitaplarında fotosentezin glikoz ürettiği, solunumun da glikozu yaktığı yazar ("Biyokimyanın Birliği"). Ancak Nick Lane bu görüşü sarsar: CO<sub>2</sub>'yi organik maddeye çevirmenin tek yolu bitkilerin Calvin döngüsü değildir. Bazı bakteriler aynı işi <strong>Krebs döngüsünü tersine çalıştırarak</strong> yapar. Lane'e göre bu yol daha eskidir ve döngünün ilk işlevi yakmak değil, inşa etmekti.</p>
+            <p>Ders kitaplarının alışıldık özeti şudur: fotosentez CO₂'den şeker yapar, solunum o şekeri yakar. Lane, bu şeker merkezli anlatının bitkilere ve hayvanlara bakılarak kurulduğunu söyler. Mikroplar da hesaba katıldığında merkezde şekerler değil, Krebs döngüsünün karboksilik asitleri durur.</p>
 
-            <ul>
-                <li><strong>Calvin Döngüsü (Bitkiler):</strong> Şeker üretir. Verimsizdir. Rubisco enzimi çok yavaştır.</li>
-                <li><strong>Ters Krebs Döngüsü (Bakteriler):</strong> CO<sub>2</sub> ve H<sub>2</sub> alır, doğrudan yaşamın yapı taşlarını (Asetil-CoA, Pirüvat) üretir. Çok daha eski ve temeldir.</li>
-            </ul>
+            <h3>Karbonun izini sürmek</h3>
+            <p>Sorunun deneysel çözümü radyoaktif karbonla geldi. Martin Kamen ve Sam Ruben önce çok kısa ömürlü ¹¹C ile çalıştı, 1940'ta uzun ömürlü ¹⁴C'ü buldu. Savaştan sonra Berkeley'de Melvin Calvin, Andrew Benson ve James Bassham, <i>Chlorella</i> alglerine birkaç saniye ¹⁴CO₂ verip tepkimeyi aniden durdurarak karbonun ilk uğradığı molekülleri tek tek belirledi.</p>
 
-            <div class="quote-box">
-                "Şeker, metabolizmanın belkemiği değildir. Şekerler periferiktir. Krebs döngüsü ve karboksilik asitler merkezdedir."
+            <figure class="kt-sekil">
+                <ol class="kt-serit">
+                    <li>
+                        <svg class="kt-ikon" viewBox="0 0 64 64" aria-hidden="true"><circle class="d" cx="32" cy="24" r="15"/><path class="c" d="M32 39v15M26 54h12M32 47h8"/><path class="i" d="M5 17l7 3M4 25h8M5 33l7-3M59 17l-7 3M60 25h-8M59 33l-7-3"/><circle class="s" cx="27" cy="21" r="2.2"/><circle class="s" cx="37" cy="26" r="2.2"/><circle class="s" cx="30" cy="31" r="1.8"/></svg>
+                        <b>İşaretle</b><span>İki yandan aydınlatılan yassı cam kapta ("lolipop") <i>Chlorella</i>'ya ¹⁴CO₂ verilir.</span>
+                    </li>
+                    <li>
+                        <svg class="kt-ikon" viewBox="0 0 64 64" aria-hidden="true"><path class="z" d="M17 22h30l-3 30a4 4 0 0 1-4 4H24a4 4 0 0 1-4-4z"/><path class="d" d="M18.5 37h27l-1.5 15a4 4 0 0 1-4 4H24a4 4 0 0 1-4-4z"/><path class="c" d="M25 16c-2.5-3 2.5-5 0-8M32 16c-2.5-3 2.5-5 0-8M39 16c-2.5-3 2.5-5 0-8"/></svg>
+                        <b>Durdur</b><span>Birkaç saniye sonra örnek kaynayan alkole akıtılır; enzimler anında durur.</span>
+                    </li>
+                    <li>
+                        <svg class="kt-ikon" viewBox="0 0 64 64" aria-hidden="true"><rect class="z" x="16" y="8" width="38" height="42" rx="2"/><circle class="k" cx="23" cy="43" r="2"/><circle class="s" cx="31" cy="33" r="2.8"/><circle class="s" cx="42" cy="25" r="2.3"/><circle class="s" cx="27" cy="18" r="2"/><circle class="s" cx="46" cy="39" r="2.4"/><path class="c" d="M8 50V30M8 30l-3 4M8 30l3 4M16 58h20M36 58l-4-3M36 58l-4 3"/></svg>
+                        <b>Ayır</b><span>Özüt, iki farklı çözücüyle iki boyutlu kâğıt kromatografisinde ayrılır.</span>
+                    </li>
+                    <li>
+                        <svg class="kt-ikon" viewBox="0 0 64 64" aria-hidden="true"><rect class="f" x="13" y="8" width="38" height="46" rx="2"/><circle class="k" cx="29" cy="35" r="6"/><circle class="k" cx="41" cy="24" r="1.6"/><circle class="k" cx="43" cy="42" r="1.3"/></svg>
+                        <b>Görüntüle</b><span>Kâğıt fotoğraf filmine yaslanır (otoradyografi). ¹⁴C taşıyan her bileşik koyu bir leke bırakır.</span>
+                    </li>
+                </ol>
+                <figcaption><span class="no">Şekil 2.1</span>Calvin, Benson ve Bassham'ın deney düzeni. Bir dakikalık deneylerde on beş kadar leke çıkar; on saniyeye inildiğinde radyoaktivite neredeyse tek bir lekede toplanır: üç karbonlu <b>fosfogliserat</b>. Süre uzadıkça beliren yeni lekeler, karbonun sonraki duraklarını verir.</figcaption>
+            </figure>
+
+            <p>CO₂'yi kabul eden molekülün beş karbonlu ribuloz bisfosfat olduğu anlaşılınca döngü kapandı ve 1954'te yayımlandı. Calvin 1961 Nobel Ödülü'nü tek başına aldı; Benson'ın belirleyici katkısı uzun süre anılmadı.</p>
+
+            <h3>İkinci bir yol: ters dönen Krebs döngüsü</h3>
+            <p>1966'da Evans, Buchanan ve Arnon, yeşil kükürt bakterisi <i>Chlorobium thiosulfatophilum</i>'un CO₂'yi bambaşka bir yolla bağladığını bildirdi: Krebs döngüsünü tersine çevirerek. Her turda dört CO₂ bağlanır ve döngünün kendi ara ürünü olan oksaloasetattan bir tane fazladan üretilir. Bulgu, ancak 1980'lerde gen dizileri <i>Chlorobium</i>'da Calvin–Benson döngüsünün bulunmadığını doğrulayınca genel kabul gördü.</p>
+
+            <figure class="kt-sekil">
+                <div class="kt-ikili">
+                    <div>
+                        <h4>Calvin–Benson döngüsü</h4>
+                        <p class="alt">bitkiler, algler, siyanobakteriler · ürün: şeker</p>
+                        <div class="kt-ciz" data-sekil="calvin"></div>
+                    </div>
+                    <div>
+                        <h4>Ters Krebs döngüsü</h4>
+                        <p class="alt"><i>Chlorobium</i> gibi oksijensiz yaşayan bakteriler · ürün: karboksilik asit</p>
+                        <div class="kt-ciz" data-sekil="tersKrebs"></div>
+                    </div>
+                </div>
+                <div class="kt-lejant">
+                    <span><i class="l-co2"></i>bağlanan CO₂</span>
+                    <span><i class="l-2h"></i>2H (NADH / NADPH)</span>
+                    <span><i class="l-fd"></i>2H, ferredoksinden (zor basamak)</span>
+                    <span><i class="l-atp"></i>ATP harcanır</span>
+                </div>
+                <figcaption><span class="no">Şekil 2.2</span>CO₂ bağlamanın iki mantığı. Solda döngü saat yönünde döner ve şeker fosfat verir; sağda Şekil 1.3'teki döngü ters yönde çalışır ve doğrudan Krebs ara ürünlerini verir. Net denklem (sağ): 4 CO₂ + 5 × 2H → oksaloasetat + 3 H₂O.</figcaption>
+            </figure>
+
+            <figure class="kt-sekil">
+                <div class="kt-tablo-sar">
+                    <table class="kt-tablo">
+                        <thead><tr><th></th><th>Calvin–Benson</th><th>Ters Krebs</th></tr></thead>
+                        <tbody>
+                            <tr><th>Tanımlanması</th><td>1954 · Bassham, Benson, Calvin</td><td>1966 · Evans, Buchanan, Arnon</td></tr>
+                            <tr><th>CO₂'yi bağlayan</th><td>Rubisko: bol ama yavaş; O₂ ile de tepkir (fotorespirasyon)</td><td>Dört karboksilasyon basamağı; ikisi ferredoksine bağlıdır (pirüvat sentaz, α-ketoglutarat sentaz)</td></tr>
+                            <tr><th>Elektron taşıyıcı</th><td>NADPH</td><td>Ferredoksin (iki zor basamakta) ve NAD(P)H</td></tr>
+                            <tr><th>İlk ürünler</th><td>Üç karbonlu şeker fosfat</td><td>Asetil-CoA, pirüvat, oksaloasetat, α-ketoglutarat</td></tr>
+                            <tr><th>ATP gideri</th><td>3 CO₂ → 1 trioz fosfat için 9 ATP + 6 NADPH</td><td>Pirüvat başına Calvin–Benson'ın yarısından az (Lane, Bölüm 4)</td></tr>
+                            <tr><th>Oksijenle ilişkisi</th><td>Oksijenli ortamda çalışır</td><td>Oksijene duyarlı; neredeyse oksijensiz ortam ister</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <figcaption><span class="no">Tablo 2.1</span>İki döngünün karşılaştırması. Bugün en az altı doğal CO₂ bağlama yolu bilinmektedir; bu ikisi en iyi çalışılmış olanlardır.</figcaption>
+            </figure>
+
+            <h3>Ferredoksin: zor işi yapan demir–kükürt proteini</h3>
+            <p>Bir karboksilik aside CO₂ ekleyip onu α-keto aside çevirmek (asetil → pirüvat, süksinil → α-ketoglutarat) NADPH'nin gücünün yetmediği kadar zor bir indirgemedir. Hücre bu basamakları, demir–kükürt kümeleri taşıyan <strong>ferredoksinle</strong> aşar. İndirgenmiş ferredoksin ise oksijenle karşılaşınca serbest radikal üretir. Lane'e göre oksijen üreten canlıların elektronları hemen NADPH'ye devretmesinin ve CO₂'yi daha pahalı ama oksijene dayanıklı Calvin–Benson döngüsüyle bağlamasının nedeni budur.</p>
+
+            <figure class="kt-sekil">
+                <div class="kt-yollar">
+                    <div class="kt-yol">
+                        <b>Oksijensiz dünya: ferredoksinden doğrudan CO₂'ye</b>
+                        <div class="kt-akis">
+                            <span class="dugum">H₂ · H₂S</span><span class="git">2H</span>
+                            <span class="dugum fd">Fd²⁻</span><span class="git">2e⁻</span>
+                            <span class="dugum">R–COO⁻ + CO₂</span><span class="git"></span>
+                            <span class="dugum son">R–CO–COO⁻ + H₂O</span>
+                        </div>
+                    </div>
+                    <div class="kt-yol">
+                        <b>Oksijenli fotosentez: araya NADPH girer</b>
+                        <div class="kt-akis">
+                            <span class="dugum">Işık + H₂O</span><span class="git">2H</span>
+                            <span class="dugum fd">Fd²⁻</span><span class="git">2e⁻</span>
+                            <span class="dugum">NADPH</span><span class="git"></span>
+                            <span class="dugum son">CO₂ → şeker (Calvin–Benson)</span>
+                        </div>
+                        <div class="kt-akis" style="margin-top:0.5rem">
+                            <span class="dugum fd">Fd²⁻</span><span class="git">O₂ varsa</span>
+                            <span class="dugum risk">serbest radikaller</span>
+                        </div>
+                    </div>
+                </div>
+                <figcaption><span class="no">Şekil 2.3</span>Elektronun iki yolu. Üstte ferredoksin elektronlarını doğrudan karboksilasyon tepkimesine verir. Altta aynı elektronlar önce NADPH'ye aktarılır; böylece tepkin Fd²⁻ ortamda birikmez.</figcaption>
+            </figure>
+
+            <div class="kt-fikir">
+                <b>Lane'in tezi (özet)</b>
+                <p>Şekerler metabolizmanın omurgası değil, çeperidir; merkezde Krebs döngüsü ve karboksilik asitler durur. Calvin–Benson döngüsü ise glukoneogenez ve pentoz fosfat yolunun enzimlerine rubisko eklenerek sonradan kurulmuş, çalışan ama verimsiz bir düzenektir.</p>
             </div>
+
+            <details class="kt-kaynak">
+                <summary>Bu sayfanın kaynakları</summary>
+                <ul>
+                    <li>Lane N. <i>Transformer: The Deep Chemistry of Life and Death</i>. Profile Books, 2022. Bölüm 2. Sayfadaki şemalar bu bölümdeki anlatımdan yeniden çizilmiştir.</li>
+                    <li>Evans MC, Buchanan BB, Arnon DI. A new ferredoxin-dependent carbon reduction cycle in a photosynthetic bacterium. PNAS 1966;55:928–934. <a href="https://doi.org/10.1073/pnas.55.4.928" target="_blank" rel="noopener">doi:10.1073/pnas.55.4.928</a></li>
+                    <li>Bassham JA, Benson AA, Kay LD, Harris AZ, Wilson AT, Calvin M. The path of carbon in photosynthesis. XXI. J Am Chem Soc 1954;76:1760–1770.</li>
+                </ul>
+            </details>
         </section>
 
         <!-- BÖLÜM 3 -->
-        <section id="p3" class="page">
+        <section id="p3" class="page kt">
             <h2>3. Gazlardan Yaşama</h2>
-            <div class="subtitle">Yaşamın Kökeni: Hidrotermal Bacalar</div>
+            <div class="subtitle">Yaşamın kökeni üzerine bir hipotez: alkali hidrotermal bacalar</div>
 
-            <p>Yaşam çorba dolu bir gölette değil, derin denizlerdeki hidrotermal bacalarda başladı. Neden? Çünkü orada bedava enerji vardı.</p>
+            <p>Bu bölüm kitabın en kuramsal kısmıdır; kesinleşmiş bilgi değil, sınanabilir bir <strong>hipotez</strong> anlatır. 1977'de <i>Alvin</i> denizaltısıyla derin deniz bacalarının keşfi, canlıların güneş ışığı olmadan, yalnızca kimyasal enerjiyle yaşayabildiğini gösterdi. Günter Wächtershäuser ve Mike Russell, birbirinden bağımsız olarak, bacalardaki demir–kükürt minerallerinin CO₂'nin hidrojenle indirgenmesini katalizleyebileceğini öne sürdü. Lane, Russell ve Bill Martin'in geliştirdiği alkali baca modelini savunur.</p>
 
-            <div class="concept-card">
-                <h3>Doğal Pil</h3>
-                <p>Okyanus asidikti (H<sup>+</sup> dolu), bacalardan çıkan su ise bazikti (OH<sup>-</sup>). Bu, doğal bir <strong>proton gradyanı</strong> (voltaj farkı) yaratır. İlk hücreler, bu doğal enerjiyi kullanarak CO<sub>2</sub> ile H<sub>2</sub>'yi birleştirdi.</p>
+            <h3>Doğal bir proton pili</h3>
+            <p>Alkali bacalar, birbirine bağlı mikroskobik gözeneklerden oluşan mineral labirentlerdir. Gözeneklerin içinden H₂ bakımından zengin alkali akışkan geçer; dışarıda CO₂ bakımından zengin, asidik ilk okyanus vardır. Arada yalnızca demir–kükürt içeren ince duvarlar bulunur. Bu düzen bugünkü hücrenin düzeniyle aynıdır: <strong>içerisi alkali, dışarısı asidik</strong>. Hücrelerin hemen hepsi dışarıyı içeriden yaklaşık 3 pH birimi (bin kat H⁺) daha asidik tutar.</p>
+
+            <figure class="kt-sekil">
+                <div class="kt-ikili">
+                    <div>
+                        <h4>İnorganik gözenek</h4>
+                        <p class="alt">yalnızca mineral duvar</p>
+                        <div class="kt-ciz" data-sekil="gozenek"></div>
+                    </div>
+                    <div>
+                        <h4>Gözenekteki protohücre</h4>
+                        <p class="alt">aynı duvarın içinde yağ asidi zarı</p>
+                        <div class="kt-ciz" data-sekil="protohucre"></div>
+                    </div>
+                </div>
+                <div class="kt-lejant">
+                    <span><i class="l-hp"></i>proton akışı (hızlı)</span>
+                    <span><i class="l-co2"></i>CO₂ (duvardan yavaş geçer)</span>
+                    <span><i class="l-2h"></i>H₂ (alkali akışkanla gelir)</span>
+                    <span><i class="l-fes"></i>demir–kükürt (FeS) mineral</span>
+                </div>
+                <figcaption><span class="no">Şekil 3.1</span>Gözenek ile hücre arasındaki benzerlik. Lane'in grubunun ölçümlerine göre protonlar FeS duvarlardan, ters yöne giden hidroksit iyonlarından yaklaşık iki milyon kat hızlı geçer; böylece duvarın iç yüzünde dik bir pH farkı oluşabilir. Büyüyen bir protohücre, bu jeolojik proton akışından yararlanabilmek için duvara tutunmuş kalmak zorundadır.</figcaption>
+            </figure>
+
+            <p>H₂ ile CO₂'nin tepkimesi enerji verir, ama çok isteksiz başlar. pH burada belirleyicidir: H₂ alkali ortamda elektronlarını daha kolay verir, CO₂ asidik ortamda daha kolay alır. Bugünkü metanojenlerde bu işi zara gömülü demir–kükürt proteini <strong>Ech</strong> yapar: içeri akan protonlar sayesinde H₂'nin elektronlarını önce ferredoksine, oradan CO₂'ye aktarır. Şekil 3.1'deki üçgenler bu proteinin mineral kökenli atasını simgeler.</p>
+
+            <h3>Yüzeyde kimya: CO₂'den asetata</h3>
+            <p>Lane, demir–kükürt mineral yüzeyinde CO₂'nin adım adım indirgenmesi için bir mekanizma önerir. Yüzey elektron verir, protonlar çözeltiden gelir; bir karbon metil grubuna kadar indirgenir, ikinci bir CO ile birleşerek iki karbonlu asetil grubunu oluşturur.</p>
+
+            <figure class="kt-sekil">
+                <div class="kt-yuzey">
+                    <div class="cift"><div class="ist"><b>O=C=O</b><span>yüzeye tutunan CO₂</span></div></div>
+                    <div class="cift"><div class="gec">2e⁻</div><div class="ist"><b>–C≡O</b><span>bağlı CO + yüzeyde O⁻</span></div></div>
+                    <div class="cift"><div class="gec">2e⁻<br>H⁺</div><div class="ist"><b>–CH=O</b><span>bağlı formaldehit</span></div></div>
+                    <div class="cift"><div class="gec">2e⁻<br>2H⁺</div><div class="ist"><b>–CH₂OH</b><span>bağlı metanol</span></div></div>
+                    <div class="cift"><div class="gec">2e⁻, 2H⁺<br>−H₂O</div><div class="ist"><b>–CH₃</b><span>metil</span></div></div>
+                    <div class="cift"><div class="gec">+CO</div><div class="ist"><b>–CO–CH₃</b><span>asetil (C2)</span></div></div>
+                    <div class="cift"><div class="gec">+O⁻</div><div class="ist serbest"><b>CH₃COO⁻</b><span>asetat: yüzeyden ayrılır</span></div></div>
+                </div>
+                <figcaption><span class="no">Şekil 3.2</span>Mineral yüzeyinde önerilen basamaklar; koyu alt çizgi FeS yüzeyini simgeler. Toplam tepkime: 2 CO₂ + 4 H₂ → CH₃COO⁻ + H⁺ + 2 H₂O. Hücrelerde aynı işi nikel ve demir–kükürt merkezli CO dehidrogenaz / asetil-CoA sentaz yapar. Deneylerde greigit (Fe₃S₄), manyetit ve avaruit H₂ ile CO₂'den format, asetat ve pirüvat oluşturmuştur (<a href="https://doi.org/10.1038/s41559-020-1125-6" target="_blank" rel="noopener">Preiner ve ark., 2020</a>).</figcaption>
+            </figure>
+
+            <p>Asetil grubu yüzeyde oksijen yerine fosfatla tepkirse <strong>asetil fosfat</strong> oluşur; asetil fosfat da fosfatını ADP'ye aktarıp ATP yapabilir. Lane'in laboratuvarında bu tepkimenin suda, Fe³⁺ iyonlarının katalizörlüğünde yaklaşık %20 verimle gerçekleştiği gösterilmiştir. Bakteriler bugün de asetil-CoA'dan asetil fosfat üzerinden ATP elde eder.</p>
+
+            <h3>Çizgiden döngüye</h3>
+            <p>Harold Morowitz ters Krebs döngüsünü yaşamın çıkış noktası saymıştı: döngü her turda kendi ara ürününü ikiye katlar, yani otokatalitiktir. Leslie Orgel buna sert biçimde itiraz etti: enzimler olmadan on küsur tepkimenin yan ürünlere sapmadan tam tur dönmesini beklemek ona göre "sihre başvurmaktı". Lane'in ara çözümü şudur: başlangıçta tam döngü yoktu, yalnızca ilk birkaç basamak vardı. Buna <strong>Krebs çizgisi</strong> adını verir.</p>
+
+            <figure class="kt-sekil">
+                <div class="kt-tablo-sar">
+                    <table class="kt-tablo kt-merdiven">
+                        <thead><tr><th>Eklenen / çıkan</th><th>1. yarı</th><th>2. yarı</th></tr></thead>
+                        <tbody>
+                            <tr><th>başlangıç</th><td class="cz">Asetil-CoA <span class="c">C2</span></td><td>Süksinil-CoA <span class="c">C4</span></td></tr>
+                            <tr><th><span class="kt-etk co2">+CO₂</span> <span class="kt-etk fd">Fd</span></th><td class="cz">Pirüvat <span class="c">C3</span></td><td>α-Keto&shy;glutarat <span class="c">C5</span></td></tr>
+                            <tr><th><span class="kt-etk co2">+CO₂</span> <span class="kt-etk atp">ATP</span></th><td class="cz">Oksalo&shy;asetat <span class="c">C4</span></td><td>Oksalo&shy;süksinat <span class="c">C6</span></td></tr>
+                            <tr><th><span class="kt-etk h2">+2H</span></th><td>Malat <span class="c">C4</span></td><td>İzositrat <span class="c">C6</span></td></tr>
+                            <tr><th><span class="kt-etk su">−H₂O</span></th><td>Fumarat <span class="c">C4</span></td><td>Akonitat <span class="c">C6</span></td></tr>
+                            <tr><th><span class="kt-etk h2">+2H</span></th><td>Süksinat <span class="c">C4</span></td><td>Sitrat <span class="c">C6</span> <span class="kt-etk su">burada +H₂O</span></td></tr>
+                            <tr><th><span class="kt-etk atp">+CoA · ATP</span></th><td>Süksinil-CoA <span class="c">C4</span></td><td>Asetil-CoA <span class="c">C2</span> + Oksalo&shy;asetat <span class="c">C4</span></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <figcaption><span class="no">Şekil 3.3</span>Ters Krebs döngüsü kendi adımlarını yineler: aynı altı işlem önce C2'den C4'e, sonra C4'ten C6'ya uygulanır (tek fark: ikinci yarıda beşinci adımda 2H yerine su eklenir). Fd: ferredoksin. Turuncu hücreler <b>Krebs çizgisidir</b>: asetil-CoA → pirüvat → oksaloasetat. Lane'e göre önce bu doğrusal başlangıç ortaya çıktı; halka sonradan kapandı. Son satırda sitrat bölünür ve döngü bir oksaloasetat kazanır.</figcaption>
+            </figure>
+
+            <div class="kt-uyari">
+                <b>Derste nasıl anılmalı?</b>
+                <p>Alkali baca senaryosu laboratuvarda parça parça sınanmaktadır: pH farkıyla CO₂'nin formata indirgenmesi, mineral katalizli asetat ve pirüvat oluşumu, asetil fosfattan ATP ayrı ayrı gösterilmiştir. Zincirin tamamı ise gösterilmiş değildir ve "önce RNA" gibi rakip yaklaşımlar vardır. Bu bölüm, kanıtlanmış olgu olarak değil, "önce metabolizma" hipotezi olarak okunmalıdır.</p>
             </div>
 
-            <p>Bu reaksiyon (H<sub>2</sub> + CO<sub>2</sub> -> Organik Madde), termodinamik olarak kendiliğinden gerçekleşir. Buna "Krebs Çizgisi" (The Krebs Line) denir. Döngüden önce, düz bir üretim hattı vardı. </p>
+            <details class="kt-kaynak">
+                <summary>Bu sayfanın kaynakları</summary>
+                <ul>
+                    <li>Lane N. <i>Transformer: The Deep Chemistry of Life and Death</i>. Profile Books, 2022. Bölüm 3. Sayfadaki şemalar bu bölümdeki anlatımdan yeniden çizilmiştir.</li>
+                    <li>Preiner M ve ark. A hydrogen-dependent geochemical analogue of primordial carbon and energy metabolism. Nat Ecol Evol 2020;4:534–542. <a href="https://doi.org/10.1038/s41559-020-1125-6" target="_blank" rel="noopener">doi:10.1038/s41559-020-1125-6</a></li>
+                    <li>Hudson R ve ark. CO₂ reduction driven by a pH gradient. PNAS 2020;117:22873–22879. <a href="https://doi.org/10.1073/pnas.2002659117" target="_blank" rel="noopener">doi:10.1073/pnas.2002659117</a></li>
+                    <li>Pinna S ve ark. A prebiotic basis for ATP as the universal energy currency. PLoS Biol 2022;20:e3001437. <a href="https://doi.org/10.1371/journal.pbio.3001437" target="_blank" rel="noopener">doi:10.1371/journal.pbio.3001437</a></li>
+                    <li>Orgel LE. The implausibility of metabolic cycles on the prebiotic Earth. PLoS Biol 2008;6:e18. <a href="https://doi.org/10.1371/journal.pbio.0060018" target="_blank" rel="noopener">doi:10.1371/journal.pbio.0060018</a></li>
+                </ul>
+            </details>
         </section>
 
         <!-- BÖLÜM 4 -->
-        <section id="p4" class="page">
+        <section id="p4" class="page kt">
             <h2>4. Devrimler</h2>
-            <div class="subtitle">Oksijen ve Kambriyen Patlaması</div>
+            <div class="subtitle">Oksijen, Kambriyen patlaması ve dokular arası iş bölümü</div>
 
-            <p>Milyarlarca yıl boyunca yaşam, oksijensiz ortamda sadece "büyümeye" odaklandı (Ters Krebs). Sonra siyanobakteriler suyu parçalayıp oksijeni havaya saldı. Bu büyük bir kirlilikti ama aynı zamanda bir fırsattı.</p>
+            <p>Yaşamın ilk iki milyar yılında atmosferde serbest oksijen yok denecek kadar azdı. Bu dünyada enerji kıttı: elektronlar yalnızca jeolojik kaynaklardan (H₂, H₂S, Fe²⁺) geliyordu ve hücre aynı proton gradyanını ya ferredoksini indirgemek ya da ATP yapmak için kullanmak zorundaydı. Metanojenler tükettikleri hidrojenin yalnızca kırkta birini biyokütleye çevirir; gerisi proton pompalamaya gider.</p>
 
-            <p>Oksijenin varlığı, Krebs döngüsünün yönünü değiştirdi. Artık döngü, madde üretmek yerine maddeyi parçalayıp muazzam miktarda enerji (ATP) üretebiliyordu (İleri Krebs). Bu enerji patlaması, karmaşık hayvanların, yırtıcıların ve hareketli yaşamın (Kambriyen Patlaması) ortaya çıkmasını sağladı.</p>
-            
-            <div class="concept-card" style="border-left-color: #e74c3c;">
-                <h3>Metabolik İkilem (Yin ve Yang)</h3>
-                <p>Hücre aynı anda hem maddeyi yakıp enerji üretemez, hem de enerji harcayıp madde üretemez. Bu ikisi (Enerji vs Büyüme) arasındaki denge, sağlığın temelidir.</p>
+            <h3>Fotosentezin iki hamlesi</h3>
+            <p>Oksijen üretmeyen (anoksijenik) fotosentez tek bir fotosistemle çalışır: ya döngüsel elektron akışıyla ATP yapar ya da H₂S gibi bir vericiden aldığı elektronlarla ferredoksini indirger; ikisini aynı anda yapamaz. Siyanobakterilerin ataları iki fotosistemi art arda bağladığında (Z şeması) elektronlar sudan alınabilir, ATP ve indirgenmiş ferredoksin birlikte üretilebilir oldu. Atık ürün oksijendi; bu oksijen CO₂'den değil, sudan gelir.</p>
+
+            <figure class="kt-sekil">
+                <div class="kt-baslik">Atmosferdeki O₂ · bugünkü düzeye göre (şematik)</div>
+                <div class="kt-ciz" data-sekil="oksijen"></div>
+                <ol class="kt-zaman" style="margin-top:1rem">
+                    <li><span class="yil">≈ 4 milyar</span><div><b>Oksijensiz başlangıç.</b> Lane'in senaryosunda yaşam H₂ ve CO₂ ile başlar; havada ve okyanusta bugünkünden binlerce kat fazla CO₂ vardır, serbest O₂ yoktur.</div></li>
+                    <li class="o2"><span class="yil">2,3 milyar</span><div><b>Büyük Oksidasyon Olayı.</b> Oksijenik fotosentezin ilk tartışmasız izi: kırmızı katmanlar, bantlı demir oluşumları, dev manganez yatakları. Metan oksitlenip sera etkisi azalınca gezegen donar (Kartopu Dünya).</div></li>
+                    <li><span class="yil">≈ 2–1 milyar</span><div><b>"Sıkıcı milyar".</b> O₂ bugünkü düzeyin %1–10'unda kalır, derin okyanuslar oksijensizdir. Ökaryot hücre ve mitokondri bu dönemde ortaya çıkar.</div></li>
+                    <li class="kriz"><span class="yil">560 milyon</span><div><b>Shuram sapması.</b> Karbonatlardaki δ¹³C yaklaşık +5‰'den −12‰'ye düşer ve on milyon yılda toparlanır. Graham Shields'in açıklamasına göre okyanusta birikmiş çözünmüş organik karbon oksijenle değil <b>sülfatla</b> oksitlenmiştir; denizler uzun süre H₂S'lidir.</div></li>
+                    <li><span class="yil">≈ 550 milyon</span><div><b>İlk iz fosilleri.</b> Ediacara canlıları kaybolur; çamuru oyan, iki yanlı simetrili, kaslı ve dolaşım sistemi olan solucanımsı hayvanlar görülür.</div></li>
+                    <li class="o2"><span class="yil">≈ 540 milyon</span><div><b>Kambriyen patlaması.</b> Sular berraklaşıp oksijenlenir; O₂ bugünkü düzeye yaklaşır. Avcılar, avlar ve çok basamaklı besin ağları ortaya çıkar.</div></li>
+                    <li class="kriz"><span class="yil">250 milyon</span><div><b>Permiyen sonu yok oluşu.</b> Düşen O₂, artan CO₂ ve sülfürlü denizler türlerin yaklaşık %95'ini yok eder; solunum ve dolaşım sistemi gelişmiş olanlar daha çok hayatta kalır.</div></li>
+                </ol>
+                <figcaption><span class="no">Şekil 4.1</span>Oksijenin uzun yolu. Eğri <b>şematiktir</b>: yalnızca kitabın verdiği düzeyleri (≈ 0 · %1–10 · bugünküne yakın) ve tarihleri gösterir, ölçülmüş bir veri dizisi değildir. Kesikli bölüm, "sıkıcı milyar"ın sonundaki yaklaşık 200 milyon yıllık çalkantıyı (art arda Kartopu Dünya dönemleri, δ¹³C salınımları) simgeler.</figcaption>
+            </figure>
+
+            <h3>Oksijen neden farklı?</h3>
+            <p>O₂ iki eşleşmemiş elektron taşır ve kuantum kuralları gereği elektronları teker teker alır. Organik moleküller ise elektronlarını çift olarak verir; bu yüzden oksijenle kendiliğinden tepkimezler. Oksijenin havada birikebilmesi ve canlıların kendiliğinden tutuşmaması bundandır. Solunum zinciri, elektronları oksijene tek tek ve denetimli biçimde aktararak bu engeli aşar.</p>
+            <p>Sonuç bir verim farkıdır. Oksijenli solunum besindeki enerjinin yaklaşık %40'ını, oksijensiz yollar en çok %10 kadarını kullanılabilir enerjiye çevirir. Her beslenme basamağında enerji bu oranda azalır. Lane'in kaba hesabına göre, bir popülasyonun yaşayabilmesi için sabitlenen karbondaki enerjinin en az %1'i gerekiyorsa, oksijensiz bir dünyada besin zinciri iki basamakta, oksijenli dünyada beş basamakta tükenir.</p>
+
+            <figure class="kt-sekil">
+                <div class="kt-baslik">Besin zincirinde kalan enerji (%, logaritmik eksen)</div>
+                <div class="kt-ciz" data-sekil="trofik"></div>
+                <div class="kt-lejant">
+                    <span><i class="l-s1"></i>oksijenli solunum · verim ≈ %40 · beş basamak</span>
+                    <span><i class="l-s2"></i>oksijensiz yollar · verim ≈ %10 · iki basamak</span>
+                </div>
+                <figcaption><span class="no">Şekil 4.2</span>Verim, besin zincirinin uzunluğunu belirler. Değerler kitaptaki örnek hesaptır (40 · 16 · 6,4 · 2,6 · 1,02 ve 10 · 1); logaritmik eksende sabit verim düz bir çizgi verir. %1 eşiği bir varsayımdır; gerçek değer ekosisteme göre değişir. Lane'e göre oksijen Kambriyen patlamasını başlatmadı, ama onu mümkün kıldı.</figcaption>
+            </figure>
+
+            <h3>Döngü mü, çatal mı?</h3>
+            <p>Yaygın bir anlatıya göre oksijen yükselince Krebs döngüsü "tersten ileriye" dönmüştür. Lane bunu açıkça reddeder. Oksijen 2,3 milyar yıl önce yükseldikten sonra yaklaşık iki milyar yıl düşük kaldı. Ayrıca bakterilerin, arkelerin ve tek hücreli ökaryotların çoğu döngüyü hiçbir yönde tam tur döndürmez; çoğu zaman yol ikiye ayrılır. Bir kol 2H üretir, diğeri tüketir. İkisi birlikte, NADH ya da laktat gibi atıklar birikmeden bir miktar ATP yapılmasını sağlar.</p>
+
+            <figure class="kt-sekil">
+                <div class="kt-ciz" data-sekil="catal"></div>
+                <div class="kt-lejant">
+                    <span><i class="l-2h"></i>2H alışverişi</span>
+                    <span><i class="l-co2"></i>CO₂ alışverişi</span>
+                    <span><i class="l-o2"></i>su</span>
+                </div>
+                <figcaption><span class="no">Şekil 4.3</span>İki kollu Krebs yolu: mikroplarda yaygın akış düzeni. Kesikli çizgi, halkanın kapanabileceği yeri gösterir. İndirgeyici kolun son basamağında fumarat, oksijen yokken son elektron alıcısı olarak iş görür; biriken süksinat ise dokularda düşük oksijenin (hipoksi) güçlü bir sinyalidir.</figcaption>
+            </figure>
+
+            <h3>Seri işlemden paralel işleme</h3>
+            <p>Tam oksidatif döngü en çok ATP'yi verir ama biyosentez için ara ürün bırakmaz; ara ürün çekildiğinde ise döngü kavşağa dönüşür. Tek hücreli bir canlı bu ikilemi zamana yayar: koşula göre genlerini açıp kapatarak ya büyüme ya da enerji düzenine geçer. Çok hücreli hayvanlarda dokular farklı akış düzenlerini <strong>aynı anda</strong> yürütür ve birbirlerinin ürünlerini kullanır. Lane, Kambriyen hayvanlarının başarısını, Krebs döngüsünün bu yin–yang gerilimini (biyosentez ile enerji) kendi bedenlerinde dengeleyebilmelerine bağlar.</p>
+
+            <figure class="kt-sekil">
+                <div class="kt-mod">
+                    <div>
+                        <h4>Tek hücreli: seri işlem</h4>
+                        <p class="alt">Aynı hücre, koşul değiştikçe akış düzenini değiştirir.</p>
+                        <div class="kt-zamanbant">
+                            <span class="yapim">büyüme</span><span class="enerji">enerji</span><span class="yapim">büyüme</span><span class="enerji">enerji</span><span class="yapim">büyüme</span>
+                        </div>
+                        <div class="kt-eksen-not"><span>zaman →</span><span>besin bol / kıt · O₂ var / yok</span></div>
+                        <div class="kt-dokular tek">
+                            <div class="yapim"><b>Büyüme düzeni</b>ara ürünler döngüden çekilir; yapı taşı üretilir, ATP verimi düşer</div>
+                            <div class="enerji"><b>Enerji düzeni</b>asetil birimleri sonuna kadar yakılır; ATP verimi yüksek, yapı taşı yok</div>
+                        </div>
+                    </div>
+                    <div>
+                        <h4>Çok hücreli: paralel işlem</h4>
+                        <p class="alt">Farklı dokular farklı düzenleri aynı anda sürdürür.</p>
+                        <div class="kt-dokular">
+                            <div class="enerji"><b>Beyin</b>tam oksidatif döngü, en yüksek ATP verimi</div>
+                            <div class="enerji"><b>Uçuş kası</b>yakıt yakan çember (Krebs'in güvercin kası)</div>
+                            <div class="yapim"><b>Karaciğer</b>kavşak: glukoz, yağ ve amino asit yapımı</div>
+                            <div class="yapim"><b>Gonadlar</b>düşük O₂ gereksinimi; glikoliz ve biyosentez düzeni</div>
+                        </div>
+                        <div class="kt-alisveris">dokular arası alışveriş: <b>laktat</b> · <b>glutamin</b></div>
+                    </div>
+                </div>
+                <figcaption><span class="no">Şekil 4.4</span>Metabolik ikilemin iki çözümü. Sarı: enerji (ATP) ağırlıklı akış; yeşil: biyosentez ağırlıklı akış. Dokular birbirinin atığını yakıt olarak kullandığında her biri kendi içinde dengede kalır; Lane bunu vücut sıcaklığı ya da pH dengesine benzer bir "metabolik homeostaz" olarak yorumlar.</figcaption>
+            </figure>
+
+            <div class="kt-git">
+                <button type="button" data-page="oyun-hucre">🧫 Hücre Yöneticisi'nde enerji–biyosentez dengesini kur</button>
+                <button type="button" data-page="oyun-tokac">🍽️ Tok mu, Aç mı? ile dokular arası akışı izle</button>
             </div>
+
+            <details class="kt-kaynak">
+                <summary>Bu sayfanın kaynakları</summary>
+                <ul>
+                    <li>Lane N. <i>Transformer: The Deep Chemistry of Life and Death</i>. Profile Books, 2022. Bölüm 4. Sayfadaki şemalar bu bölümdeki anlatımdan yeniden çizilmiştir.</li>
+                    <li>Eck RV, Dayhoff MO. Evolution of the structure of ferredoxin based on living relics of primitive amino acid sequences. Science 1966;152:363–366. <a href="https://doi.org/10.1126/science.152.3720.363" target="_blank" rel="noopener">doi:10.1126/science.152.3720.363</a></li>
+                    <li>Shields GA ve ark. Unique Neoproterozoic carbon isotope excursions sustained by coupled evaporite dissolution and pyrite burial. Nat Geosci 2019;12:823–827. <a href="https://doi.org/10.1038/s41561-019-0434-3" target="_blank" rel="noopener">doi:10.1038/s41561-019-0434-3</a></li>
+                </ul>
+            </details>
         </section>
 
         <!-- BÖLÜM 5 -->
-        <section id="p5" class="page">
+        <section id="p5" class="page kt">
             <h2>5. Karanlık Taraf</h2>
             <div class="subtitle">Kanser: Genetik mi Metabolik mi?</div>
 
@@ -312,7 +637,7 @@
         </section>
 
         <!-- BÖLÜM 6 -->
-        <section id="p6" class="page">
+        <section id="p6" class="page kt">
             <h2>6. Akış Kapasitörü</h2>
             <div class="subtitle">Yaşlanma ve Mitokondriyel Denge</div>
 
@@ -326,7 +651,7 @@
         </section>
 
         <!-- SONSÖZ -->
-        <section id="p7" class="page">
+        <section id="p7" class="page kt">
             <h2>Sonsöz: Benlik</h2>
             <div class="subtitle">Bilinç ve Elektrik Alanları</div>
 
@@ -706,6 +1031,7 @@
 <script src="assets/js/iddia.js"></script>
 <script src="assets/js/hesap.js"></script>
 <script src="assets/js/kaynak.js"></script>
+<script src="assets/js/kitap.js"></script>
 
 </body>
 </html>
